@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_bsbt_class"
+                android:src="@drawable/ic_baseline_house_24"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="60dp" />
+            <TextView
+                android:id="@+id/tv_bsbt_class"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:text="课程"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="60dp"
+            android:layout_below="@id/iv_bsbt_class"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_bsbt_mine"
+                android:src="@drawable/ic_baseline_person_24"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="60dp"/>
+            <TextView
+                android:id="@+id/tv_bsbt_mine"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:text="我的"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="55dp"
+                android:layout_below="@id/iv_bsbt_mine"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
