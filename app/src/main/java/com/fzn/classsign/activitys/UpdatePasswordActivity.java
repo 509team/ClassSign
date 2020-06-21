@@ -1,17 +1,19 @@
-package com.fzn.classsign;
+package com.fzn.classsign.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.fzn.classsign.R;
+
 /**
- * 课堂主页
+ * 修改密码
  */
-public class ClassHomePageActivity extends AppCompatActivity {
+public class UpdatePasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_home_page);
+        setContentView(R.layout.activity_update_password);
     }
 }

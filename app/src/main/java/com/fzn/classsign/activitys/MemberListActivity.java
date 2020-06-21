@@ -1,17 +1,19 @@
-package com.fzn.classsign;
+package com.fzn.classsign.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.fzn.classsign.R;
+
 /**
- * 我的信息
+ * 成员列表
  */
-public class MyInfoActivity extends AppCompatActivity {
+public class MemberListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_info);
+        setContentView(R.layout.activity_member_list);
     }
 }

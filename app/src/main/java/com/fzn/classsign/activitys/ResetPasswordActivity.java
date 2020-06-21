@@ -1,17 +1,19 @@
-package com.fzn.classsign;
+package com.fzn.classsign.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.fzn.classsign.R;
+
 /**
- * 成员列表
+ * 重置密码
  */
-public class MemberListActivity extends AppCompatActivity {
+public class ResetPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member_list);
+        setContentView(R.layout.activity_reset_password);
     }
 }

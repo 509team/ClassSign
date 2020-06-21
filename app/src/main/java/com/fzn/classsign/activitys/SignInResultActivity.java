@@ -1,17 +1,19 @@
-package com.fzn.classsign;
+package com.fzn.classsign.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.fzn.classsign.R;
+
 /**
- * 设置密码
+ * 签到成功
  */
-public class SetPasswordActivity extends AppCompatActivity {
+public class SignInResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_password);
+        setContentView(R.layout.activity_sign_in_result);
     }
 }

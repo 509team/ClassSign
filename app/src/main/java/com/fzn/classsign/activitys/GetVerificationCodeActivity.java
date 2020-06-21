@@ -1,8 +1,10 @@
-package com.fzn.classsign;
+package com.fzn.classsign.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.fzn.classsign.R;
 
 /**
  * 获取验证码
