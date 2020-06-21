@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/tv_tsb_back"
-        android:layout_width="33dp"
-        android:layout_height="30dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
