@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activitys.JoinClassActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/tv_tsb_back1"
+            android:layout_width="33dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+
+        <TextView
+            android:id="@+id/tv_tsb_title1"
+            android:layout_width="166dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="加入班级"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/tv_tsb_back1"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#7E7A7A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_below="@id/tv_tsb_title1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <EditText
+            android:id="@+id/et_jc_sixcode"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:hint="签到码"
+            android:textSize="55sp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:selectAllOnFocus="true"
+            android:background="@drawable/bg_border"/>
+    </RelativeLayout>
+
+    <!--扫一扫图片-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:layout_marginTop="5dp">
+        <ImageView
+            android:id="@+id/iv_jc_scan"
+            android:src="@drawable/scan"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <!--加入班级按钮-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginBottom="40dp">
+
+        <Button
+            android:id="@+id/bt_jc_joinclass"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="加入班级"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:background="@color/skyblue"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

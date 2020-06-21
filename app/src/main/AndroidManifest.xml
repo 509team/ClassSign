@@ -20,7 +20,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitys.ReleaseSignInActivity"></activity>
+        <activity android:name=".activitys.ClassHomePageTeacherActivity"/>
+        <activity android:name=".activitys.MyInfoTeacherActivity" />
+        <activity android:name=".activitys.ClassDetailTeacherActivity" />
+        <activity android:name=".activitys.ReleaseSignInActivity" />
         <activity android:name=".activitys.ResetPasswordActivity" />
         <activity android:name=".activitys.RecoverPasswordActivity" />
         <activity android:name=".activitys.SetPasswordActivity" />
@@ -29,23 +32,16 @@
         <activity android:name=".activitys.QuickLoginActivity" />
         <activity android:name=".activitys.LoginSelectionActivity" />
         <activity android:name=".activitys.UpdateInfoActivity" />
-        <activity android:name=".activitys.UpdatePasswordActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
-
-        <activity android:name=".activitys.MyInfoActivity" />
+        <activity android:name=".activitys.UpdatePasswordActivity" />
+        <activity android:name=".activitys.MyInfoStudentActivity" />
         <activity android:name=".activitys.SignInRecordListActivity" />
         <activity android:name=".activitys.MemberListActivity" />
         <activity android:name=".activitys.SignInActivity" />
         <activity android:name=".activitys.CreateSignInActivity" />
-        <activity android:name=".activitys.ClassDetailActivity" />
+        <activity android:name=".activitys.ClassDetailStudentActivity" />
         <activity android:name=".activitys.JoinClassActivity" />
         <activity android:name=".activitys.CreateClassActivity" />
-        <activity android:name=".activitys.ClassHomePageActivity" />
+        <activity android:name=".activitys.ClassHomePageStudentActivity" />
         <activity android:name=".activitys.ScanActivity" />
         <activity android:name=".activitys.SignInResultActivity" />
         <activity android:name=".activitys.MainActivity">

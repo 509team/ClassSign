@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activitys.ClassDetailStudentActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/tv_tsb_back2"
+            android:layout_width="33dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+
+        <TextView
+            android:id="@+id/tv_tsb_title2"
+            android:layout_width="166dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="班级详情"
+            android:textSize="30sp"
+            android:layout_toRightOf="@id/tv_tsb_back2"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#7E7A7A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_below="@id/tv_tsb_title2" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <ImageView
+            android:layout_width = "match_parent"
+            android:layout_height = "150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background = "@drawable/class_background"/>
+        <TextView
+            android:id="@+id/tv_cds_classname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="软件工程测试"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:paddingTop="8dp"
+            android:paddingLeft="50dp"
+            android:paddingBottom="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_cds_classcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_cds_classname"
+            android:text="1911212"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:paddingTop="8dp"
+            android:paddingLeft="50dp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_cds_joinclasscodetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cds_classcode"
+            android:text="加课码："
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:paddingTop="8dp"
+            android:paddingLeft="50dp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_cds_joinclasscode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cds_classcode"
+            android:layout_toRightOf="@id/tv_cds_joinclasscodetext"
+            android:text="NEWQHQ"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="10dp"/>
+
+        <View
+            android:id="@+id/v_cds_underline2"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/black"
+            android:layout_below="@id/tv_cds_joinclasscode"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <Button
+            android:id="@+id/bt_cds_allstudent"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="所有学生"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:background="@color/skyblue"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_cds_attendancenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginLeft="58dp"/>
+        <TextView
+            android:id="@+id/tv_cds_attendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="出勤"
+            android:textSize="25sp"
+            android:textColor="#27B148"
+            android:layout_below="@id/tv_cds_attendancenum"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginLeft="40dp"/>
+
+        <TextView
+            android:id="@+id/tv_cds_abnormalnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:orientation="horizontal"
+            android:layout_marginLeft="58dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/tv_cds_abnormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="异常"
+            android:textSize="25sp"
+            android:textColor="#FCCA00"
+            android:layout_below="@id/tv_cds_abnormalnum"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_cds_absencenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"/>
+        <TextView
+            android:id="@+id/tv_cds_absence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="缺勤"
+            android:textSize="25sp"
+            android:textColor="#FF2525"
+            android:layout_below="@id/tv_cds_absencenum"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="426dp"
+        android:layout_marginTop="5dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lv_cds_class"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+</LinearLayout>

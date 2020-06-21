@@ -8,4 +8,5 @@ public class Class {
     private Integer uid;
     private String tName;
     private String joinCode;
+    private Integer total;
 }

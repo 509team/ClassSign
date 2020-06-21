@@ -6,14 +6,11 @@ import android.os.Bundle;
 
 import com.fzn.classsign.R;
 
-/**
- * 课堂主页
- */
-public class ClassHomePageActivity extends AppCompatActivity {
+public class ClassHomePageTeacherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_home_page);
+        setContentView(R.layout.activity_class_home_page_teacher);
     }
 }

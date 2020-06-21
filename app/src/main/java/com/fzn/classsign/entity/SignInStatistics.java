@@ -7,4 +7,5 @@ public class SignInStatistics {
     private Long startTime;
     private Integer checkInNum;
     private Integer total;
+    private String status;
 }
