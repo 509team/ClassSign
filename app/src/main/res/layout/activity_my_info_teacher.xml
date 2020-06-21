@@ -50,21 +50,26 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <TextView
-                android:id="@+id/tv_mit_name"
+                android:id="@+id/tv_mit_nametext"
                 android:text="姓名  "
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
-            <EditText
+            <TextView
                 android:id="@+id/et_mit_name"
                 android:hint="WOLD"
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/tv_mit_name"/>
+                android:layout_toRightOf="@id/tv_mit_nametext"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#7E7A7A"
+                android:layout_below="@id/et_mit_name" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -72,21 +77,26 @@
             android:layout_height="50dp"
             android:layout_marginTop="50dp">
             <TextView
-                android:id="@+id/tv_mit_sex"
+                android:id="@+id/tv_mit_sextext"
                 android:text="性别  "
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
-            <EditText
+            <TextView
                 android:id="@+id/et_mit_sex"
                 android:hint="男"
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/tv_mit_sex"/>
+                android:layout_toRightOf="@id/tv_mit_sextext"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#7E7A7A"
+                android:layout_below="@id/et_mit_sex" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -94,21 +104,26 @@
             android:layout_height="50dp"
             android:layout_marginTop="100dp">
             <TextView
-                android:id="@+id/tv_mit_phone"
+                android:id="@+id/tv_mit_phonetext"
                 android:text="手机  "
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
-            <EditText
+            <TextView
                 android:id="@+id/et_mit_phone"
                 android:hint="157*******123"
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/tv_mit_phone"/>
+                android:layout_toRightOf="@id/tv_mit_phonetext"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#7E7A7A"
+                android:layout_below="@id/et_mit_phone" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -116,21 +131,26 @@
             android:layout_height="50dp"
             android:layout_marginTop="150dp">
             <TextView
-                android:id="@+id/tv_mit_studentid"
-                android:text="学号  "
+                android:id="@+id/tv_mit_teacheridtext"
+                android:text="工号  "
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
-            <EditText
-                android:id="@+id/et_mit_studentid"
+            <TextView
+                android:id="@+id/et_mit_teacherid"
                 android:hint="1700000000"
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/tv_mit_studentid"/>
+                android:layout_toRightOf="@id/tv_mit_teacheridtext"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#7E7A7A"
+                android:layout_below="@id/et_mit_teacherid" />
         </RelativeLayout>
 
         <RelativeLayout
