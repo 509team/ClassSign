@@ -19,8 +19,8 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.Vi
     private Context mContext;
     private int resourceId;
 
-    private String  nameKey = "";
-    private String  studentIdKey = "";
+    private String  nameKey = "name";
+    private String  studentIdKey = "uNum";
 
     public MemberListAdapter(Context context, int resourceId, List<Map<String, Object>> data){
         this.mContext = context;
@@ -45,7 +45,7 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mapList.size();
     }
 
 

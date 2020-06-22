@@ -13,7 +13,7 @@ import com.fzn.classsign.R;
 import java.util.List;
 import java.util.Map;
 
-public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> {
+public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ViewHolder> {
     private List<Map<String, Object>> mapList;
     private Context mContext;
     private int resourceId;
@@ -23,7 +23,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
     private String  joinClassCodeKey = "joinCode";
     private String  memberNumKey = "total";
 
-    public ClassAdapter(Context context, int resourceId, List<Map<String, Object>> data){
+    public ClassListAdapter(Context context, int resourceId, List<Map<String, Object>> data){
         this.mContext = context;
         this.mapList = data;
         this.resourceId = resourceId;
