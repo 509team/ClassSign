@@ -102,7 +102,6 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
                     etPwd.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD|InputType.TYPE_CLASS_TEXT);
                     ivSee.setImageResource(R.drawable.ic_baseline_visibility_24);
                 }
-
                 break;
         }
     }

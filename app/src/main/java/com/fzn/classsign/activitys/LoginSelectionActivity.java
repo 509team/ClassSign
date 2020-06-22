@@ -47,6 +47,7 @@ public class LoginSelectionActivity extends AppCompatActivity implements View.On
                 break;
             case 3:
                 intent.putExtra("TYPE",3);
+                break;
         }
         startActivity(intent);
     }
