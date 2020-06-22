@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +21,12 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
     private TextView tvTitle;
     private EditText etPhone;
     private EditText etPwd;
+    private ImageView ivSee;
     private Button bLigon;
     private TextView tvOtherWay;
 
     private int type;
+    private boolean see;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +35,11 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
         tvTitle = findViewById(R.id.tv_pl_title);
         etPhone = findViewById(R.id.et_pl_phone);
         etPwd = findViewById(R.id.et_pl_pwd);
+        ivSee=findViewById(R.id.iv_pl_see);
         bLigon = findViewById(R.id.b_pl_login);
         tvOtherWay = findViewById(R.id.tv_pl_other_login);
 
+        see=false;
         Intent intent=getIntent();
         type=intent.getIntExtra("TYPE",0);
         String title=tvTitle.getText().toString();
@@ -48,6 +54,8 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
         bLigon.setTag(1);
         tvOtherWay.setOnClickListener(this);
         tvOtherWay.setTag(2);
+        ivSee.setOnClickListener(this);
+        ivSee.setTag(3);
     }
 
     @Override
@@ -61,25 +69,41 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(this,"账户或密码不能为空",Toast.LENGTH_SHORT).show();
                 }
                 else if(phone.length()!=11){
-                    Toast.makeText(this,"请输入正确的手机号",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"手机号格式不正确",Toast.LENGTH_SHORT).show();
                 }else if(pwd.length()<6||pwd.length()>20){
-                    Toast.makeText(this,"请输入正确的密码",Toast.LENGTH_SHORT).show();
-                }
+                    Toast.makeText(this,"密码格式不正确",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(true) {//调用接口判断账号正确性，待实现
+                        if(type==1){
+                            intent2=new Intent(this,ClassHomePageTeacherActivity.class);
+                            startActivity(intent2);
+                        }else if(type ==2){
+                            intent2=new Intent(this,ClassHomePageStudentActivity.class);
+                            startActivity(intent2);
+                        }else {
+                            Toast.makeText(this,"账号密码不正确",Toast.LENGTH_SHORT).show();
+                        }
 
-                //调用接口判断账号正确性，待实现
-                if(type==1){
-                    intent2=new Intent(this,ClassHomePageTeacherActivity.class);
-                }else if(type ==2){
-                    intent2=new Intent(this,ClassHomePageStudentActivity.class);
+                    }
                 }
-               startActivity(intent2);
                 break;
             case 2:
                 intent2=new Intent(this,QuickLoginActivity.class);
                 intent2.putExtra("TYPE",type);
                 startActivity(intent2);
                 break;
+            case 3:
+                see =!see;
+                if(see){
+                    etPwd.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    ivSee.setImageResource(R.drawable.ic_baseline_visibility_off_24);
 
+                }else{
+                    etPwd.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD|InputType.TYPE_CLASS_TEXT);
+                    ivSee.setImageResource(R.drawable.ic_baseline_visibility_24);
+                }
+
+                break;
         }
     }
 }

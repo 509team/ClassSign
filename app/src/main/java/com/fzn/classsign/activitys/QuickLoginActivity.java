@@ -39,13 +39,11 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
         type = intent.getIntExtra("TYPE", 0);
         if (type == 1) {
             title += "\n" + "老师端";
-
             tvOtherWay.setVisibility(TextView.VISIBLE);
             tvOtherWay.setOnClickListener(this);
             tvOtherWay.setTag(2);
         } else if (type == 2) {
             title += "\n" + "学生端";
-
             tvOtherWay.setVisibility(TextView.VISIBLE);
             tvOtherWay.setOnClickListener(this);
             tvOtherWay.setTag(2);
@@ -63,16 +61,15 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
         Intent intent2;
         switch((Integer) v.getTag()){
             case 1:
-                intent2=new Intent(this,GetVerificationCodeActivity.class);
                 phone=etPhone.getText().toString();
-                System.out.println(phone);
                 if(phone.equals("")){
                     Toast.makeText(this,"手机号不能为空",Toast.LENGTH_SHORT).show();
                 }else if(phone.length()!=11){
                     Toast.makeText(this,"输入正确的手机号",Toast.LENGTH_SHORT).show();
                 }else{
-                    intent2.putExtra("TYPE",type);
                     intent2=new Intent(this,GetVerificationCodeActivity.class);
+                    intent2.putExtra("TYPE",type);
+                    intent2.putExtra("PHONE",phone);
                     startActivity(intent2);
                 }
                 break;

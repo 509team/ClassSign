@@ -22,39 +22,27 @@
         android:id="@+id/et_ql_phone"
         android:layout_width="313dp"
         android:layout_height="47dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="请输入手机号"
-
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.346"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ql_title" />
 
-    <TextView
-        android:id="@+id/tv_ql_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="未注册将验证手机后自动注册"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_ql_phone" />
-
     <Button
         android:id="@+id/b_ql_get_verification"
         android:layout_width="365dp"
         android:layout_height="79dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="68dp"
         android:background="#03A9F4"
         android:text="获取验证码"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ql_message" />
+        app:layout_constraintTop_toBottomOf="@+id/et_ql_phone" />
 
     <TextView
         android:id="@+id/tv_ql_other_login"
