@@ -16,7 +16,7 @@
             android:layout_height="50dp"
             android:background="@color/green"
             android:gravity="center"
-            android:text="课堂签（学生端）"
+            android:text="课堂签（教师端）"
             android:textColor="@color/black"
             android:textSize="30sp"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +61,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/bottom_status_bar_student"
+        <include layout="@layout/bottom_status_bar_teacher"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_alignParentBottom="true"/>
