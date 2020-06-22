@@ -11,50 +11,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/index" />
 
     <TextView
         android:id="@+id/tv_ls_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
         android:gravity="center"
         android:text="欢迎来到课堂签\n请选择登录端"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_ls_background"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintTop_toTopOf="@+id/iv_ls_background" />
 
     <Button
         android:id="@+id/b_ls_teacher"
         android:layout_width="98dp"
         android:layout_height="44dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="84dp"
         android:background="#C103A9F4"
         android:text="教师端"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_ls_background" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_ls_title" />
 
     <Button
         android:id="@+id/b_ls_student"
         android:layout_width="98dp"
         android:layout_height="44dp"
-        android:layout_marginTop="424dp"
+        android:layout_marginTop="72dp"
         android:background="#C103A9F4"
         android:text="学生端"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_ls_background" />
+        app:layout_constraintTop_toBottomOf="@+id/b_ls_teacher" />
+
+    <Button
+        android:id="@+id/b_ls_logon"
+        android:layout_width="98dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="72dp"
+        android:background="#C103A9F4"
+        android:text="注册"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_ls_student" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
