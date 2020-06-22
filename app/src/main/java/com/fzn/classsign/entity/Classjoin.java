@@ -1,6 +1,6 @@
 package com.fzn.classsign.entity;
 
-public class ClassSign {
+public class Classjoin {
     public Integer getCjid() {
         return cjid;
     }

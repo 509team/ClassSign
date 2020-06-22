@@ -7,13 +7,13 @@ import android.os.Bundle;
 import com.fzn.classsign.R;
 
 /**
- * 快捷登录
+ * 注册
  */
-public class QuickLoginActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quick_login);
+        setContentView(R.layout.activity_registration);
     }
 }
