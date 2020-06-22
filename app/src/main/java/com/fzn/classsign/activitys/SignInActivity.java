@@ -77,12 +77,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
         }
         if(v.getId() == R.id.iv_si_scan){
-            //动态申请权限
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-            } else {
-                //扫码
-                goScan();
+            //动态申请相机权限、读取文件权限；
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA , Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }else {
+                //扫码返回结果
+                Intent intent = new Intent(SignInActivity.this, CaptureActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_SCAN);
             }
         }
     }
@@ -99,10 +100,4 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
-
-    public void goScan(){
-        Intent intent = new Intent(SignInActivity.this, CaptureActivity.class);
-        startActivityForResult(intent, REQUEST_CODE_SCAN);
-    }
-
 }
