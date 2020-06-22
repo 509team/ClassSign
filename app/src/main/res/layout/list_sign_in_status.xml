@@ -12,7 +12,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/text_lsis_studentid"
+            android:id="@+id/tv_lsis_hiddenuid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/tv_lsis_studentid"
             android:text="170000000"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -23,7 +29,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"/>
         <TextView
-            android:id="@+id/text_lsis_name"
+            android:id="@+id/tv_lsis_name"
             android:text="WOLD"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -31,21 +37,32 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_toRightOf="@id/tv_lsis_studentid"
+            android:layout_marginLeft="20dp"/>
         <TextView
-            android:id="@+id/text_lsis_status"
+            android:id="@+id/tv_lsis_status"
             android:text="出勤"
-            android:textColor="@color/black"
+            android:textColor="#27B148"
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="35dp"/>
+            android:layout_toRightOf="@id/tv_lsis_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"/>
+        <Button
+            android:id="@+id/bt_lsis_update"
+            android:text="修改"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_lsis_status"
+            android:layout_marginLeft="20dp"/>
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:layout_below="@id/text_lsis_name"
+            android:layout_below="@id/tv_lsis_name"
             android:background="#7E7A7A"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"

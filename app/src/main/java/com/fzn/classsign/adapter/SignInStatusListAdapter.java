@@ -12,7 +12,6 @@ import com.fzn.classsign.R;
 import com.fzn.classsign.entity.SignIn;
 
 import java.util.List;
-import java.util.Map;
 
 public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusListAdapter.ViewHolder> {
     private List<SignIn> dataList;
@@ -35,9 +34,10 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
     @Override
     public void onBindViewHolder(SignInStatusListAdapter.ViewHolder holder, int position) {
         SignIn signIn = dataList.get(position);
-        holder.text_lsis_studentid.setText(signIn.getuNum());
-        holder.text_lsis_name.setText(signIn.getName());
-        holder.text_lsis_status.setText(signIn.getStatus());
+        holder.tv_lsis_hiddenuid.setText(signIn.getUid());
+        holder.tv_lsis_studentid.setText(signIn.getuNum());
+        holder.tv_lsis_name.setText(signIn.getName());
+        holder.tv_lsis_status.setText(signIn.getStatus());
     }
 
     @Override
@@ -46,14 +46,16 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
     }
 
     static  class ViewHolder extends RecyclerView.ViewHolder{
-        TextView text_lsis_studentid;
-        TextView text_lsis_name;
-        TextView text_lsis_status;
+        TextView tv_lsis_hiddenuid;
+        TextView tv_lsis_studentid;
+        TextView tv_lsis_name;
+        TextView tv_lsis_status;
         public ViewHolder(View itemView) {
             super(itemView);
-            text_lsis_studentid = itemView.findViewById(R.id.text_lsis_studentid);
-            text_lsis_name = itemView.findViewById(R.id.text_lsis_name);
-            text_lsis_status = itemView.findViewById(R.id.text_lsis_status);
+            tv_lsis_hiddenuid = itemView.findViewById(R.id.tv_lsis_hiddenuid);
+            tv_lsis_studentid = itemView.findViewById(R.id.tv_lsis_studentid);
+            tv_lsis_name = itemView.findViewById(R.id.tv_lsis_name);
+            tv_lsis_status = itemView.findViewById(R.id.tv_lsis_status);
         }
     }
 }
