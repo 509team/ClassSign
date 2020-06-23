@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">ClassSign</string>
-    <String name="token"></String>
+    <string name="token"></string>
 </resources>

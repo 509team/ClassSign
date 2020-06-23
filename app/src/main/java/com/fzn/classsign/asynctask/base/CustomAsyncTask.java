@@ -1,4 +1,4 @@
-package com.fzn.classsign.asynctask;
+package com.fzn.classsign.asynctask.base;
 
 import android.os.AsyncTask;
 
@@ -193,7 +193,7 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         return newsListResponse;
     }
 
-    class ResponseResultJson<T> implements Serializable {
+    public class ResponseResultJson<T> implements Serializable {
 
         /**
          * 服务返回状态

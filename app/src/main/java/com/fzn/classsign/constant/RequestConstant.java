@@ -20,6 +20,7 @@ public interface RequestConstant {
         public static final String TEACHER_SIGN_CREATE="teacher/sign/create";
         public static final String TEACHER_SIGN_STOP="teacher/sign/stop";
         public static final String TEACHER_SIGN_UPDATE="teacher/sign/update";
+        public static final String TEACHER_SIGN_GET_CURRENT_SIGN_TOTAL="teacher/sign/getCurrentSignTotal";
 
 
         public static final String STU_CLASS_ADD="stu/class/add";
@@ -55,6 +56,7 @@ public interface RequestConstant {
         public static final String TEACHER_SIGN_CREATE=SERVER.SERVER_URL+API.TEACHER_SIGN_CREATE;
         public static final String TEACHER_SIGN_STOP=SERVER.SERVER_URL+API.TEACHER_SIGN_STOP;
         public static final String TEACHER_SIGN_UPDATE=SERVER.SERVER_URL+API.TEACHER_SIGN_UPDATE;
+        public static final String TEACHER_SIGN_GET_CURRENT_SIGN_TOTAL=SERVER.SERVER_URL+API.TEACHER_SIGN_GET_CURRENT_SIGN_TOTAL;
 
 
         public static final String STU_CLASS_ADD=SERVER.SERVER_URL+API.STU_CLASS_ADD;
