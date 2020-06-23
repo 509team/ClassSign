@@ -23,6 +23,7 @@ public class ClassHomePageStudentActivity extends AppCompatActivity implements V
     private TextView tv_bsbs_sign;
     private TextView tv_bsbs_class;
     private TextView tv_bsbs_mine;
+    private ImageView ivInto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class ClassHomePageStudentActivity extends AppCompatActivity implements V
         tv_bsbs_sign = findViewById(R.id.tv_bsbs_sign);
         tv_bsbs_class = findViewById(R.id.tv_bsbs_class);
         tv_bsbs_mine = findViewById(R.id.tv_bsbs_mine);
+        ivInto=findViewById(R.id.iv_chps_joinclass);
 
         iv_bsbs_signin.setOnClickListener(this);
         iv_bsbs_class.setOnClickListener(this);
@@ -42,6 +44,7 @@ public class ClassHomePageStudentActivity extends AppCompatActivity implements V
         tv_bsbs_sign.setOnClickListener(this);
         tv_bsbs_class.setOnClickListener(this);
         tv_bsbs_mine.setOnClickListener(this);
+        ivInto.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +60,14 @@ public class ClassHomePageStudentActivity extends AppCompatActivity implements V
        if(v.getId() == R.id.iv_bsbs_mine || v.getId() == R.id.tv_bsbs_mine){
            Intent intent = new Intent(ClassHomePageStudentActivity.this, MyInfoStudentActivity.class);
            startActivity(intent);
+        }
+        if(v.getId() == R.id.iv_bsbs_mine || v.getId() == R.id.tv_bsbs_mine){
+            Intent intent = new Intent(ClassHomePageStudentActivity.this, MyInfoStudentActivity.class);
+            startActivity(intent);
+        }
+        if(v.getId() == R.id.iv_chps_joinclass){
+            Intent intent = new Intent(ClassHomePageStudentActivity.this, JoinClassActivity.class);
+            startActivity(intent);
         }
     }
 }
