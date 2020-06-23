@@ -1,8 +1,11 @@
 package com.fzn.classsign.asynctask.user;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
+import com.fzn.classsign.activitys.ClassHomePageStudentActivity;
+import com.fzn.classsign.activitys.ClassHomePageTeacherActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.entity.Token;
 
@@ -12,7 +15,6 @@ import java.util.Map;
 public class UserLogin<T> extends CustomAsyncTask<T> {
 
     Token token = new Token();
-    private boolean flag = false;
     public int type;    //1为验证码，2为密码登录
     Context context;
 
@@ -24,14 +26,17 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
 
     @Override
     protected void onPostExecute(String s) {
-        ResponseResultJson<List<Map<String, String>>> temp = (ResponseResultJson<List<Map<String, String>>>) getResponse(s);
+        ResponseResultJson<Map<String, Object>> temp = (ResponseResultJson<Map<String, Object>>) getResponse(s);
         int code = temp.getCode();
         if(code == 200){
-            List<Map<String, String>> list = temp.getData();
-            for ( Map<String, String> map:list){
-                if(map.get("access_token")!=null&&(map.get("access_token"))!=""){
-                    token.setToken(map.get("access_token"));
-                }
+            Map<String, Object> map = temp.getData();
+            Token.token = map.get("access_token").toString();
+            if(type==1){
+                Intent intent =new Intent(context, ClassHomePageTeacherActivity.class);
+                context.startActivity(intent);
+            }else if(type ==2){
+                Intent intent=new Intent(context, ClassHomePageStudentActivity.class);
+                context.startActivity(intent);
             }
         }else{
             if(type == 1){

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.asynctask.user.UserLogin;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.fzn.classsign.constant.RequestConstant.URL.LOGIN;
 
 /**
  * 密码登录
@@ -72,19 +79,14 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(this,"手机号格式不正确",Toast.LENGTH_SHORT).show();
                 }else if(pwd.length()<6||pwd.length()>20){
                     Toast.makeText(this,"密码格式不正确",Toast.LENGTH_SHORT).show();
-                }else{
-                    if(true) {//调用接口判断账号正确性，待实现
-                        if(type==1){
-                            intent2=new Intent(this,ClassHomePageTeacherActivity.class);
-                            startActivity(intent2);
-                        }else if(type ==2){
-                            intent2=new Intent(this,ClassHomePageStudentActivity.class);
-                            startActivity(intent2);
-                        }else {
-                            Toast.makeText(this,"账号密码不正确",Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
+                }else {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("phone", phone);
+                    map.put("password", pwd);
+                    int t=2;
+                    new UserLogin<String>(null, map, null, LOGIN, t, PasswordLoginActivity.this)
+                            .post()
+                            .execute();
                 }
                 break;
             case 2:

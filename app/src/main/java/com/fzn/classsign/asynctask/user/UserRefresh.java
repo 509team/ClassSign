@@ -2,7 +2,6 @@ package com.fzn.classsign.asynctask.user;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 
-import java.util.List;
 import java.util.Map;
 
 /**

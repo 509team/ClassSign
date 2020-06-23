@@ -1,7 +1,6 @@
 package com.fzn.classsign.asynctask.common;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
-import com.fzn.classsign.entity.SignIn;
 import com.fzn.classsign.entity.SignInStatistics;
 
 import java.util.ArrayList;

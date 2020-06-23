@@ -3,10 +3,7 @@ package com.fzn.classsign.asynctask.common;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.entity.Class;
 
-import java.util.List;
 import java.util.Map;
-
-import okhttp3.internal.Internal;
 
 /**
  * 令牌刷新接口

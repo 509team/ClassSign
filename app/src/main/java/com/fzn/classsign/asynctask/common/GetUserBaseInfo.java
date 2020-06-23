@@ -1,10 +1,8 @@
 package com.fzn.classsign.asynctask.common;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
-import com.fzn.classsign.entity.Class;
 import com.fzn.classsign.entity.User;
 
-import java.util.List;
 import java.util.Map;
 
 /**
