@@ -15,6 +15,7 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
     private ImageView iv_bsbt_mine;
     private TextView tv_bsbt_class;
     private TextView tv_bsbt_mine;
+    private ImageView ivCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,13 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
         iv_bsbt_mine = findViewById(R.id.iv_bsbt_mine);
         tv_bsbt_class = findViewById(R.id.tv_bsbt_class);
         tv_bsbt_mine = findViewById(R.id.tv_bsbt_mine);
+        ivCreate=findViewById(R.id.iv_chpt_creatclass);
 
         iv_bsbt_class.setOnClickListener(this);
         iv_bsbt_mine.setOnClickListener(this);
         tv_bsbt_class.setOnClickListener(this);
         tv_bsbt_mine.setOnClickListener(this);
+        ivCreate.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +43,10 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
         }
         if(v.getId() ==  R.id.iv_bsbt_mine || v.getId() ==  R.id.tv_bsbt_mine){
             Intent intent = new Intent(ClassHomePageTeacherActivity.this, MyInfoTeacherActivity.class);
+            startActivity(intent);
+        }
+        if(v.getId() ==  R.id.iv_chpt_creatclass){
+            Intent intent = new Intent(ClassHomePageTeacherActivity.this, CreateClassActivity.class);
             startActivity(intent);
         }
     }

@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
             <TextView
-                android:id="@+id/et_mit_name"
+                android:id="@+id/tv_mit_name"
                 android:hint="WOLD"
                 android:textSize="30sp"
                 android:textColor="@color/black"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="#7E7A7A"
-                android:layout_below="@id/et_mit_name" />
+                android:layout_below="@id/tv_mit_name" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
             <TextView
-                android:id="@+id/et_mit_sex"
+                android:id="@+id/tv_mit_sex"
                 android:hint="男"
                 android:textSize="30sp"
                 android:textColor="@color/black"
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="#7E7A7A"
-                android:layout_below="@id/et_mit_sex" />
+                android:layout_below="@id/tv_mit_sex" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
             <TextView
-                android:id="@+id/et_mit_phone"
+                android:id="@+id/tv_mit_phone"
                 android:hint="157*******123"
                 android:textSize="30sp"
                 android:textColor="@color/black"
@@ -123,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="#7E7A7A"
-                android:layout_below="@id/et_mit_phone" />
+                android:layout_below="@id/tv_mit_phone" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -139,18 +139,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"/>
             <TextView
-                android:id="@+id/et_mit_teacherid"
+                android:id="@+id/tv_mit_teacherid"
                 android:hint="1700000000"
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_mit_teacheridtext"/>
+
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="#7E7A7A"
-                android:layout_below="@id/et_mit_teacherid" />
+                android:layout_below="@id/tv_mit_teacherid"
+                android:background="#7E7A7A" />
         </RelativeLayout>
 
         <RelativeLayout
