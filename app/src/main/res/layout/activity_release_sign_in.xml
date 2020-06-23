@@ -74,14 +74,14 @@
         android:id="@+id/b_rs_end"
         android:layout_width="365dp"
         android:layout_height="79dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="44dp"
         android:background="#EC2E20"
         android:text="结束签到"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rs_people" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

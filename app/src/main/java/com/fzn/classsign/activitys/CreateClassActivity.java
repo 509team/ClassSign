@@ -45,10 +45,10 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         String className=etClassName.getText().toString();
         String classNumber=etClassNumber.getText().toString();
-        String teacherName=etClassNumber.getText().toString();
+        String teacherName=etTeacherName.getText().toString();
 
         if(className.equals("")||classNumber.equals("")||teacherName.equals("")){
-            Toast.makeText(CreateClassActivity.this,"输入框不能为空",Toast.LENGTH_SHORT);
+            Toast.makeText(CreateClassActivity.this,"输入框不能为空",Toast.LENGTH_SHORT).show();
         }else{
             //调用接口创建班级
 
@@ -56,7 +56,7 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
 
             Intent intent=new Intent(CreateClassActivity.this,ClassHomePageTeacherActivity.class);
             startActivity(intent);
-            Toast.makeText(CreateClassActivity.this,"创建成功",Toast.LENGTH_SHORT);
+            Toast.makeText(CreateClassActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
         }
     }
 }
