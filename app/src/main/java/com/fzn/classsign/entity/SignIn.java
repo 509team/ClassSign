@@ -1,11 +1,21 @@
 package com.fzn.classsign.entity;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class SignIn {
+    @Expose(serialize = false , deserialize = false)
+    @SerializedName("sid")
     private Integer sid;
+    @SerializedName("ssid")
     private Integer ssid;
+    @SerializedName("uid")
     private Integer uid;
+    @SerializedName("uNum")
     private String uNum;
+    @SerializedName("name")
     private String name;
+    @SerializedName("status")
     private String status;
 
     public Integer getSid() {

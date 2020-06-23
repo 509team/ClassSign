@@ -1,6 +1,9 @@
 package com.fzn.classsign.entity;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Class {
     public Integer getCid() {
         return cid;
@@ -58,11 +61,19 @@ public class Class {
         this.total = total;
     }
 
+    @Expose(serialize = false , deserialize = false)
+    @SerializedName("cid")
     private Integer cid;
+    @SerializedName("cNum")
     private String cNum;
+    @SerializedName("name")
     private String name;
+    @SerializedName("uid")
     private Integer uid;
+    @SerializedName("tName")
     private String tName;
+    @SerializedName("joinCode")
     private String joinCode;
+    @SerializedName("total")
     private Integer total;
 }

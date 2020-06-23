@@ -1,5 +1,8 @@
 package com.fzn.classsign.entity;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User {
     public Integer getUid() {
         return uid;
@@ -9,7 +12,6 @@ public class User {
         this.uid = uid;
     }
 
-    private Integer uid;
 
     public String getPhone() {
         return phone;
@@ -51,9 +53,17 @@ public class User {
         this.password = password;
     }
 
+    @Expose(serialize = false , deserialize = false)
+    @SerializedName("uid")
+    private Integer uid;
+    @SerializedName("phone")
     private String phone;
+    @SerializedName("uNum")
     private String uNum;
+    @SerializedName("name")
     private String name;
+    @SerializedName("sex")
     private String sex;
+    @SerializedName("password")
     private String password;
 }

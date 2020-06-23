@@ -1,5 +1,8 @@
 package com.fzn.classsign.entity;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class SignInStatistics {
     public Integer getSsid() {
         return ssid;
@@ -8,8 +11,6 @@ public class SignInStatistics {
     public void setSsid(Integer ssid) {
         this.ssid = ssid;
     }
-
-    private Integer ssid;
 
     public Integer getCid() {
         return cid;
@@ -59,10 +60,19 @@ public class SignInStatistics {
         this.status = status;
     }
 
+    @Expose(serialize = false , deserialize = false)
+    @SerializedName("ssid")
+    private Integer ssid;
+    @SerializedName("cid")
     private Integer cid;
+    @SerializedName("name")
     private String name;
+    @SerializedName("startTime")
     private Long startTime;
+    @SerializedName("checkInNum")
     private Integer checkInNum;
+    @SerializedName("total")
     private Integer total;
+    @SerializedName("status")
     private String status;
 }
