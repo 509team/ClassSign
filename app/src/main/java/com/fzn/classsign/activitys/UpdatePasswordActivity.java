@@ -79,7 +79,7 @@ public class UpdatePasswordActivity extends AppCompatActivity implements View.On
                         Map<String,String> body=new HashMap<>();
                         body.put("oldPassword",oldPwd);
                         body.put("newPassword",newPwd);
-                        new UpdatePassword(heads,body,null,RequestConstant.URL.UPDATE_PASSWORD,this,type)
+                        new UpdatePassword(heads,body,null,this,type)
                         .post()
                         .execute();
                     }else{

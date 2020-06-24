@@ -67,10 +67,15 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
                 }else if(phone.length()!=11){
                     Toast.makeText(this,"输入正确的手机号",Toast.LENGTH_SHORT).show();
                 }else{
-                    intent2=new Intent(this,GetVerificationCodeActivity.class);
-                    intent2.putExtra("TYPE",type);
-                    intent2.putExtra("PHONE",phone);
-                    startActivity(intent2);
+                    if(type==3){    //调用注册获取验证码接口
+
+                    }else{ //调用登录获取验证码接口
+
+                    }
+//                    intent2=new Intent(this,GetVerificationCodeActivity.class);
+//                    intent2.putExtra("TYPE",type);
+//                    intent2.putExtra("PHONE",phone);
+//                    startActivity(intent2);
                 }
                 break;
             case 2:
