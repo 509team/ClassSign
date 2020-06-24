@@ -8,7 +8,7 @@ public interface RequestConstant {
         public static final String LOGIN="user/login";
         public static final String REFRESH="user/refresh";
         public static final String SIGN_UP="user/signUp";
-        public static final String IS_REGISTER_CODE_RIGHT="user/signUp";
+        public static final String IS_REGISTER_CODE_RIGHT="user/isRegisterCodeRight";
 
 
 

@@ -17,9 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.fzn.classsign.R;
 import com.fzn.classsign.asynctask.sms.SendLoginCode;
 import com.fzn.classsign.asynctask.sms.SendRegisterCode;
+import com.fzn.classsign.asynctask.user.IsRegisterCodeRight;
 import com.fzn.classsign.asynctask.user.UserLogin;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -56,6 +58,8 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
         Intent intent = getIntent();
         type = intent.getIntExtra("TYPE", 0);
         phone=intent.getStringExtra("PHONE");
+//        phone="18290000630";
+//        type=3;
         etInput = findViewById(R.id.et_gvc_input);
 
         tvTime=findViewById(R.id.tv_gvc_time);
@@ -96,29 +100,20 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
                     Toast.makeText(this,"请检查验证码",Toast.LENGTH_SHORT).show();
                 }else {
                     if(type==3){//调用用户注册账号接口
-
+                        Map<String,String> body=new HashMap<>();
+                        body.put("phone",phone);
+                        body.put("code",code);
+                        new IsRegisterCodeRight<Boolean>(null, body, null, this,phone,code)
+                                .post()
+                                .execute();
                     }else{//调用验证码登录接口账号接口
                         Map<String,String> map=new HashMap<>();
                         map.put("phone",phone);
                         map.put("password",code);
-                        new UserLogin<String>(null, map, null, 2, this,2)
+                        new UserLogin<String>(null, map, null, type, this,2)
                                 .post()
                                 .execute();
                     }
-//                    if(true){ //调用接口判断验证码正确
-//                        if(type==1){    //调用教师端
-//                            intent2=new Intent(this,ClassHomePageTeacherActivity.class);
-//                            startActivity(intent2);
-//                        }else if(type==2){  //调用
-//                            intent2=new Intent(this,ClassHomePageStudentActivity.class);
-//                            startActivity(intent2);
-//                        }else if(type==3){
-//                            intent2=new Intent(this,SetPasswordActivity.class);
-//                            intent2.putExtra("PHONE",phone);
-//                            startActivity(intent2);
-//                        }
-//
-//                    }
                 }
                 break;
         }

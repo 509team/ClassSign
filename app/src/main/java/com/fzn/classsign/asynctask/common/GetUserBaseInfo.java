@@ -1,5 +1,7 @@
 package com.fzn.classsign.asynctask.common;
 
+import android.widget.TextView;
+
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.User;
@@ -11,7 +13,8 @@ import java.util.Map;
  * @param <T>
  */
 public class GetUserBaseInfo<T> extends CustomAsyncTask<T> {
-    public GetUserBaseInfo(Map headers, Map body, Map params){
+    private TextView name;
+    public GetUserBaseInfo(Map headers, Map body, Map params,TextView name,TextView sex,TextView phone,TextView number){
         super(headers,body,params, RequestConstant.URL.GET_USER_BASEINFO);
 
     }

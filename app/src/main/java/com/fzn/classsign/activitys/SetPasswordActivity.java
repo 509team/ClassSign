@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.asynctask.user.UserSignUp;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 设置密码
@@ -20,6 +24,7 @@ public class SetPasswordActivity extends AppCompatActivity implements View.OnCli
     private Button bSet;
 
     private String phone;
+    private String code;
     private String pwd;
 
     @Override
@@ -29,6 +34,7 @@ public class SetPasswordActivity extends AppCompatActivity implements View.OnCli
 
         Intent intent = getIntent();
         phone = intent.getStringExtra("PHONE");
+        code = intent.getStringExtra("CODE");
         etPwd = findViewById(R.id.et_sp_input);
         bSet = findViewById(R.id.b_sp_finish);
 
@@ -45,10 +51,13 @@ public class SetPasswordActivity extends AppCompatActivity implements View.OnCli
         } else if (pwd.length() > 20) {
             Toast.makeText(this, "密码不能大于20", Toast.LENGTH_SHORT).show();
         } else {
-            //调用接口保存密码
-            Toast.makeText(this, "注册成功，重新登录!", Toast.LENGTH_LONG).show();
-            Intent intent2 = new Intent(this, LoginSelectionActivity.class);
-            startActivity(intent2);
+            Map<String, String> body = new HashMap<>();
+            body.put("phone", phone);
+            body.put("code", code);
+            body.put("password", pwd);
+            new UserSignUp<Boolean>(null, body, null, this)
+                    .post()
+                    .execute();
         }
     }
 }

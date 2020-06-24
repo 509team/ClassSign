@@ -18,19 +18,19 @@ import java.util.Map;
 public class SendRegisterCode<T> extends CustomAsyncTask<T> {
     private Context context;
     private String phone;
-    private int falg;  //记录当前类由谁调用，用于处理不同的回调处理；1、QuickLoginActivity   2、GetverificationCodeActivity
+    private int flag;  //记录当前类由谁调用，用于处理不同的回调处理；1、QuickLoginActivity   2、GetverificationCodeActivity
 
-    public SendRegisterCode(Map headers, Map body, Map params, Context context, String phone, int falg) {
+    public SendRegisterCode(Map headers, Map body, Map params, Context context, String phone, int flag) {
         super(headers, body, params, RequestConstant.URL.SEND_REGISTER_CODE);
         this.context = context;
         this.phone = phone;
+        this.flag = flag;
     }
 
-    public SendRegisterCode(Map headers, Map body, Map params, Context context, int falg) {
-        super(headers, body, params, RequestConstant.URL.SEND_LOGIN_CODE);
+    public SendRegisterCode(Map headers, Map body, Map params, Context context, int flag) {
+        super(headers, body, params, RequestConstant.URL.SEND_REGISTER_CODE);
         this.context = context;
-        this.phone = phone;
-        this.falg = falg;
+        this.flag = flag;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SendRegisterCode<T> extends CustomAsyncTask<T> {
         Boolean data = temp.getData();
         int code = temp.getCode();
         int statusCode = temp.getStatusCode();
-        if (falg == 1) {//登录端获取验证码
+        if (flag == 1) {//获取验证码
             if (code == 200) {
                 Intent intent = new Intent(context, GetVerificationCodeActivity.class);
                 intent.putExtra("TYPE", 3);

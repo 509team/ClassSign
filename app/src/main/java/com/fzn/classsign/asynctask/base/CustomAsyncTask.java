@@ -172,7 +172,10 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         try {
             OkHttpClient client = new OkHttpClient();
             Response response = client.newCall(request).execute();
-            return response.body().string();
+            if (response.isSuccessful()) {
+                return response.body().string();
+            }
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
         }

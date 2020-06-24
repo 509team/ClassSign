@@ -79,10 +79,6 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
                                 .gett()
                                 .execute(phone);
                     }
-//                    intent2=new Intent(this,GetVerificationCodeActivity.class);
-//                    intent2.putExtra("TYPE",type);
-//                    intent2.putExtra("PHONE",phone);
-//                    startActivity(intent2);
                 }
                 break;
             case 2:

@@ -83,7 +83,7 @@ public class UpdatePasswordActivity extends AppCompatActivity implements View.On
                         .post()
                         .execute();
                     }else{
-                        Toast.makeText(UpdatePasswordActivity.this, "两次输入密码不一致", Toast.LENGTH_SHORT);
+                        Toast.makeText(UpdatePasswordActivity.this, "两次输入密码不一致", Toast.LENGTH_SHORT).show();
                     }
                 }
 
