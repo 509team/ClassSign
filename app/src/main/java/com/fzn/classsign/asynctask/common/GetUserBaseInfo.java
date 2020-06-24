@@ -14,9 +14,15 @@ import java.util.Map;
  */
 public class GetUserBaseInfo<T> extends CustomAsyncTask<T> {
     private TextView name;
+    private TextView sex;
+    private TextView phone;
+    private TextView number;
     public GetUserBaseInfo(Map headers, Map body, Map params,TextView name,TextView sex,TextView phone,TextView number){
         super(headers,body,params, RequestConstant.URL.GET_USER_BASEINFO);
-
+        this.name=name;
+        this.sex=sex;
+        this.phone=phone;
+        this.number=number;
     }
 
     @Override
@@ -24,12 +30,14 @@ public class GetUserBaseInfo<T> extends CustomAsyncTask<T> {
         ResponseResultJson<Map<String, String>> temp = (ResponseResultJson<Map<String, String>>) getResponse(s);
 
         Map<String, String> data = temp.getData();
-        User user=new User();
-        user.setUid(Integer.parseInt(data.get("uid")));
-        user.setPhone(data.get("phone"));
-        user.setuNum(data.get("uNum"));
-        user.setName(data.get("name"));
-        user.setSex(data.get("sex"));
+        name.setHint(data.get("name"));
+        if(data.get("sex").equals("male")){
+            sex.setHint("男");
+        }else{
+            sex.setHint("女");
+        }
+        phone.setHint(data.get("phone"));
+        number.setHint(data.get("unum"));
 
         super.onPostExecute(s);
     }

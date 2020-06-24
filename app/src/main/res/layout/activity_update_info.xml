@@ -74,16 +74,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ui_user_name" />
 
-    <EditText
-        android:id="@+id/et_ui_sex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:ems="10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+    <Spinner
+        android:id="@+id/s_ui_sex"
+        android:layout_width="210dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:entries="@array/sex"
         app:layout_constraintStart_toEndOf="@+id/tv_ui_sex"
         app:layout_constraintTop_toBottomOf="@+id/et_ui_user_name" />
 
@@ -104,14 +102,14 @@
         android:id="@+id/et_ui_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="68dp"
         android:layout_marginRight="68dp"
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toEndOf="@+id/tv_ui_number"
-        app:layout_constraintTop_toBottomOf="@+id/et_ui_sex" />
+        app:layout_constraintTop_toBottomOf="@+id/s_ui_sex" />
 
     <Button
         android:id="@+id/b_ui_update"
@@ -125,5 +123,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_ui_number" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

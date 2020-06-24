@@ -10,6 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.asynctask.common.GetUserBaseInfo;
+import com.fzn.classsign.entity.Token;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyInfoTeacherActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView iv_bsbt_class;
@@ -26,9 +31,7 @@ public class MyInfoTeacherActivity extends AppCompatActivity implements View.OnC
     private TextView tvName;
     private TextView tvSex;
     private TextView tvNumber;
-    private String name;
-    private String sex;
-    private String number;
+    private TextView tvPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +51,14 @@ public class MyInfoTeacherActivity extends AppCompatActivity implements View.OnC
         tvName=findViewById(R.id.tv_mit_name);
         tvSex=findViewById(R.id.tv_mit_sex);
         tvNumber=findViewById(R.id.tv_mit_teacherid);
+        tvPhone=findViewById(R.id.tv_mit_phone);
 
         //调用接口获取个人信息，填充显示个人信息
+        Map<String,String> heads=new HashMap<>();
+        heads.put("Authorization","Bearer "+ Token.token);
+        new GetUserBaseInfo<Map<String,String>>(heads,null,null,tvName,tvSex,tvPhone,tvNumber)
+                .gett()
+                .execute();
 
         iv_bsbt_class.setOnClickListener(this);
         iv_bsbt_mine.setOnClickListener(this);
@@ -75,14 +84,10 @@ public class MyInfoTeacherActivity extends AppCompatActivity implements View.OnC
         }
         if(v.getId() == R.id.bt_mit_updateinfo){
             Intent intent = new Intent(MyInfoTeacherActivity.this, UpdateInfoActivity.class);
-            name= tvName.getHint().toString();
-            sex= tvSex.getHint().toString();
-            number= tvNumber.getHint().toString();
-            intent.putExtra("NAME",name);
-            intent.putExtra("SEX",sex);
-            intent.putExtra("NUMBER",number);
+            intent.putExtra("NAME",tvName.getHint().toString());
+            intent.putExtra("SEX",tvSex.getHint().toString());
+            intent.putExtra("NUMBER",tvNumber.getHint().toString());
             intent.putExtra("TYPE",1);
-
             startActivity(intent);
         }
         if(v.getId() == R.id.bt_mit_logout){

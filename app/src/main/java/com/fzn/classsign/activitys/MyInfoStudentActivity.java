@@ -61,12 +61,12 @@ public class MyInfoStudentActivity extends AppCompatActivity implements View.OnC
         tvPhone=findViewById(R.id.tv_mis_phone);
         tvNumber=findViewById(R.id.tv_mis_studentid);
 
+        //调用接口获取个人信息，填充显示个人信息
         Map<String,String> heads=new HashMap<>();
         heads.put("Authorization","Bearer "+ Token.token);
         new GetUserBaseInfo<Map<String,String>>(heads,null,null,tvName,tvSex,tvPhone,tvNumber)
                 .gett()
                 .execute();
-        //调用接口获取个人信息，填充显示个人信息
 
         iv_bsbs_signin.setOnClickListener(this);
         iv_bsbs_class.setOnClickListener(this);
@@ -97,16 +97,12 @@ public class MyInfoStudentActivity extends AppCompatActivity implements View.OnC
             startActivity(intent);
         }
         if(v.getId() == R.id.bt_mis_updateinfo){
-//            Intent intent = new Intent(MyInfoStudentActivity.this, UpdateInfoActivity.class);
-//            name= tvName.getHint().toString();
-//            sex= tvSex.getHint().toString();
-//            number= tvNumber.getHint().toString();
-//            intent.putExtra("NAME",name);
-//            intent.putExtra("SEX",sex);
-//            intent.putExtra("NUMBER",number);
-//            intent.putExtra("TYPE",2);
-//
-//            startActivity(intent);
+            Intent intent = new Intent(MyInfoStudentActivity.this, UpdateInfoActivity.class);
+            intent.putExtra("NAME",tvName.getHint().toString());
+            intent.putExtra("SEX",tvSex.getHint().toString());
+            intent.putExtra("NUMBER",tvNumber.getHint().toString());
+            intent.putExtra("TYPE",2);
+            startActivity(intent);
         }
         if(v.getId() == R.id.bt_mis_logout){
             Intent intent = new Intent(MyInfoStudentActivity.this, LoginSelectionActivity.class);
