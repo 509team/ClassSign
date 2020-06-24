@@ -1,6 +1,7 @@
 package com.fzn.classsign.asynctask.student;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
+import com.fzn.classsign.constant.RequestConstant;
 
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,8 @@ import java.util.Map;
  * @param <T>
  */
 public class ListSignInRecord<T> extends CustomAsyncTask<T> {
-    public ListSignInRecord(Map headers, Map body, Map params, String url){
-        super(headers,body,params,url);
+    public ListSignInRecord(Map headers, Map body, Map params){
+        super(headers,body,params, RequestConstant.URL.STU_SIGN_LIST_SIGNIN_RECORD);
 
     }
 

@@ -1,6 +1,7 @@
 package com.fzn.classsign.asynctask.common;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
+import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.SignIn;
 
 import java.util.ArrayList;
@@ -13,8 +14,8 @@ import java.util.Map;
  * @param <T>
  */
 public class ListSignIn<T> extends CustomAsyncTask<T> {
-    public ListSignIn(Map headers, Map body, Map params, String url) {
-        super(headers, body, params, url);
+    public ListSignIn(Map headers, Map body, Map params) {
+        super(headers, body, params, RequestConstant.URL.SIGN_LIST_SIGNIN);
 
     }
 

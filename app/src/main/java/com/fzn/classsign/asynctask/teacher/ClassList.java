@@ -1,6 +1,7 @@
 package com.fzn.classsign.asynctask.teacher;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
+import com.fzn.classsign.constant.RequestConstant;
 
 import java.util.List;
 import java.util.Map;
@@ -11,8 +12,8 @@ import java.util.Map;
  * @param <T>
  */
 public class ClassList<T> extends CustomAsyncTask<T> {
-    public ClassList(Map headers, Map body, Map params, String url) {
-        super(headers, body, params, url);
+    public ClassList(Map headers, Map body, Map params) {
+        super(headers, body, params, RequestConstant.URL.TEACHER_CLASS_LIST);
 
     }
 

@@ -1,6 +1,7 @@
 package com.fzn.classsign.asynctask.common;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
+import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.User;
 
 import java.util.Map;
@@ -10,8 +11,8 @@ import java.util.Map;
  * @param <T>
  */
 public class GetUserBaseInfo<T> extends CustomAsyncTask<T> {
-    public GetUserBaseInfo(Map headers, Map body, Map params, String url){
-        super(headers,body,params,url);
+    public GetUserBaseInfo(Map headers, Map body, Map params){
+        super(headers,body,params, RequestConstant.URL.GET_USER_BASEINFO);
 
     }
 

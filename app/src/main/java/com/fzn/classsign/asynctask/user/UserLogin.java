@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.fzn.classsign.activitys.ClassHomePageStudentActivity;
 import com.fzn.classsign.activitys.ClassHomePageTeacherActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
+import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.Token;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
     public int type;    //1为验证码，2为密码登录
     Context context;
 
-    public UserLogin(Map headers, Map body, Map params, String url, int type, Context context) {
-        super(headers, body, params, url);
+    public UserLogin(Map headers, Map body, Map params, int type, Context context) {
+        super(headers, body, params, RequestConstant.URL.LOGIN);
         this.type = type;
         this.context = context;
     }

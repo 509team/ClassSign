@@ -25,7 +25,7 @@ public interface RequestConstant {
 
         public static final String STU_CLASS_ADD="stu/class/add";
         public static final String STU_CLASS_EXIT="stu/class/exit";
-        public static final String STU_SIGN_LIST="stu/class/list";
+        public static final String STU_CLASS_LIST="stu/class/list";
         public static final String STU_SIGN_SIGNIN="stu/sign/signin";
         public static final String STU_SIGN_LIST_SIGNIN_RECORD="stu/sign/listSignInRecord";
 
@@ -61,7 +61,7 @@ public interface RequestConstant {
 
         public static final String STU_CLASS_ADD=SERVER.SERVER_URL+API.STU_CLASS_ADD;
         public static final String STU_CLASS_EXIT=SERVER.SERVER_URL+API.STU_CLASS_EXIT;
-        public static final String STU_SIGN_LIST=SERVER.SERVER_URL+API.STU_SIGN_LIST;
+        public static final String STU_CLASS_LIST=SERVER.SERVER_URL+API.STU_CLASS_LIST;
         public static final String STU_SIGN_SIGNIN=SERVER.SERVER_URL+API.STU_SIGN_SIGNIN;
         public static final String STU_SIGN_LIST_SIGNIN_RECORD=SERVER.SERVER_URL+API.STU_SIGN_LIST_SIGNIN_RECORD;
 

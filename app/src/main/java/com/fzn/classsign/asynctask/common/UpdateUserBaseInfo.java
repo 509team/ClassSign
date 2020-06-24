@@ -1,16 +1,18 @@
 package com.fzn.classsign.asynctask.common;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
+import com.fzn.classsign.constant.RequestConstant;
 
 import java.util.Map;
 
 /**
  * 令牌刷新接口
+ *
  * @param <T>
  */
 public class UpdateUserBaseInfo<T> extends CustomAsyncTask<T> {
-    public UpdateUserBaseInfo(Map headers, Map body, Map params, String url){
-        super(headers,body,params,url);
+    public UpdateUserBaseInfo(Map headers, Map body, Map params) {
+        super(headers, body, params, RequestConstant.URL.UPDATE_USER_BASEINFO);
 
     }
 
