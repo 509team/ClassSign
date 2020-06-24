@@ -45,15 +45,24 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_gvc_title" />
 
     <TextView
-        android:id="@+id/tv_gvc_resend"
+        android:id="@+id/tv_gvc_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="34dp"
-        android:text="重新发送验证码"
-        android:textColor="#03A9F4"
+        android:layout_marginTop="32dp"
+        android:text="60秒"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_gvc_input" />
+
+    <TextView
+        android:id="@+id/tv_gvc_resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="重新发送验证码"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toEndOf="@+id/tv_gvc_time"
         app:layout_constraintTop_toBottomOf="@+id/et_gvc_input" />
 
     <Button
@@ -69,5 +78,7 @@
         app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_gvc_input" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

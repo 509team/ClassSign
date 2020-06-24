@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.asynctask.sms.SendLoginCode;
+import com.fzn.classsign.asynctask.sms.SendRegisterCode;
 
 /**
  * 快捷登录
@@ -23,6 +25,7 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
     private String phone;
 
     private int type;   //标记此页面为教师端、学生端、注册页面
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,7 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
             tvOtherWay.setVisibility(TextView.VISIBLE);
             tvOtherWay.setOnClickListener(this);
             tvOtherWay.setTag(2);
-        }else if(type ==3){
+        } else if (type == 3) {
             title += "\n" + "注册";
         }
         tvTitle.setText(title);
@@ -59,18 +62,22 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         Intent intent2;
-        switch((Integer) v.getTag()){
+        switch ((Integer) v.getTag()) {
             case 1:
-                phone=etPhone.getText().toString();
-                if(phone.equals("")){
-                    Toast.makeText(this,"手机号不能为空",Toast.LENGTH_SHORT).show();
-                }else if(phone.length()!=11){
-                    Toast.makeText(this,"输入正确的手机号",Toast.LENGTH_SHORT).show();
-                }else{
-                    if(type==3){    //调用注册获取验证码接口
-
-                    }else{ //调用登录获取验证码接口
-
+                phone = etPhone.getText().toString();
+                if (phone.equals("")) {
+                    Toast.makeText(this, "手机号不能为空", Toast.LENGTH_SHORT).show();
+                } else if (phone.length() != 11) {
+                    Toast.makeText(this, "输入正确的手机号", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (type == 3) {    //调用注册获取验证码接口
+                        new SendRegisterCode<Boolean>(null, null, null, this, phone,1)
+                                .gett()
+                                .execute(phone);
+                    } else { //调用登录获取验证码接口
+                        new SendLoginCode<Boolean>(null, null, null, this, phone, type,1)
+                                .gett()
+                                .execute(phone);
                     }
 //                    intent2=new Intent(this,GetVerificationCodeActivity.class);
 //                    intent2.putExtra("TYPE",type);
@@ -79,8 +86,8 @@ public class QuickLoginActivity extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case 2:
-                intent2=new Intent(this,PasswordLoginActivity.class);
-                intent2.putExtra("TYPE",type);
+                intent2 = new Intent(this, PasswordLoginActivity.class);
+                intent2.putExtra("TYPE", type);
                 startActivity(intent2);
                 break;
         }

@@ -16,13 +16,15 @@ import java.util.Map;
 public class UserLogin<T> extends CustomAsyncTask<T> {
 
     Token token = new Token();
-    public int type;    //1为验证码，2为密码登录
+    private int type;    //1、教师端，2、学生端
+    private int flag;   //1为账户密码登录，2验证码登录
     Context context;
 
-    public UserLogin(Map headers, Map body, Map params, int type, Context context) {
+    public UserLogin(Map headers, Map body, Map params, int type, Context context,int flag) {
         super(headers, body, params, RequestConstant.URL.LOGIN);
         this.type = type;
         this.context = context;
+        this.flag=flag;
     }
 
     @Override
@@ -40,10 +42,10 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
                 context.startActivity(intent);
             }
         }else{
-            if(type == 1){
-                Toast.makeText(context,"验证码错误",Toast.LENGTH_SHORT).show();
-            }else {
+            if(flag == 1){
                 Toast.makeText(context,"手机号或密码错误",Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(context,"验证码错误",Toast.LENGTH_SHORT).show();
             }
         }
         super.onPostExecute(s);

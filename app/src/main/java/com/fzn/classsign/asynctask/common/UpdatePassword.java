@@ -42,7 +42,7 @@ public class UpdatePassword<T> extends CustomAsyncTask<T> {
             }
         } else {
             String msg = temp.getMsg();
-            Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
         }
         super.onPostExecute(s);
     }

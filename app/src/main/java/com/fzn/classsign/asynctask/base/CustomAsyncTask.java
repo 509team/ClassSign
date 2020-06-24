@@ -112,7 +112,12 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
                 bodyString = bodyJson.toJson(requestBody);
             }
         }
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), bodyString);
+        RequestBody requestBody = null;
+        if (bodyString != null) {
+            requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), bodyString);
+        } else {
+            requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), "");
+        }
 
 
         //请求参数生成
@@ -123,7 +128,6 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
                 for (Map.Entry<String, String> entry : requestParams.entrySet()) {
                     paramsBuilder.append("&" + entry.getKey() + "=" + entry.getValue());
                 }
-                paramsBuilder.deleteCharAt(paramsBuilder.length() - 1);
                 params = paramsBuilder.toString();
             }
         }
@@ -134,32 +138,15 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         if (headers != null) {
             requestBuilder.headers(headers);
         }
-        if (bodyString != null) {
-            if (requestMethod == Method.REQUEST_METHOD_POST) {
-                requestBuilder.post(requestBody);
-            }
-            if (requestMethod == Method.REQUEST_METHOD_PATCH) {
-                requestBuilder.patch(requestBody);
-            }
-            if (requestMethod == Method.REQUEST_METHOD_PUT) {
-                requestBuilder.put(requestBody);
-            }
-            if (requestMethod == Method.REQUEST_METHOD_DELETE) {
-                requestBuilder.delete(requestBody);
-            }
-        } else {
-            if (requestMethod == Method.REQUEST_METHOD_POST) {
-                requestBuilder.post(null);
-            }
-            if (requestMethod == Method.REQUEST_METHOD_PATCH) {
-                requestBuilder.patch(null);
-            }
-            if (requestMethod == Method.REQUEST_METHOD_PUT) {
-                requestBuilder.put(null);
-            }
-            if (requestMethod == Method.REQUEST_METHOD_DELETE) {
-                requestBuilder.delete(null);
-            }
+
+        if (requestMethod == Method.REQUEST_METHOD_POST) {
+            requestBuilder.post(requestBody);
+        } else if (requestMethod == Method.REQUEST_METHOD_PATCH) {
+            requestBuilder.patch(requestBody);
+        } else if (requestMethod == Method.REQUEST_METHOD_PUT) {
+            requestBuilder.put(requestBody);
+        } else if (requestMethod == Method.REQUEST_METHOD_DELETE) {
+            requestBuilder.delete(requestBody);
         }
 
         //装载参数

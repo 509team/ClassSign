@@ -1,7 +1,9 @@
 package com.fzn.classsign.activitys;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,14 +15,36 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.asynctask.sms.SendLoginCode;
+import com.fzn.classsign.asynctask.sms.SendRegisterCode;
+import com.fzn.classsign.asynctask.user.UserLogin;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 获取验证码
  */
 public class GetVerificationCodeActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etInput;
+    private TextView tvTime;
     private TextView tvResend;
     private Button bCheck;
+    //计时器
+    CountDownTimer timer=new CountDownTimer(60000,1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            int second=(int)millisUntilFinished/1000;
+            tvTime.setText(second+"秒");
+        }
+
+        @Override
+        public void onFinish() {
+            tvTime.setVisibility(View.INVISIBLE);
+            tvResend.setTextColor(getResources().getColor(R.color.skyblue));
+            tvResend.setClickable(true);
+        }
+    };
 
     private int type;
     private String phone;//存储上一界面传递过来的手机号
@@ -34,11 +58,15 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
         phone=intent.getStringExtra("PHONE");
         etInput = findViewById(R.id.et_gvc_input);
 
+        tvTime=findViewById(R.id.tv_gvc_time);
         tvResend=findViewById(R.id.tv_gvc_resend);
-       bCheck=findViewById(R.id.b_gvc_check);
+        bCheck=findViewById(R.id.b_gvc_check);
+        timer.start();
 
-        tvResend.setOnClickListener(this);
+        tvResend.setOnClickListener(GetVerificationCodeActivity.this);
         tvResend.setTag(1);
+        tvResend.setClickable(false);
+
         bCheck.setOnClickListener(this);
         bCheck.setTag(2);
     }
@@ -47,7 +75,19 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
     public void onClick(View v) {
         switch((int)v.getTag()){
             case 1:
-                //调用接口重新发送验证
+                tvTime.setVisibility(View.VISIBLE);
+                tvResend.setTextColor(getResources().getColor(R.color.gray));
+                tvResend.setClickable(false);
+                timer.start();
+                if (type == 3) {      //调用接口重新发送验证
+                    new SendRegisterCode<Boolean>(null, null, null, this,2)
+                            .gett()
+                            .execute(phone);
+                } else { //调用登录获取验证码接口
+                    new SendLoginCode<Boolean>(null, null, null, this, type,2)
+                            .gett()
+                            .execute(phone);
+                }
                 break;
             case 2:
                 Intent intent2;
@@ -55,20 +95,30 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
                 if(code.equals("")||code.length()!=6){
                     Toast.makeText(this,"请检查验证码",Toast.LENGTH_SHORT).show();
                 }else {
-                    if(true){ //调用接口判断验证码正确
-                        if(type==1){    //调用教师端
-                            intent2=new Intent(this,ClassHomePageTeacherActivity.class);
-                            startActivity(intent2);
-                        }else if(type==2){  //调用
-                            intent2=new Intent(this,ClassHomePageStudentActivity.class);
-                            startActivity(intent2);
-                        }else if(type==3){
-                            intent2=new Intent(this,SetPasswordActivity.class);
-                            intent2.putExtra("PHONE",phone);
-                            startActivity(intent2);
-                        }
+                    if(type==3){//调用用户注册账号接口
 
+                    }else{//调用验证码登录接口账号接口
+                        Map<String,String> map=new HashMap<>();
+                        map.put("phone",phone);
+                        map.put("password",code);
+                        new UserLogin<String>(null, map, null, 2, this,2)
+                                .post()
+                                .execute();
                     }
+//                    if(true){ //调用接口判断验证码正确
+//                        if(type==1){    //调用教师端
+//                            intent2=new Intent(this,ClassHomePageTeacherActivity.class);
+//                            startActivity(intent2);
+//                        }else if(type==2){  //调用
+//                            intent2=new Intent(this,ClassHomePageStudentActivity.class);
+//                            startActivity(intent2);
+//                        }else if(type==3){
+//                            intent2=new Intent(this,SetPasswordActivity.class);
+//                            intent2.putExtra("PHONE",phone);
+//                            startActivity(intent2);
+//                        }
+//
+//                    }
                 }
                 break;
         }

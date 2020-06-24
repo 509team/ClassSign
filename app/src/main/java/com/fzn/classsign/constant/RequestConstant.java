@@ -8,6 +8,8 @@ public interface RequestConstant {
         public static final String LOGIN="user/login";
         public static final String REFRESH="user/refresh";
         public static final String SIGN_UP="user/signUp";
+        public static final String IS_REGISTER_CODE_RIGHT="user/signUp";
+
 
 
         public static final String SEND_LOGIN_CODE="sms/sendLoginCode";
@@ -37,6 +39,7 @@ public interface RequestConstant {
         public static final String UPDATE_PASSWORD="common/user/updatePassword";
         public static final String UPDATE_USER_BASEINFO="common/user/updateUserBaseInfo";
         public static final String GET_USER_BASEINFO="common/user/getUserBaseInfo";
+
     }
 
 
@@ -44,7 +47,7 @@ public interface RequestConstant {
         public static final String LOGIN=SERVER.SERVER_URL+API.LOGIN;
         public static final String REFRESH=SERVER.SERVER_URL+API.REFRESH;
         public static final String SIGN_UP=SERVER.SERVER_URL+API.SIGN_UP;
-
+        public static final String IS_Register_Code_Right=SERVER.SERVER_URL+API.IS_REGISTER_CODE_RIGHT;
 
         public static final String SEND_LOGIN_CODE=SERVER.SERVER_URL+API.SEND_LOGIN_CODE;
         public static final String SEND_REGISTER_CODE=SERVER.SERVER_URL+API.SEND_REGISTER_CODE;
