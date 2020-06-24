@@ -107,7 +107,6 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         //请求体装载
         if (requestBody != null) {
             if (requestMethod != Method.REQUEST_METHOD_GET) {
-                FormBody.Builder bodyBuilder = new FormBody.Builder();
                 Gson bodyJson = new Gson();
                 bodyString = bodyJson.toJson(requestBody);
             }
@@ -173,11 +172,7 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         try {
             OkHttpClient client = new OkHttpClient();
             Response response = client.newCall(request).execute();
-            System.out.println(response.body().toString());
-            if (response.isSuccessful()) {
-                return response.body().string();
-            }
-            return null;
+            return response.body().string();
         } catch (IOException e) {
             e.printStackTrace();
         }

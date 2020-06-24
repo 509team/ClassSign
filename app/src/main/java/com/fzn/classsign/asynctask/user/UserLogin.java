@@ -10,6 +10,7 @@ import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.Token;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class UserLogin<T> extends CustomAsyncTask<T> {
@@ -32,6 +33,8 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
         if(code == 200){
             Map<String, Object> map = temp.getData();
             Token.token = map.get("access_token").toString();
+            Token.refreshToken = map.get("refresh_token").toString();
+
             if(type==1){
                 Intent intent =new Intent(context, ClassHomePageTeacherActivity.class);
                 context.startActivity(intent);
@@ -39,7 +42,8 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
                 Intent intent=new Intent(context, ClassHomePageStudentActivity.class);
                 context.startActivity(intent);
             }
-        }else{
+        }
+        else{
             if(flag == 1){
                 Toast.makeText(context,"手机号或密码错误",Toast.LENGTH_SHORT).show();
             }else {

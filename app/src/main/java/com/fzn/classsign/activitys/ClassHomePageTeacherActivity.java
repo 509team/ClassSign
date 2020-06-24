@@ -56,7 +56,6 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
 
         recyclerView = findViewById(R.id.lv_chpt_class);
 
-
         initData();
 
     }
@@ -64,7 +63,7 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
     private void initData() {
         Map<String, String> head = new HashMap<>();
         head.put("Authorization","Bearer "+ Token.token);
-        new ClassList<List<Map<String, Object>>>(head,null,null,datalist,classListAdapter,recyclerView,ClassHomePageTeacherActivity.this)
+        new ClassList<List<Map<String, Object>>>(head,null,null,recyclerView,ClassHomePageTeacherActivity.this)
                 .gett()
                 .execute();
     }

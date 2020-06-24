@@ -10,7 +10,9 @@ import com.fzn.classsign.activitys.ClassHomePageTeacherActivity;
 import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
+import com.fzn.classsign.entity.Token;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,10 +27,8 @@ public class ClassList<T> extends CustomAsyncTask<T> {
     private RecyclerView recyclerView;
     private Context context;
 
-    public ClassList(Map headers, Map body, Map params, List<Map<String, Object>> datalist, ClassListAdapter classListAdapter, RecyclerView recyclerView, Context context) {
+    public ClassList(Map headers, Map body, Map params, RecyclerView recyclerView, Context context) {
         super(headers, body, params, RequestConstant.URL.TEACHER_CLASS_LIST);
-        this.datalist = datalist;
-        this.classListAdapter = classListAdapter;
         this.recyclerView = recyclerView;
         this.context = context;
     }
@@ -39,11 +39,19 @@ public class ClassList<T> extends CustomAsyncTask<T> {
         int code = temp.getCode();
         if(code == 200){
             datalist = temp.getData();
-
-            classListAdapter = new ClassListAdapter(context, R.layout.list_class_student,datalist);
-            LinearLayoutManager llm = new LinearLayoutManager(context);
-            recyclerView.setLayoutManager(llm);
-            recyclerView.setAdapter(classListAdapter);
+            if(datalist.size() != 0){
+                classListAdapter = new ClassListAdapter(context, R.layout.list_class_student,datalist);
+                LinearLayoutManager llm = new LinearLayoutManager(context);
+                recyclerView.setLayoutManager(llm);
+                recyclerView.setAdapter(classListAdapter);
+            }
+        }else if(code == 401){
+            Token.FreshToken();
+            Map<String, String> head = new HashMap<>();
+            head.put("Authorization","Bearer "+ Token.token);
+            new ClassList<List<Map<String, Object>>>(head,null,null,recyclerView, context)
+                    .gett()
+                    .execute();
         }
 
         super.onPostExecute(s);

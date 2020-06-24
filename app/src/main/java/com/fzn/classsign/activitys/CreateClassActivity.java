@@ -61,7 +61,7 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
                 Map<String, String> params = new HashMap<>();
                 params.put("cNum",classNumber);
                 params.put("name",className);
-                new ClassCreate<Class>(head,null,params,CreateClassActivity.this)
+                new ClassCreate<Map<String, Object>>(head,null,params,CreateClassActivity.this)
                         .post()
                         .execute();
             }

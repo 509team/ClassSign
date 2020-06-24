@@ -4,16 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="35dp"
     android:foreground = "?attr/selectableItemBackground">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#87CEFA"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
             <ImageView
                 android:layout_width = "match_parent"
-                android:layout_height = "150dp"
+                android:layout_height = "130dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
@@ -24,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="软件工程测试"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:paddingTop="8dp"
@@ -39,7 +44,7 @@
                 android:layout_below="@id/tv_lcs_classname"
                 android:text="1911212"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:paddingTop="8dp"
                 android:paddingLeft="50dp"
                 android:paddingBottom="8dp"/>
@@ -50,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_lcs_classcode"
                 android:text="加课码："
-                android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 android:paddingTop="8dp"
                 android:paddingLeft="50dp"
                 android:paddingBottom="8dp"/>
@@ -63,8 +68,8 @@
                 android:layout_below="@+id/tv_lcs_classcode"
                 android:layout_toRightOf="@id/tv_lcs_joinclasscodetext"
                 android:text="NEWQHQ"
-                android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 android:paddingTop="8dp"
                 android:paddingBottom="10dp"/>
 
@@ -82,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="成员"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:paddingTop="8dp"
                 android:paddingLeft="50dp"
                 android:paddingBottom="8dp"/>
@@ -95,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="88"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
             <TextView
@@ -106,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:text="人"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"/>
         </RelativeLayout>

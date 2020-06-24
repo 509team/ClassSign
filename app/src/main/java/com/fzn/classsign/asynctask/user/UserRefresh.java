@@ -2,6 +2,7 @@ package com.fzn.classsign.asynctask.user;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
+import com.fzn.classsign.entity.Token;
 
 import java.util.Map;
 
@@ -17,9 +18,13 @@ public class UserRefresh<T> extends CustomAsyncTask<T> {
 
     @Override
     protected void onPostExecute(String s) {
-        ResponseResultJson<Map<String, String>> temp = (ResponseResultJson<Map<String, String>>) getResponse(s);
-
-        Map<String,String> data=temp.getData();
+        ResponseResultJson<Map<String, Object>> temp = (ResponseResultJson<Map<String, Object>>) getResponse(s);
+        int code = temp.getCode();
+        if(code == 200){
+            Map<String,Object> map = temp.getData();
+            Token.token = map.get("access_token").toString();
+            Token.refreshToken = (String) map.get("refresh_token").toString();
+        }
 
         super.onPostExecute(s);
     }

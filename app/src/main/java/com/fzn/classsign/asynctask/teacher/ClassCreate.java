@@ -5,10 +5,14 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.fzn.classsign.activitys.ClassDetailTeacherActivity;
+import com.fzn.classsign.activitys.CreateClassActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.Class;
+import com.fzn.classsign.entity.Token;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,10 +21,12 @@ import java.util.Map;
  */
 public class ClassCreate<T> extends CustomAsyncTask<T> {
     private Context context;
+    private Map<String, String> params;
 
     public ClassCreate(Map headers, Map body, Map params, Context context){
         super(headers,body,params, RequestConstant.URL.TEACHER_CLASS_CREATE);
         this.context = context;
+        this.params = params;
     }
 
     @Override
@@ -38,7 +44,10 @@ public class ClassCreate<T> extends CustomAsyncTask<T> {
             intent.putExtra("JOINCODE",data.get("joinCode").toString());
             context.startActivity(intent);
         }else if(code == 401){
-
+            Token.FreshToken();
+            Toast.makeText(context,"请求超时，请重试！",Toast.LENGTH_SHORT);
+        }else {
+            Toast.makeText(context,temp.getAddtionalInfo(),Toast.LENGTH_SHORT);
         }
         super.onPostExecute(s);
     }
