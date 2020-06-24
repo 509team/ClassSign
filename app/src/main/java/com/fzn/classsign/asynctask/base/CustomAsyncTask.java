@@ -12,8 +12,10 @@ import java.util.Map;
 
 import okhttp3.FormBody;
 import okhttp3.Headers;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
@@ -90,7 +92,7 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         }
         //初始化参数
         Headers headers = null;
-        FormBody formBody = null;
+        String bodyString = null;
         String params = null;
 
         //请求头装载
@@ -106,12 +108,11 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         if (requestBody != null) {
             if (requestMethod != Method.REQUEST_METHOD_GET) {
                 FormBody.Builder bodyBuilder = new FormBody.Builder();
-                for (Map.Entry<String, String> entry : requestBody.entrySet()) {
-                    bodyBuilder.add(entry.getKey(), entry.getValue());
-                }
-                formBody = bodyBuilder.build();
+                Gson bodyJson = new Gson();
+                bodyString = bodyJson.toJson(requestBody);
             }
         }
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), bodyString);
 
 
         //请求参数生成
@@ -133,18 +134,31 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         if (headers != null) {
             requestBuilder.headers(headers);
         }
-        if (formBody != null) {
+        if (bodyString != null) {
             if (requestMethod == Method.REQUEST_METHOD_POST) {
-                requestBuilder.post(formBody);
+                requestBuilder.post(requestBody);
             }
             if (requestMethod == Method.REQUEST_METHOD_PATCH) {
-                requestBuilder.patch(formBody);
+                requestBuilder.patch(requestBody);
             }
             if (requestMethod == Method.REQUEST_METHOD_PUT) {
-                requestBuilder.put(formBody);
+                requestBuilder.put(requestBody);
             }
             if (requestMethod == Method.REQUEST_METHOD_DELETE) {
-                requestBuilder.delete(formBody);
+                requestBuilder.delete(requestBody);
+            }
+        } else {
+            if (requestMethod == Method.REQUEST_METHOD_POST) {
+                requestBuilder.post(null);
+            }
+            if (requestMethod == Method.REQUEST_METHOD_PATCH) {
+                requestBuilder.patch(null);
+            }
+            if (requestMethod == Method.REQUEST_METHOD_PUT) {
+                requestBuilder.put(null);
+            }
+            if (requestMethod == Method.REQUEST_METHOD_DELETE) {
+                requestBuilder.delete(null);
             }
         }
 
@@ -164,19 +178,17 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
             }
         }
 
+
         //装载url
         requestBuilder.url(requestUrl);
-
-
         Request request = requestBuilder.build();
 
         try {
             OkHttpClient client = new OkHttpClient();
             Response response = client.newCall(request).execute();
-
+            System.out.println(response.body().toString());
             if (response.isSuccessful()) {
-                String body = response.body().string();
-                return body;
+                return response.body().string();
             }
             return null;
         } catch (IOException e) {
@@ -214,7 +226,6 @@ public class CustomAsyncTask<T> extends AsyncTask<Object, Void, String> {
         /**
          * 返回数据
          */
-        @SerializedName("newslist")
         private T data;
 
         public int getCode() {
