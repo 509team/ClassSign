@@ -61,31 +61,6 @@
         app:layout_constraintStart_toEndOf="@+id/tv_cc_classname"
         app:layout_constraintTop_toBottomOf="@+id/et_cc_class_number" />
 
-    <TextView
-        android:id="@+id/tv_cc_teacher_name"
-        android:layout_width="75dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="52dp"
-        android:text="老师名字"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cc_class_name" />
-
-
-    <EditText
-        android:id="@+id/et_cc_teacher_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:ems="10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_cc_teachername"
-        app:layout_constraintTop_toBottomOf="@+id/et_cc_class_name" />
 
     <Button
         android:id="@+id/bt_cc_creatclass"
@@ -98,6 +73,6 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cc_teacher_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_cc_class_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

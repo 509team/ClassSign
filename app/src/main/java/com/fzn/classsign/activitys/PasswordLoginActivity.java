@@ -83,7 +83,7 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
                     Map<String, String> map = new HashMap<>();
                     map.put("phone", phone);
                     map.put("password", pwd);
-                    new UserLogin<String>(null, map, null, 2, PasswordLoginActivity.this,1)
+                    new UserLogin<String>(null, map, null, type, PasswordLoginActivity.this,1)
                             .post()
                             .execute();
                 }

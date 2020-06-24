@@ -67,9 +67,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activitys.UpdateInfoActivity" />
-        <activity android:name=".activitys.UpdatePasswordActivity" >
-
-        </activity>
+        <activity android:name=".activitys.UpdatePasswordActivity" />
         <activity android:name=".activitys.SignInRecordListActivity" />
         <activity android:name=".activitys.MemberListActivity" />
         <activity android:name=".activitys.SignInActivity" />
