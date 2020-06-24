@@ -13,6 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.asynctask.common.UpdatePassword;
+import com.fzn.classsign.constant.RequestConstant;
+import com.fzn.classsign.entity.Token;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 修改密码
@@ -68,17 +74,14 @@ public class UpdatePasswordActivity extends AppCompatActivity implements View.On
                         Toast.makeText(UpdatePasswordActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
                     } else if (newPwd.equals(againPwd)) {
                         //调用接口修改密码
-
-
-                        Toast.makeText(UpdatePasswordActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
-                        if (type==1){
-                            Intent intent2=new Intent(UpdatePasswordActivity.this,MyInfoTeacherActivity.class);
-                            startActivity(intent2);
-                        }else if(type==2){
-                            Intent intent2=new Intent(UpdatePasswordActivity.this,MyInfoStudentActivity.class);
-                            startActivity(intent2);
-                        }
-
+                        Map<String,String> heads=new HashMap<>();
+                        heads.put("Authorization","Bearer "+Token.token);
+                        Map<String,String> body=new HashMap<>();
+                        body.put("oldPassword",oldPwd);
+                        body.put("newPassword",newPwd);
+                        new UpdatePassword(heads,body,null,RequestConstant.URL.UPDATE_PASSWORD,this,type)
+                        .post()
+                        .execute();
                     }else{
                         Toast.makeText(UpdatePasswordActivity.this, "两次输入密码不一致", Toast.LENGTH_SHORT);
                     }
