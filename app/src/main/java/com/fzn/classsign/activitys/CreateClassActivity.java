@@ -11,8 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.asynctask.teacher.ClassCreate;
+import com.fzn.classsign.constant.RequestConstant;
+import com.fzn.classsign.entity.Class;
+import com.fzn.classsign.entity.Token;
 
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 创建班级
@@ -22,7 +30,6 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
     private TextView tvTitle;
     private EditText etClassNumber;
     private EditText etClassName;
-    private EditText etTeacherName;
     private Button bCreate;
 
     @Override
@@ -35,7 +42,6 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
 
         etClassNumber=findViewById(R.id.et_cc_class_number);
         etClassName=findViewById(R.id.et_cc_class_name);
-        etTeacherName=findViewById(R.id.et_cc_teacher_name);
         bCreate=findViewById(R.id.bt_cc_creatclass);
 
         bCreate.setOnClickListener(this);
@@ -43,20 +49,22 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        String className=etClassName.getText().toString();
-        String classNumber=etClassNumber.getText().toString();
-        String teacherName=etTeacherName.getText().toString();
+        if(v.getId() == R.id.bt_cc_creatclass){
+            String className=etClassName.getText().toString();
+            String classNumber=etClassNumber.getText().toString();
 
-        if(className.equals("")||classNumber.equals("")||teacherName.equals("")){
-            Toast.makeText(CreateClassActivity.this,"输入框不能为空",Toast.LENGTH_SHORT).show();
-        }else{
-            //调用接口创建班级
-
-
-
-            Intent intent=new Intent(CreateClassActivity.this,ClassHomePageTeacherActivity.class);
-            startActivity(intent);
-            Toast.makeText(CreateClassActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
+            if(className.equals("")||classNumber.equals("")){
+                Toast.makeText(CreateClassActivity.this,"输入框不能为空",Toast.LENGTH_SHORT).show();
+            }else{
+                Map<String, String> head = new HashMap<>();
+                head.put("Authorization","Bearer "+ Token.token);
+                Map<String, String> params = new HashMap<>();
+                params.put("cNum",classNumber);
+                params.put("name",className);
+                new ClassCreate<Class>(head,null,params,CreateClassActivity.this)
+                        .post()
+                        .execute();
+            }
         }
     }
 }

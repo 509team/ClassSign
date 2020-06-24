@@ -1,7 +1,9 @@
 package com.fzn.classsign.entity;
 
+import com.fzn.classsign.asynctask.user.UserRefresh;
+
+import java.security.PublicKey;
+
 public class Token {
-    public static String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIyIiwiYXVkIjpbImNsYXNzU2lnbkFuZHJvaWQiXSwidXNlcl9uYW1lIjoiMiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE1OTI5NDU4NTQsImF1dGhvcml0aWVzIjpbImNvbW1vbiJdLCJqdGkiOiJkYTZlMzIyNS1lYWVlLTRiNTAtODZjNC03YjUyNmYwZmUzNzEiLCJjbGllbnRfaWQiOiJjbGFzc1NpZ25BbmRyb2lkIn0.w4wytYDdKALhnkgpm26L6bKu_puFEKsqrCYU4TTLWwI";
-
-
+    public static String token;
 }

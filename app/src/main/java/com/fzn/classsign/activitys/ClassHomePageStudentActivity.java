@@ -53,17 +53,9 @@ public class ClassHomePageStudentActivity extends AppCompatActivity implements V
            Intent intent = new Intent(ClassHomePageStudentActivity.this, SignInActivity.class);
            startActivity(intent);
        }
-        if(v.getId() ==  R.id.iv_bsbs_class || v.getId() ==  R.id.tv_bsbs_class){
-            Intent intent = new Intent(ClassHomePageStudentActivity.this, ClassHomePageStudentActivity.class);
-            startActivity(intent);
-        }
        if(v.getId() == R.id.iv_bsbs_mine || v.getId() == R.id.tv_bsbs_mine){
            Intent intent = new Intent(ClassHomePageStudentActivity.this, MyInfoStudentActivity.class);
            startActivity(intent);
-        }
-        if(v.getId() == R.id.iv_bsbs_mine || v.getId() == R.id.tv_bsbs_mine){
-            Intent intent = new Intent(ClassHomePageStudentActivity.this, MyInfoStudentActivity.class);
-            startActivity(intent);
         }
         if(v.getId() == R.id.iv_chps_joinclass){
             Intent intent = new Intent(ClassHomePageStudentActivity.this, JoinClassActivity.class);

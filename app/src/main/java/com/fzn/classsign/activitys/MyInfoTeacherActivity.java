@@ -68,11 +68,6 @@ public class MyInfoTeacherActivity extends AppCompatActivity implements View.OnC
             Intent intent = new Intent(MyInfoTeacherActivity.this, ClassHomePageTeacherActivity.class);
             startActivity(intent);
         }
-        if(v.getId() ==  R.id.iv_bsbt_mine || v.getId() ==  R.id.tv_bsbt_mine){
-            Intent intent = new Intent(MyInfoTeacherActivity.this, MyInfoTeacherActivity.class);
-            startActivity(intent);
-        }
-
         if(v.getId() == R.id.tv_mit_resetpassword || v.getId() == R.id.iv_mit_resetpassword){
             Intent intent = new Intent(MyInfoTeacherActivity.this, UpdatePasswordActivity.class);
             intent.putExtra("TYPE",1);

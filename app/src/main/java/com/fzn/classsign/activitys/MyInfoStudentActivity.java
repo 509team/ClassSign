@@ -81,10 +81,6 @@ public class MyInfoStudentActivity extends AppCompatActivity implements View.OnC
             Intent intent = new Intent(MyInfoStudentActivity.this, ClassHomePageStudentActivity.class);
             startActivity(intent);
         }
-        if(v.getId() == R.id.iv_bsbs_mine || v.getId() == R.id.tv_bsbs_mine){
-            Intent intent = new Intent(MyInfoStudentActivity.this, MyInfoStudentActivity.class);
-            startActivity(intent);
-        }
         if(v.getId() == R.id.tv_mis_resetpassword || v.getId() == R.id.iv_mis_resetpassword){
             Intent intent = new Intent(MyInfoStudentActivity.this, UpdatePasswordActivity.class);
             intent.putExtra("TYPE",2);

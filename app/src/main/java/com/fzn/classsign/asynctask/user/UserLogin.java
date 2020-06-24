@@ -10,11 +10,9 @@ import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.Token;
 
-import java.util.List;
 import java.util.Map;
 
 public class UserLogin<T> extends CustomAsyncTask<T> {
-
     Token token = new Token();
     private int type;    //1、教师端，2、学生端
     private int flag;   //1为账户密码登录，2验证码登录
@@ -50,5 +48,4 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
         }
         super.onPostExecute(s);
     }
-
 }

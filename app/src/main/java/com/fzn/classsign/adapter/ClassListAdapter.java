@@ -18,6 +18,8 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
     private Context mContext;
     private int resourceId;
 
+    private int text;
+
     private String  classNameKey = "name";
     private String  classCodeKey = "cNum";
     private String  joinClassCodeKey = "joinCode";
