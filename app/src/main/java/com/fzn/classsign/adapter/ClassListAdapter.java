@@ -18,14 +18,14 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
     private Context mContext;
     private int resourceId;
 
-    private int text;
+    private String text;
 
-    private String  classNameKey = "name";
-    private String  classCodeKey = "cNum";
-    private String  joinClassCodeKey = "joinCode";
-    private String  memberNumKey = "total";
+    private String classNameKey = "name";
+    private String classCodeKey = "cNum";
+    private String joinClassCodeKey = "joinCode";
+    private String memberNumKey = "total";
 
-    public ClassListAdapter(Context context, int resourceId, List<Map<String, Object>> data){
+    public ClassListAdapter(Context context, int resourceId, List<Map<String, Object>> data) {
         this.mContext = context;
         this.mapList = data;
         this.resourceId = resourceId;
@@ -44,7 +44,9 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
         holder.tv_lcs_classname.setText(map.get(classNameKey).toString());
         holder.tv_lcs_classcode.setText(map.get(classCodeKey).toString());
         holder.tv_lcs_joinclasscode.setText(map.get(joinClassCodeKey).toString());
-        holder.tv_lcs_membernum.setText(map.get(memberNumKey).toString());
+        text = map.get(memberNumKey).toString();
+        text = text.substring(0, text.indexOf("."));
+        holder.tv_lcs_membernum.setText(text);
     }
 
     @Override
@@ -52,11 +54,12 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
         return mapList.size();
     }
 
-    static  class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_lcs_classname;
         TextView tv_lcs_classcode;
         TextView tv_lcs_joinclasscode;
         TextView tv_lcs_membernum;
+
         public ViewHolder(View itemView) {
             super(itemView);
             tv_lcs_classname = itemView.findViewById(R.id.tv_lcs_classname);
