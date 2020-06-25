@@ -38,6 +38,7 @@
         android:layout_marginTop="76dp"
         android:ems="10"
         android:hint="六位验证码"
+        android:singleLine="true"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"

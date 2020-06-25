@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:ems="10"
+        android:singleLine="true"
         app:layout_constraintStart_toEndOf="@+id/tv_cs_sign_name"
         app:layout_constraintTop_toTopOf="parent" />
 

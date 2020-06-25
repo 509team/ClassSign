@@ -33,6 +33,7 @@
                     android:background="@drawable/bg_border"
                     android:gravity="center"
                     android:hint="签到码"
+                    android:singleLine="true"
                     android:selectAllOnFocus="true"
                     android:textSize="55sp" />
             </RelativeLayout>
