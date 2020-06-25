@@ -53,8 +53,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:background="@drawable/class_background"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
@@ -69,7 +67,7 @@
             android:paddingBottom="8dp"
             android:text="软件工程测试"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
@@ -82,7 +80,7 @@
             android:paddingBottom="8dp"
             android:text="1911212"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_cdt_joinclasscodetext"
@@ -123,31 +121,47 @@
 
         <Button
             android:id="@+id/bt_cdt_allstudent"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:background="@color/skyblue"
             android:text="所有学生"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/bt_cdt_creatsignin"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:background="@color/skyblue"
             android:text="签到"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="5dp"
+        android:background="#3291F8">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="签到列表"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="5dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lv_cdt_class"

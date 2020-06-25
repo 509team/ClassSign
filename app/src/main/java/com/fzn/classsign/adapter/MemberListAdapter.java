@@ -49,7 +49,7 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.Vi
     }
 
 
-    static  class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iv_lml_image;
         TextView tv_lml_name;
         TextView tv_lml_studentid;

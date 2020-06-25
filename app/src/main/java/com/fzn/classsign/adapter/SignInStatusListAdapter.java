@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fzn.classsign.R;
 import com.fzn.classsign.entity.SignIn;
+import com.fzn.classsign.entity.SignInStatistics;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
     private Context mContext;
     private int resourceId;
 
-    public SignInStatusListAdapter(Context context, int resourceId, List<SignIn> data){
+    public SignInStatusListAdapter(Context context, int resourceId, List<SignIn> data) {
         this.mContext = context;
         this.dataList = data;
         this.resourceId = resourceId;
@@ -45,17 +46,48 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
         return dataList.size();
     }
 
-    static  class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_lsis_hiddenuid;
         TextView tv_lsis_studentid;
         TextView tv_lsis_name;
         TextView tv_lsis_status;
+
         public ViewHolder(View itemView) {
             super(itemView);
             tv_lsis_hiddenuid = itemView.findViewById(R.id.tv_lsis_hiddenuid);
             tv_lsis_studentid = itemView.findViewById(R.id.tv_lsis_studentid);
             tv_lsis_name = itemView.findViewById(R.id.tv_lsis_name);
             tv_lsis_status = itemView.findViewById(R.id.tv_lsis_status);
+
+            tv_lsis_status.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.OnItemClick(v, dataList.get(getLayoutPosition()));
+                    }
+                }
+            });
         }
+    }
+
+
+    /**
+     * 设置item的监听事件的接口
+     */
+    public interface OnItemClickListener {
+        /**
+         * 接口中的点击每一项的实现方法，参数自己定义
+         *
+         * @param view 点击的item的视图
+         * @param data 点击的item的数据
+         */
+        public void OnItemClick(View view, SignIn data);
+    }
+
+    //需要外部访问，所以需要设置set方法，方便调用
+    private SignInStatusListAdapter.OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(SignInStatusListAdapter.OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

@@ -12,13 +12,14 @@ import com.fzn.classsign.R;
 import com.fzn.classsign.entity.SignInStatistics;
 
 import java.util.List;
+import java.util.Map;
 
 public class SignInListTeacherAdapter extends RecyclerView.Adapter<SignInListTeacherAdapter.ViewHolder> {
     private List<SignInStatistics> dataList;
     private Context mContext;
     private int resourceId;
 
-    public SignInListTeacherAdapter(Context context, int resourceId, List<SignInStatistics> data){
+    public SignInListTeacherAdapter(Context context, int resourceId, List<SignInStatistics> data) {
         this.mContext = context;
         this.dataList = data;
         this.resourceId = resourceId;
@@ -45,15 +46,46 @@ public class SignInListTeacherAdapter extends RecyclerView.Adapter<SignInListTea
         return dataList.size();
     }
 
-    static  class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_lsil_signname;
         TextView tv_lsil_time;
         TextView tv_lsil_ratioofpeople;
+
         public ViewHolder(View itemView) {
             super(itemView);
             tv_lsil_signname = itemView.findViewById(R.id.tv_lsil_signname);
             tv_lsil_time = itemView.findViewById(R.id.tv_lsil_time);
             tv_lsil_ratioofpeople = itemView.findViewById(R.id.tv_lsil_ratioofpeople);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.OnItemClick(v, dataList.get(getLayoutPosition()));
+                    }
+                }
+            });
         }
+    }
+
+
+    /**
+     * 设置item的监听事件的接口
+     */
+    public interface OnItemClickListener {
+        /**
+         * 接口中的点击每一项的实现方法，参数自己定义
+         *
+         * @param view 点击的item的视图
+         * @param data 点击的item的数据
+         */
+        public void OnItemClick(View view, SignInStatistics data);
+    }
+
+    //需要外部访问，所以需要设置set方法，方便调用
+    private SignInListTeacherAdapter.OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(SignInListTeacherAdapter.OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

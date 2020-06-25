@@ -13,15 +13,18 @@
         <activity android:name=".activitys.fragment.StudentFragmentActivity">
         </activity>
         <activity android:name=".activitys.fragment.TeacherFragmentActivity">
+        </activity>
+        <activity android:name=".activitys.ReleaseSignInActivity" />
+        <activity android:name=".activitys.ClassDetailStudentActivity" >
+        </activity>
+        <activity android:name=".activitys.ClassDetailTeacherActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.ReleaseSignInActivity" />
-        <activity android:name=".activitys.ClassDetailStudentActivity" />
-        <activity android:name=".activitys.ClassDetailTeacherActivity" />
         <activity
             android:name=".activitys.ClassHomePageStudentActivity"
             android:windowSoftInputMode="adjustPan|stateHidden" />
