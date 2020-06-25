@@ -1,6 +1,7 @@
 package com.fzn.classsign.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
     private String classNum;
     private String joinCode;
 
+    private RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         className = intent.getStringExtra("NAME");
         classNum = intent.getStringExtra("CNUM");
         joinCode = intent.getStringExtra("JOINCLDE");
+
         tv_cds_classcode.setText(classNum);
         tv_cds_classname.setText(className);
         tv_cds_joinclasscode.setText(joinCode);
@@ -65,10 +69,12 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         tv_cds_abnormalnum = findViewById(R.id.tv_cds_abnormalnum);
         tv_cds_absencenum = findViewById(R.id.tv_cds_absencenum);
 
+        recyclerView = findViewById(R.id.lv_cds_class);
+
         Map<String, String> head = new HashMap<>();
         head.put("Authorization", "Bearer " + Token.token);
 
-        new ListSignInRecord<List<Map<String, Object>>>(head, null, null, tv_cds_attendancenum, tv_cds_abnormalnum, tv_cds_absencenum, ClassDetailStudentActivity.this)
+        new ListSignInRecord<List<Map<String, Object>>>(head, null, null, tv_cds_attendancenum, tv_cds_abnormalnum, tv_cds_absencenum, recyclerView, ClassDetailStudentActivity.this)
                 .gett().execute(cid);
 
         bt_cds_allstudent = findViewById(R.id.bt_cds_allstudent);

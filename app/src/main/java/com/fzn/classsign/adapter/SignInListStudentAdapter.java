@@ -9,8 +9,10 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fzn.classsign.R;
-import com.fzn.classsign.entity.SignInStatistics;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +22,7 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
     private int resourceId;
 
     private String signNameKey = "name";
-    private String timeKey = "startTime";
+    private String timeKey = "starttime";
     private String statusKey = "status";
 
     private static String status1 = "出勤";
@@ -44,7 +46,12 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
     public void onBindViewHolder(SignInListStudentAdapter.ViewHolder holder, int position) {
         Map<String, Object> map = mapList.get(position);
         holder.tv_lsil_signname.setText(map.get(signNameKey).toString());
-        holder.tv_lsil_time.setText(map.get(timeKey).toString());
+
+        try {
+            holder.tv_lsil_time.setText(dateToStamp(map.get(timeKey).toString()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         String s = "";
         switch (map.get(statusKey).toString().trim()){
             case "normal":
@@ -58,6 +65,18 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
                 break;
         }
         holder.tv_lsil_ratioofpeople.setText(s);
+    }
+
+    /*
+     * 将时间转换为时间戳
+     */
+    public static String dateToStamp(String s) throws ParseException {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = simpleDateFormat.parse(s);
+        long ts = date.getTime();
+        res = String.valueOf(ts);
+        return res;
     }
 
     @Override

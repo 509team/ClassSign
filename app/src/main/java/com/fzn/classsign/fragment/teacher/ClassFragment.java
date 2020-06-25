@@ -101,7 +101,7 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        //点击加入班级
+        //点击创建班级
         if (v.getId() == R.id.iv_chps_joinclass) {
             Intent intent = new Intent(mContext, CreateClassActivity.class);
             startActivity(intent);
