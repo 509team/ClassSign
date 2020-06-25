@@ -6,23 +6,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.fzn.classsign.R;
 import com.fzn.classsign.entity.SignInStatistics;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SignInListTeacherAdapter extends RecyclerView.Adapter<SignInListTeacherAdapter.ViewHolder> {
     private List<SignInStatistics> dataList;
     private Context mContext;
     private int resourceId;
 
-    public SignInListTeacherAdapter(Context context, int resourceId, List<SignInStatistics> data) {
+    public SignInListTeacherAdapter(Context context, int resourceId) {
         this.mContext = context;
-        this.dataList = data;
         this.resourceId = resourceId;
+        dataList = new ArrayList<>();
     }
 
     @Override
@@ -36,7 +39,11 @@ public class SignInListTeacherAdapter extends RecyclerView.Adapter<SignInListTea
     public void onBindViewHolder(SignInListTeacherAdapter.ViewHolder holder, int position) {
         SignInStatistics signInStatistics = dataList.get(position);
         holder.tv_lsil_signname.setText(signInStatistics.getName());
-        holder.tv_lsil_time.setText(signInStatistics.getStartTime().toString());
+        try {
+            holder.tv_lsil_time.setText(StampToDate(signInStatistics.getStartTime().toString()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         String proportion = signInStatistics.getCheckInNum().toString() + "/" + signInStatistics.getTotal().toString();
         holder.tv_lsil_ratioofpeople.setText(proportion);
     }
@@ -44,6 +51,13 @@ public class SignInListTeacherAdapter extends RecyclerView.Adapter<SignInListTea
     @Override
     public int getItemCount() {
         return dataList.size();
+    }
+
+    public void addData(List<SignInStatistics> data) {
+        if (data != null) {
+            this.dataList.addAll(data);
+        }
+        this.notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -87,5 +101,15 @@ public class SignInListTeacherAdapter extends RecyclerView.Adapter<SignInListTea
 
     public void setOnItemClickListener(SignInListTeacherAdapter.OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
+    }
+
+    /*
+     * 将时间转换为时间戳
+     */
+    public static String StampToDate(String s) throws ParseException {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(Long.valueOf(s));
+        return simpleDateFormat.format(date).toString();
     }
 }

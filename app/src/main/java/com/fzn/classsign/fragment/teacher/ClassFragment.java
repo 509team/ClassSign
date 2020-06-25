@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.ClassDetailStudentActivity;
+import com.fzn.classsign.activitys.ClassDetailTeacherActivity;
 import com.fzn.classsign.activitys.CreateClassActivity;
 import com.fzn.classsign.activitys.JoinClassActivity;
 import com.fzn.classsign.adapter.ClassListAdapter;
@@ -86,7 +88,13 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
         classListAdapter.setOnItemClickListener(new ClassListAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, Map<String, Object> data) {
-                Toast.makeText(getActivity(), data.toString(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, ClassDetailTeacherActivity.class);
+                intent.putExtra("CID",data.get("cid").toString());
+                intent.putExtra("CNUM",data.get("cNum").toString());
+                intent.putExtra("NAME",data.get("name").toString());
+                intent.putExtra("JOINCODE",data.get("joinCode").toString());
+                intent.putExtra("TOTAL",data.get("total").toString());
+                startActivity(intent);
             }
         });
     }

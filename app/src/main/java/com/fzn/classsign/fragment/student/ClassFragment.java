@@ -95,7 +95,6 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
                 intent.putExtra("JOINCODE",data.get("joinCode").toString());
                 intent.putExtra("TOTAL",data.get("total").toString());
                 startActivity(intent);
-                Toast.makeText(getActivity(), data.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }

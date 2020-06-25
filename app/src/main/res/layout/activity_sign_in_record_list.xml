@@ -54,21 +54,27 @@
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_alignParentLeft="true"
+            android:layout_marginLeft="65dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:id="@+id/tv_sirl_name"
-            android:text="姓名"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:layout_width="wrap_content"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rl_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/tv_sirl_studentid"
-            android:layout_marginLeft="60dp"/>
+            android:gravity="center">
+            <TextView
+                android:id="@+id/tv_sirl_name"
+                android:text="姓名"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
         <TextView
             android:id="@+id/tv_sirl_status"
             android:text="签到状态"
@@ -76,26 +82,14 @@
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_sirl_name"
-            android:layout_marginLeft="40sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="40dp"/>
-
-        <TextView
-            android:id="@+id/tv_tsb_update"
-            android:text="修改"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="25dp"/>
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:layout_below="@id/tv_sirl_name"
+            android:layout_below="@id/rl_name"
             android:background="#7E7A7A"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"

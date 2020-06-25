@@ -1,6 +1,8 @@
 package com.fzn.classsign.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.adapter.ClassListAdapter;
+import com.fzn.classsign.adapter.SignInListTeacherAdapter;
+import com.fzn.classsign.asynctask.common.ListSignStatistics;
+import com.fzn.classsign.entity.SignInStatistics;
+import com.fzn.classsign.entity.Token;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 教师端端课程详情
@@ -33,18 +44,44 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
     private String total;
 
 
+    private RecyclerView recyclerView;
+
+    private SignInListTeacherAdapter signAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_detail_teacher);
 
+
+        initView();
+        initData();
+    }
+
+    public void initView() {
         /*课程名称、课号、加入码的textview*/
         tv_cdt_classname = findViewById(R.id.tv_cdt_classname);
         tv_cdt_classcode = findViewById(R.id.tv_cdt_classcode);
         tv_cdt_joinclasscode = findViewById(R.id.tv_cdt_joinclasscode);
+        recyclerView = findViewById(R.id.lv_cdt_class);
+        signAdapter = new SignInListTeacherAdapter(ClassDetailTeacherActivity.this, R.layout.list_sign_in_list);
+        LinearLayoutManager llm = new LinearLayoutManager(ClassDetailTeacherActivity.this);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setAdapter(signAdapter);
+        signAdapter.setOnItemClickListener(new SignInListTeacherAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, SignInStatistics data) {
+                Intent intent = new Intent(ClassDetailTeacherActivity.this, SignInRecordListActivity.class);
+                intent.putExtra("SSID", data.getSsid().toString());
+                startActivity(intent);
+            }
+        });
+    }
 
+    public void initData() {
         Intent intent = getIntent();
         cid = intent.getStringExtra("CID");
+        cid = cid.substring(0, cid.indexOf("."));
         cnum = intent.getStringExtra("CNUM");
         name = intent.getStringExtra("NAME");
         joinCode = intent.getStringExtra("JOINCODE");
@@ -62,6 +99,11 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
         bt_cdt_creatsignin = findViewById(R.id.bt_cdt_creatsignin);
         bt_cdt_allstudent.setOnClickListener(this);
         bt_cdt_creatsignin.setOnClickListener(this);
+
+        Map<String, String> head = new HashMap<>();
+        head.put("Authorization", "Bearer " + Token.token);
+        new ListSignStatistics<List<SignInStatistics>>(head, null, null, signAdapter)
+                .gett().execute(cid);
     }
 
     @Override

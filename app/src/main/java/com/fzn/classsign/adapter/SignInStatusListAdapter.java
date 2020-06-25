@@ -12,6 +12,7 @@ import com.fzn.classsign.R;
 import com.fzn.classsign.entity.SignIn;
 import com.fzn.classsign.entity.SignInStatistics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusListAdapter.ViewHolder> {
@@ -19,10 +20,10 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
     private Context mContext;
     private int resourceId;
 
-    public SignInStatusListAdapter(Context context, int resourceId, List<SignIn> data) {
+    public SignInStatusListAdapter(Context context, int resourceId) {
         this.mContext = context;
-        this.dataList = data;
         this.resourceId = resourceId;
+        this.dataList = new ArrayList<>();
     }
 
     @Override
@@ -35,7 +36,6 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
     @Override
     public void onBindViewHolder(SignInStatusListAdapter.ViewHolder holder, int position) {
         SignIn signIn = dataList.get(position);
-        holder.tv_lsis_hiddenuid.setText(signIn.getUid());
         holder.tv_lsis_studentid.setText(signIn.getuNum());
         holder.tv_lsis_name.setText(signIn.getName());
         holder.tv_lsis_status.setText(signIn.getStatus());
@@ -46,15 +46,31 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
         return dataList.size();
     }
 
+    public void addData(List<SignIn> data) {
+        this.dataList.clear();
+        if (data != null) {
+            this.dataList.addAll(data);
+        }
+        this.notifyDataSetChanged();
+    }
+
+    public void updateData(int sid, String status) {
+        for (int i = 0; i < dataList.size(); i++) {
+            if (dataList.get(i).getSid() == sid) {
+                dataList.get(i).setStatus(status);
+                break;
+            }
+        }
+        this.notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_lsis_hiddenuid;
         TextView tv_lsis_studentid;
         TextView tv_lsis_name;
         TextView tv_lsis_status;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_lsis_hiddenuid = itemView.findViewById(R.id.tv_lsis_hiddenuid);
             tv_lsis_studentid = itemView.findViewById(R.id.tv_lsis_studentid);
             tv_lsis_name = itemView.findViewById(R.id.tv_lsis_name);
             tv_lsis_status = itemView.findViewById(R.id.tv_lsis_status);

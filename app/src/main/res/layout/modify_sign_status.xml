@@ -14,68 +14,78 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:text="请对该学生的签到信息进行修改"
-            android:textSize="20sp"/>
+            android:textSize="28sp"
+            android:gravity="center"/>
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
 
         <TextView
             android:id="@+id/tv_unum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="学号："
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tv_unum_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tv_unum"
             android:layout_toRightOf="@+id/tv_unum"
-            android:text="asd"
-            android:textSize="18sp"
+            android:text="num"
+            android:textSize="20sp"
             android:layout_toEndOf="@+id/tv_unum" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="姓名："
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tv_name_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tv_name"
             android:layout_toRightOf="@+id/tv_name"
-            android:text="asd"
-            android:textSize="18sp"
+            android:text="name"
+            android:textSize="20sp"
             android:layout_toEndOf="@+id/tv_name" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/tv_sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="签到状态："
-            android:textSize="18sp"
+            android:textSize="20sp"
             />
 
         <Spinner
+            android:id="@+id/s_status"
+            android:layout_toEndOf="@+id/tv_sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/tv_sign"
             android:layout_toRightOf="@+id/tv_sign"
-            android:textSize="18sp"
-            android:layout_toEndOf="@+id/tv_sign"
+            android:textSize="20sp"
             android:entries="@array/status"
             android:gravity="center"
             />
