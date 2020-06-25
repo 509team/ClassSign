@@ -1,39 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fzn.classsign">
-    <!-- 申请必要的权限 -->
-    <!-- 扫一扫权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 用于进行网络定位 -->
-    <!--用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <!--用于访问GPS定位-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-    <!--用于访问网络，网络定位需要上网-->
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <!--用于读取手机当前的状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-    <!--用于写入缓存数据到扩展存储卡-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <!--用于申请调用A-GPS模块-->
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
-    <!--用于申请获取蓝牙信息进行室内定位-->
-    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -43,46 +10,74 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activitys.ReleaseSignInActivity">
-        </activity>
-        <activity android:name=".activitys.ClassDetailStudentActivity" />
-        <activity android:name=".activitys.ClassDetailTeacherActivity" />
-        <activity android:name=".activitys.ClassHomePageStudentActivity" />
-        <activity android:name=".activitys.ClassHomePageTeacherActivity" />
-        <activity android:name=".activitys.MyInfoStudentActivity" />
-        <activity android:name=".activitys.MyInfoTeacherActivity" />
-        <activity android:name=".activitys.ResetPasswordActivity" />
-        <activity android:name=".activitys.RecoverPasswordActivity" />
-        <activity android:name=".activitys.SetPasswordActivity" />
-        <activity android:name=".activitys.GetVerificationCodeActivity" >
-
-        </activity>
-        <activity android:name=".activitys.PasswordLoginActivity" />
-        <activity android:name=".activitys.QuickLoginActivity" />
-        <activity android:name=".activitys.LoginSelectionActivity" >
+        <activity android:name=".activitys.student.StudentFragmentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activitys.ReleaseSignInActivity" />
+        <activity android:name=".activitys.ClassDetailStudentActivity" />
+        <activity android:name=".activitys.ClassDetailTeacherActivity" />
+        <activity
+            android:name=".activitys.ClassHomePageStudentActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activitys.ClassHomePageTeacherActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activitys.MyInfoStudentActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activitys.MyInfoTeacherActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".activitys.ResetPasswordActivity" />
+        <activity android:name=".activitys.RecoverPasswordActivity" />
+        <activity android:name=".activitys.SetPasswordActivity" />
+        <activity android:name=".activitys.GetVerificationCodeActivity" />
+        <activity android:name=".activitys.PasswordLoginActivity" />
+        <activity android:name=".activitys.QuickLoginActivity" />
+        <activity android:name=".activitys.LoginSelectionActivity">
+        </activity>
         <activity android:name=".activitys.UpdateInfoActivity" />
         <activity android:name=".activitys.UpdatePasswordActivity" />
         <activity android:name=".activitys.SignInRecordListActivity" />
         <activity android:name=".activitys.MemberListActivity" />
-        <activity android:name=".activitys.SignInActivity" />
+        <activity
+            android:name=".activitys.SignInActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".activitys.CreateSignInActivity" />
         <activity android:name=".activitys.JoinClassActivity" />
         <activity android:name=".activitys.CreateClassActivity" />
         <activity android:name=".activitys.ScanActivity" />
         <activity android:name=".activitys.SignInResultActivity" />
-        <activity android:name=".activitys.MainActivity">
-
-        </activity> <!-- 设置key -->
+        <activity android:name=".activitys.MainActivity" /> <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="dc05465bbac74282d783b1d3aaf451ee" /> <!-- 声明定位service -->
         <service android:name="com.amap.api.location.APSService" />
     </application>
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 用于进行网络定位 -->
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" /> <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 用于获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于写入缓存数据到扩展存储卡 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于申请获取蓝牙信息进行室内定位 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
 </manifest>

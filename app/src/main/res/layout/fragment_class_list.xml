@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    android:name="com.fzn.classsign.fragment.ClassFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitys.ClassHomePageStudentActivity">
+    app:layoutManager="LinearLayoutManager"
+    tools:context=".fragment.ClassFragment"
+    tools:listitem="@layout/fragment_class">
 
-    <LinearLayout
-        android:id="@+id/ll_title"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/ll_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/iv_chps_joinclass"
@@ -27,6 +31,17 @@
                 android:layout_marginRight="16dp"
                 android:layout_toRightOf="@id/tv_chps_allclass"
                 android:src="@drawable/add" />
+
+            <TextView
+                android:id="@+id/tv_chps_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/green"
+                android:gravity="center"
+                android:text="课堂签（学生端）"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_chps_allclass"
@@ -41,43 +56,20 @@
                 android:textColor="@color/black"
                 android:textSize="35sp" />
 
-            <TextView
-                android:id="@+id/tv_chps_title"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/green"
-                android:gravity="center"
-                android:text="课堂签（学生端）"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                app:layout_constraintTop_toTopOf="parent" />
         </RelativeLayout>
 
-    </LinearLayout>
-
-    <ScrollView
-        android:id="@+id/sv_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/l_bar"
-        app:layout_constraintTop_toBottomOf="@id/ll_title">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_title"
+            android:layout_alignParentBottom="true">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv_chps_class"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
 
-    <include
-        android:id="@+id/l_bar"
-        layout="@layout/bottom_status_bar_student"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

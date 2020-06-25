@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Token {
-    public static String token;
+    public static String token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIyIiwiYXVkIjpbImNsYXNzU2lnbkFuZHJvaWQiXSwidXNlcl9uYW1lIjoiMiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE1OTMwNzM1MTMsImF1dGhvcml0aWVzIjpbImNvbW1vbiJdLCJqdGkiOiI5N2MwODhmOC03YjM3LTQwMDctODVlYS02ZGM3YTFmMjY1ZGYiLCJjbGllbnRfaWQiOiJjbGFzc1NpZ25BbmRyb2lkIn0.DvyXzJ7cQG4qaAmL9cRhDMa02Pn2-pBvza6dIsbI_Yg";
     public static String refreshToken;
 
     public static void FreshToken(){

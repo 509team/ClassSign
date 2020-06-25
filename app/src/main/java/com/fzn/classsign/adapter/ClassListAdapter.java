@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fzn.classsign.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,10 +26,17 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
     private String joinClassCodeKey = "joinCode";
     private String memberNumKey = "total";
 
-    public ClassListAdapter(Context context, int resourceId, List<Map<String, Object>> data) {
+    public ClassListAdapter(Context context, int resourceId) {
         this.mContext = context;
-        this.mapList = data;
+        this.mapList = new ArrayList<>();
         this.resourceId = resourceId;
+    }
+
+    public void addData(List<Map<String, Object>> data) {
+        if (data != null) {
+            this.mapList.addAll(data);
+        }
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -68,4 +76,5 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
             tv_lcs_membernum = itemView.findViewById(R.id.tv_lcs_membernum);
         }
     }
+
 }

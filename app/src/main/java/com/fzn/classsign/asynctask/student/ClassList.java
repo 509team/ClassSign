@@ -22,13 +22,10 @@ public class ClassList<T> extends CustomAsyncTask<T> {
 
     private List<Map<String, Object>> datalist;
     private ClassListAdapter classListAdapter;
-    private RecyclerView recyclerView;
-    private Context context;
 
-    public ClassList(Map headers, Map body, Map params, RecyclerView recyclerView, Context context) {
+    public ClassList(Map headers, Map body, Map params, ClassListAdapter adapter) {
         super(headers, body, params, RequestConstant.URL.STU_CLASS_LIST);
-        this.recyclerView = recyclerView;
-        this.context = context;
+        this.classListAdapter = adapter;
     }
 
     @Override
@@ -39,10 +36,7 @@ public class ClassList<T> extends CustomAsyncTask<T> {
             datalist = temp.getData();
 
             if(datalist.size() != 0){
-                classListAdapter = new ClassListAdapter(context, R.layout.list_class_student,datalist);
-                LinearLayoutManager llm = new LinearLayoutManager(context);
-                recyclerView.setLayoutManager(llm);
-                recyclerView.setAdapter(classListAdapter);
+                classListAdapter.addData(datalist);
             }
         }
 

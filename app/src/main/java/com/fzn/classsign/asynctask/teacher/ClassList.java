@@ -40,7 +40,7 @@ public class ClassList<T> extends CustomAsyncTask<T> {
         if(code == 200){
             datalist = temp.getData();
             if(datalist.size() != 0){
-                classListAdapter = new ClassListAdapter(context, R.layout.list_class_student,datalist);
+                classListAdapter = new ClassListAdapter(context, R.layout.list_class_student);
                 LinearLayoutManager llm = new LinearLayoutManager(context);
                 recyclerView.setLayoutManager(llm);
                 recyclerView.setAdapter(classListAdapter);

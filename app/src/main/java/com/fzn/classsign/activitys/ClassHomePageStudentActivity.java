@@ -66,7 +66,7 @@ public class ClassHomePageStudentActivity extends AppCompatActivity implements V
     private void initData() {
         Map<String, String> head = new HashMap<>();
         head.put("Authorization","Bearer "+ Token.token);
-        new ClassList<List<Map<String, Object>>>(head,null,null,recyclerView,ClassHomePageStudentActivity.this)
+        new ClassList<List<Map<String, Object>>>(head,null,null,null)
                 .gett()
                 .execute();
     }
