@@ -52,28 +52,19 @@ public class StudentFragmentActivity extends AppCompatActivity {
         mCurFragment = mFragments.get(position);
         replaceFragment(mCurFragment);
 
-//        Intent intent=getIntent();
-//        intent.getIntExtra("POSITION",0);
-//        Fragment to = mFragments.get(position);
-//        showFragment(mCurFragment, to);
-//        mCurFragment = to;
-
         ((RadioButton) mRg.getChildAt(position)).setChecked(true);
 
         initListener();
     }
 
-//    @Override
-//    protected void onRestart() {
-//
-//        super.onRestart();
-//    }
     @Override
     protected void onPostResume() {
-
-
         super.onPostResume();
-
+        Intent intent=getIntent();
+        position=intent.getIntExtra("POSITION",1);
+        Fragment to = mFragments.get(position);
+        showFragment(mCurFragment, to);
+        mCurFragment = to;
     }
 
     private void initListener() {

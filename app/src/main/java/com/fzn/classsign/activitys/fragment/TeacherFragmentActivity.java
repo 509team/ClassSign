@@ -44,11 +44,20 @@ public class TeacherFragmentActivity extends AppCompatActivity {
         mFragments.add(meFragment);
         mCurFragment = mFragments.get(position);
         replaceFragment(mCurFragment);
-        Intent intent=getIntent();
-        intent.getIntExtra("POSITION",0);
+
         ((RadioButton) mRg.getChildAt(position)).setChecked(true);
 
         initListener();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        Intent intent=getIntent();
+        position=intent.getIntExtra("POSITION",0);
+        Fragment to = mFragments.get(position);
+        showFragment(mCurFragment, to);
+        mCurFragment = to;
     }
 
     private void initListener() {
@@ -60,9 +69,7 @@ public class TeacherFragmentActivity extends AppCompatActivity {
                 RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
 
                 if (false == radioButton.isChecked()) {
-                    Fragment to = mFragments.get(position);
-                    showFragment(mCurFragment, to);
-                    mCurFragment = to;
+
                     return;
                 }
 

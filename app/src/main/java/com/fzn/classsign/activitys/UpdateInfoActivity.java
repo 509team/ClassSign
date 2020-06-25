@@ -55,7 +55,7 @@ public class UpdateInfoActivity extends AppCompatActivity implements View.OnClic
 
         etName.setHint(name);
         etNumber.setHint(number);
-        sSex.setTooltipText(sex);
+        //sSex.setTooltipText(sex);
         bUpdate.setOnClickListener(this);
     }
 
@@ -94,14 +94,6 @@ public class UpdateInfoActivity extends AppCompatActivity implements View.OnClic
             new UpdateUserBaseInfo<Boolean>(heads,body,null,this,type)
                     .post()
                     .execute();
-            Toast.makeText(UpdateInfoActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
-            if (type == 1) {//返回教师端
-                Intent intent2 = new Intent(UpdateInfoActivity.this, MyInfoTeacherActivity.class);
-                startActivity(intent2);
-            } else if (type == 2) {//返回学生端
-                Intent intent2 = new Intent(UpdateInfoActivity.this, MyInfoStudentActivity.class);
-                startActivity(intent2);
-            }
         }
     }
 }

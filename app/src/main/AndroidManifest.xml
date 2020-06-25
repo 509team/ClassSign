@@ -10,14 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activitys.fragment.StudentFragmentActivity">
+        <activity android:name=".activitys.fragment.StudentFragmentActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+
+        </activity>
+        <activity android:name=".activitys.fragment.TeacherFragmentActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".activitys.fragment.TeacherFragmentActivity">
         </activity>
         <activity android:name=".activitys.ReleaseSignInActivity" />
         <activity android:name=".activitys.ClassDetailStudentActivity" />
