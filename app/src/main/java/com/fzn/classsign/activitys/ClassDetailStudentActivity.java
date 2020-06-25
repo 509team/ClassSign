@@ -51,7 +51,9 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
 
         Intent intent = getIntent();
         cid = intent.getStringExtra("CID");
-        cid = cid.substring(0,cid.indexOf("."));
+        if (cid.contains(".")) {
+            cid = cid.substring(0, cid.indexOf("."));
+        }
         className = intent.getStringExtra("NAME");
         classNum = intent.getStringExtra("CNUM");
         joinCode = intent.getStringExtra("JOINCLDE");
@@ -64,9 +66,9 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         tv_cds_absencenum = findViewById(R.id.tv_cds_absencenum);
 
         Map<String, String> head = new HashMap<>();
-        head.put("Authorization","Bearer "+ Token.token);
+        head.put("Authorization", "Bearer " + Token.token);
 
-        new ListSignInRecord<List<Map<String, Object>>>(head,null,null,tv_cds_attendancenum,tv_cds_abnormalnum,tv_cds_absencenum,ClassDetailStudentActivity.this)
+        new ListSignInRecord<List<Map<String, Object>>>(head, null, null, tv_cds_attendancenum, tv_cds_abnormalnum, tv_cds_absencenum, ClassDetailStudentActivity.this)
                 .gett().execute(cid);
 
         bt_cds_allstudent = findViewById(R.id.bt_cds_allstudent);
@@ -75,9 +77,9 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.bt_cds_allstudent){
-            Intent intent = new Intent(ClassDetailStudentActivity.this,MemberListActivity.class);
-            intent.putExtra("CID",cid);
+        if (v.getId() == R.id.bt_cds_allstudent) {
+            Intent intent = new Intent(ClassDetailStudentActivity.this, MemberListActivity.class);
+            intent.putExtra("CID", cid);
             startActivity(intent);
         }
     }

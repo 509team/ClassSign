@@ -53,7 +53,9 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
         holder.tv_lcs_classcode.setText(map.get(classCodeKey).toString());
         holder.tv_lcs_joinclasscode.setText(map.get(joinClassCodeKey).toString());
         text = map.get(memberNumKey).toString();
-        text = text.substring(0, text.indexOf("."));
+        if (text.contains(".")) {
+            text = text.substring(0, text.indexOf("."));
+        }
         holder.tv_lcs_membernum.setText(text);
     }
 
@@ -78,8 +80,8 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(onItemClickListener!=null){
-                        onItemClickListener.OnItemClick(v,mapList.get(getLayoutPosition()));
+                    if (onItemClickListener != null) {
+                        onItemClickListener.OnItemClick(v, mapList.get(getLayoutPosition()));
                     }
                 }
             });

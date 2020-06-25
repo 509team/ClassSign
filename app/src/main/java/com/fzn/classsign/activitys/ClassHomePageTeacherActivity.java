@@ -19,13 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ClassHomePageTeacherActivity extends AppCompatActivity implements View.OnClickListener{
-    /*底部状态栏*/
-    private ImageView iv_bsbt_class;
-    private ImageView iv_bsbt_mine;
-    private TextView tv_bsbt_class;
-    private TextView tv_bsbt_mine;
-    private ImageView ivCreate;
+public class ClassHomePageTeacherActivity extends AppCompatActivity implements View.OnClickListener {
     /*创建课程图片*/
     private ImageView iv_chpt_creatclass;
 
@@ -38,18 +32,6 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_home_page_teacher);
 
-        /*底部状态栏*/
-        iv_bsbt_class = findViewById(R.id.iv_bsbt_class);
-        iv_bsbt_mine = findViewById(R.id.iv_bsbt_mine);
-        tv_bsbt_class = findViewById(R.id.tv_bsbt_class);
-        tv_bsbt_mine = findViewById(R.id.tv_bsbt_mine);
-        ivCreate=findViewById(R.id.iv_chpt_creatclass);
-
-        iv_bsbt_class.setOnClickListener(this);
-        iv_bsbt_mine.setOnClickListener(this);
-        tv_bsbt_class.setOnClickListener(this);
-        tv_bsbt_mine.setOnClickListener(this);
-        ivCreate.setOnClickListener(this);
         /*创建课程图片*/
         iv_chpt_creatclass = findViewById(R.id.iv_chpt_creatclass);
         iv_chpt_creatclass.setOnClickListener(this);
@@ -70,13 +52,5 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
 
     @Override
     public void onClick(View v) {
-//        if(v.getId() ==  R.id.iv_bsbt_mine || v.getId() ==  R.id.tv_bsbt_mine){
-//            Intent intent = new Intent(ClassHomePageTeacherActivity.this, MyInfoTeacherActivity.class);
-//            startActivity(intent);
-//        }
-//        if(v.getId() ==  R.id.iv_chpt_creatclass){
-//            Intent intent = new Intent(ClassHomePageTeacherActivity.this, CreateClassActivity.class);
-//            startActivity(intent);
-//        }
     }
 }
