@@ -25,7 +25,7 @@ public class TeacherFragmentActivity extends AppCompatActivity {
     RadioGroup mRg;
     private FragmentManager mFragmentManager;
 
-    private int position = 0;
+    private static int position = 0;
 
     private List<Fragment> mFragments;
     private Fragment mCurFragment;
@@ -53,11 +53,12 @@ public class TeacherFragmentActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        Intent intent=getIntent();
-        position=intent.getIntExtra("POSITION",0);
-        Fragment to = mFragments.get(position);
-        showFragment(mCurFragment, to);
-        mCurFragment = to;
+        Intent intent = getIntent();
+        int posi = intent.getIntExtra("POSITION", -1);
+        if (posi != -1) {
+            position = posi;
+            ((RadioButton) mRg.getChildAt(position)).setChecked(true);
+        }
     }
 
     private void initListener() {
@@ -87,14 +88,16 @@ public class TeacherFragmentActivity extends AppCompatActivity {
                         break;
 
                 }
-
-                Fragment to = mFragments.get(position);
-                showFragment(mCurFragment, to);
-                mCurFragment = to;
-
+                showFragmentOf(position);
             }
-
         });
+    }
+
+    private void showFragmentOf(int position) {
+        Fragment to = mFragments.get(position);
+        showFragment(mCurFragment, to);
+        mCurFragment = to;
+        ((RadioButton) mRg.getChildAt(position)).setChecked(true);
     }
 
     private void showFragment(Fragment from, Fragment to) {
