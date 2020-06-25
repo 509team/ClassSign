@@ -106,14 +106,7 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.iv_bsbs_signin || v.getId() == R.id.tv_bsbs_sign) {
-            Intent intent = new Intent(mContext, SignInActivity.class);
-            startActivity(intent);
-        }
-        if (v.getId() == R.id.iv_bsbs_mine || v.getId() == R.id.tv_bsbs_mine) {
-            Intent intent = new Intent(mContext, MyInfoStudentActivity.class);
-            startActivity(intent);
-        }
+        //点击加入班级
         if (v.getId() == R.id.iv_chps_joinclass) {
             Intent intent = new Intent(mContext, JoinClassActivity.class);
             startActivity(intent);
