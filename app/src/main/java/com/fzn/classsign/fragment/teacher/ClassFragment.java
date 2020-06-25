@@ -10,9 +10,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.CreateClassActivity;
 import com.fzn.classsign.activitys.JoinClassActivity;
 import com.fzn.classsign.adapter.ClassListAdapter;
-import com.fzn.classsign.asynctask.student.ClassList;
+import com.fzn.classsign.asynctask.teacher.ClassList;
 import com.fzn.classsign.entity.Token;
 
 import java.util.HashMap;
@@ -102,7 +103,7 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         //点击加入班级
         if (v.getId() == R.id.iv_chps_joinclass) {
-            Intent intent = new Intent(mContext, JoinClassActivity.class);
+            Intent intent = new Intent(mContext, CreateClassActivity.class);
             startActivity(intent);
         }
     }

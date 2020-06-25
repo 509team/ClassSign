@@ -6,8 +6,11 @@ import android.widget.Toast;
 
 import com.fzn.classsign.activitys.MyInfoStudentActivity;
 import com.fzn.classsign.activitys.MyInfoTeacherActivity;
+import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
+import com.fzn.classsign.fragment.teacher.MeFragment;
 
 import java.util.Map;
 
@@ -34,10 +37,12 @@ public class UpdatePassword<T> extends CustomAsyncTask<T> {
         if (data) {
             Toast.makeText(context, "修改成功", Toast.LENGTH_SHORT).show();
             if (type == 1) {
-                Intent intent2 = new Intent(context, MyInfoTeacherActivity.class);
+                Intent intent2 = new Intent(context, TeacherFragmentActivity.class);
+                intent2.putExtra("POSITION",1);
                 context.startActivity(intent2);
             } else if (type == 2) {
-                Intent intent2 = new Intent(context, MyInfoStudentActivity.class);
+                Intent intent2 = new Intent(context, StudentFragmentActivity.class);
+                intent2.putExtra("POSITION",2);
                 context.startActivity(intent2);
             }
         } else {

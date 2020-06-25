@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activitys.MyInfoStudentActivity">
-
+    <!--
     <LinearLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
@@ -250,4 +250,5 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
+        -->
 </androidx.constraintlayout.widget.ConstraintLayout>

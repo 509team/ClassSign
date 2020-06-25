@@ -61,22 +61,22 @@ public class ClassHomePageTeacherActivity extends AppCompatActivity implements V
     }
 
     private void initData() {
-        Map<String, String> head = new HashMap<>();
-        head.put("Authorization","Bearer "+ Token.token);
-        new ClassList<List<Map<String, Object>>>(head,null,null,recyclerView,ClassHomePageTeacherActivity.this)
-                .gett()
-                .execute();
+//        Map<String, String> head = new HashMap<>();
+//        head.put("Authorization","Bearer "+ Token.token);
+//        new ClassList<List<Map<String, Object>>>(head,null,null,)
+//                .gett()
+//                .execute();
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId() ==  R.id.iv_bsbt_mine || v.getId() ==  R.id.tv_bsbt_mine){
-            Intent intent = new Intent(ClassHomePageTeacherActivity.this, MyInfoTeacherActivity.class);
-            startActivity(intent);
-        }
-        if(v.getId() ==  R.id.iv_chpt_creatclass){
-            Intent intent = new Intent(ClassHomePageTeacherActivity.this, CreateClassActivity.class);
-            startActivity(intent);
-        }
+//        if(v.getId() ==  R.id.iv_bsbt_mine || v.getId() ==  R.id.tv_bsbt_mine){
+//            Intent intent = new Intent(ClassHomePageTeacherActivity.this, MyInfoTeacherActivity.class);
+//            startActivity(intent);
+//        }
+//        if(v.getId() ==  R.id.iv_chpt_creatclass){
+//            Intent intent = new Intent(ClassHomePageTeacherActivity.this, CreateClassActivity.class);
+//            startActivity(intent);
+//        }
     }
 }

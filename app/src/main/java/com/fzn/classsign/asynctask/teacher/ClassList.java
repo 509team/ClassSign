@@ -23,36 +23,30 @@ import java.util.Map;
 public class ClassList<T> extends CustomAsyncTask<T> {
     private List<Map<String, Object>> datalist;
     private ClassListAdapter classListAdapter;
-    private RecyclerView recyclerView;
-    private Context context;
 
-    public ClassList(Map headers, Map body, Map params, RecyclerView recyclerView, Context context) {
+    public ClassList(Map headers, Map body, Map params, ClassListAdapter adapter) {
         super(headers, body, params, RequestConstant.URL.TEACHER_CLASS_LIST);
-        this.recyclerView = recyclerView;
-        this.context = context;
+        this.classListAdapter = adapter;
     }
 
     @Override
     protected void onPostExecute(String s) {
         ResponseResultJson<List<Map<String, Object>>> temp = (ResponseResultJson<List<Map<String, Object>>>) getResponse(s);
         int code = temp.getCode();
-        if(code == 200){
+        if (code == 200) {
             datalist = temp.getData();
-            if(datalist.size() != 0){
-                classListAdapter = new ClassListAdapter(context, R.layout.list_class);
-                LinearLayoutManager llm = new LinearLayoutManager(context);
-                recyclerView.setLayoutManager(llm);
-                recyclerView.setAdapter(classListAdapter);
+
+            if (datalist.size() != 0) {
+                classListAdapter.addData(datalist);
             }
-        }else if(code == 401){
+        } else if (code == 401) {
             Token.FreshToken();
             Map<String, String> head = new HashMap<>();
-            head.put("Authorization","Bearer "+ Token.token);
-            new ClassList<List<Map<String, Object>>>(head,null,null,recyclerView, context)
+            head.put("Authorization", "Bearer " + Token.token);
+            new ClassList<List<Map<String, Object>>>(head, null, null,classListAdapter)
                     .gett()
                     .execute();
         }
-
         super.onPostExecute(s);
     }
 }

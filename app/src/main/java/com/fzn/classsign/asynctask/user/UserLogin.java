@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import com.fzn.classsign.activitys.ClassHomePageStudentActivity;
 import com.fzn.classsign.activitys.ClassHomePageTeacherActivity;
+import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.Token;
@@ -35,10 +37,10 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
             Token.refreshToken = map.get("refresh_token").toString();
 
             if(type==1){
-                Intent intent =new Intent(context, ClassHomePageTeacherActivity.class);
+                Intent intent =new Intent(context, TeacherFragmentActivity.class);
                 context.startActivity(intent);
             }else if(type ==2){
-                Intent intent=new Intent(context, ClassHomePageStudentActivity.class);
+                Intent intent=new Intent(context, StudentFragmentActivity.class);
                 context.startActivity(intent);
             }
         }

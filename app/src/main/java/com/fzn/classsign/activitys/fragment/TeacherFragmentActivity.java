@@ -1,5 +1,6 @@
 package com.fzn.classsign.activitys.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
@@ -43,7 +44,8 @@ public class TeacherFragmentActivity extends AppCompatActivity {
         mFragments.add(meFragment);
         mCurFragment = mFragments.get(position);
         replaceFragment(mCurFragment);
-
+        Intent intent=getIntent();
+        intent.getIntExtra("POSITION",0);
         ((RadioButton) mRg.getChildAt(position)).setChecked(true);
 
         initListener();
@@ -58,6 +60,9 @@ public class TeacherFragmentActivity extends AppCompatActivity {
                 RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
 
                 if (false == radioButton.isChecked()) {
+                    Fragment to = mFragments.get(position);
+                    showFragment(mCurFragment, to);
+                    mCurFragment = to;
                     return;
                 }
 

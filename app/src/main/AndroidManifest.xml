@@ -41,6 +41,7 @@
         <activity android:name=".activitys.PasswordLoginActivity" />
         <activity android:name=".activitys.QuickLoginActivity" />
         <activity android:name=".activitys.LoginSelectionActivity">
+
         </activity>
         <activity android:name=".activitys.UpdateInfoActivity" />
         <activity android:name=".activitys.UpdatePasswordActivity" />

@@ -104,7 +104,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         if(v.getId() == R.id.tv_mis_resetpassword || v.getId() == R.id.iv_mis_resetpassword){
             Intent intent = new Intent(mContext, UpdatePasswordActivity.class);
-            intent.putExtra("TYPE",2);
+            intent.putExtra("TYPE",1);
             startActivity(intent);
         }
         if(v.getId() == R.id.bt_mis_updateinfo){
@@ -112,7 +112,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
             intent.putExtra("NAME",tvName.getHint().toString());
             intent.putExtra("SEX",tvSex.getHint().toString());
             intent.putExtra("NUMBER",tvNumber.getHint().toString());
-            intent.putExtra("TYPE",2);
+            intent.putExtra("TYPE",1);
             startActivity(intent);
         }
         if(v.getId() == R.id.bt_mis_logout){

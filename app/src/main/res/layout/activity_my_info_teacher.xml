@@ -6,247 +6,247 @@
     android:layout_height="match_parent"
     tools:context=".activitys.MyInfoTeacherActivity">
 
-    <LinearLayout
-        android:id="@+id/rl_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|center_vertical"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/rl_title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center|center_vertical"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <TextView
-            android:id="@+id/tv_mis_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="个人资料"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_mis_title"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:text="个人资料"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="40sp" />-->
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_below="@id/tv_mis_title"
-            android:background="#7E7A7A"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" />
-    </LinearLayout>
+<!--        <View-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_below="@id/tv_mis_title"-->
+<!--            android:background="#7E7A7A"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0" />-->
+<!--    </LinearLayout>-->
 
-    <ScrollView
-        android:id="@+id/sv_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/rl_title"
-        app:layout_constraintBottom_toTopOf="@+id/l_bar">
+<!--    <ScrollView-->
+<!--        android:id="@+id/sv_info"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="@id/rl_title"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/l_bar">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginBottom="20dp">-->
 
-                <ImageView
-                    android:id="@+id/iv_mit_avatar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_baseline_account_circle_24" />
-            </RelativeLayout>
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_mit_avatar"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:src="@drawable/ic_baseline_account_circle_24" />-->
+<!--            </RelativeLayout>-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp">-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_nametext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="姓名  "
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_nametext"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:text="姓名  "-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/tv_mit_nametext"
-                        android:hint="WOLD"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_name"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_toRightOf="@id/tv_mit_nametext"-->
+<!--                        android:hint="WOLD"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/tv_mit_name"
-                        android:background="#7E7A7A" />
-                </RelativeLayout>
+<!--                    <View-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_below="@id/tv_mit_name"-->
+<!--                        android:background="#7E7A7A" />-->
+<!--                </RelativeLayout>-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="50dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginTop="50dp">-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_sextext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="性别  "
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_sextext"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:text="性别  "-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_sex"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/tv_mit_sextext"
-                        android:hint="男"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_sex"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_toRightOf="@id/tv_mit_sextext"-->
+<!--                        android:hint="男"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/tv_mit_sex"
-                        android:background="#7E7A7A" />
-                </RelativeLayout>
+<!--                    <View-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_below="@id/tv_mit_sex"-->
+<!--                        android:background="#7E7A7A" />-->
+<!--                </RelativeLayout>-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="100dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginTop="100dp">-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_phonetext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="手机  "
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_phonetext"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:text="手机  "-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/tv_mit_phonetext"
-                        android:hint="157*******123"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_phone"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_toRightOf="@id/tv_mit_phonetext"-->
+<!--                        android:hint="157*******123"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/tv_mit_phone"
-                        android:background="#7E7A7A" />
-                </RelativeLayout>
+<!--                    <View-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_below="@id/tv_mit_phone"-->
+<!--                        android:background="#7E7A7A" />-->
+<!--                </RelativeLayout>-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="150dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginTop="150dp">-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_teacheridtext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="工号  "
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_teacheridtext"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:text="工号  "-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_teacherid"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/tv_mit_teacheridtext"
-                        android:hint="1700000000"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_teacherid"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_toRightOf="@id/tv_mit_teacheridtext"-->
+<!--                        android:hint="1700000000"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/tv_mit_teacherid"
-                        android:background="#7E7A7A" />
-                </RelativeLayout>
+<!--                    <View-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_below="@id/tv_mit_teacherid"-->
+<!--                        android:background="#7E7A7A" />-->
+<!--                </RelativeLayout>-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="200dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginTop="200dp">-->
 
-                    <ImageView
-                        android:id="@+id/iv_mit_resetpassword"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="30dp"
-                        android:gravity="center"
-                        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_mit_resetpassword"-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_marginRight="30dp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />-->
 
-                    <TextView
-                        android:id="@+id/tv_mit_resetpassword"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="修改密码  "
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_mit_resetpassword"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:text="修改密码  "-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="30sp" />-->
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/iv_mit_resetpassword"
-                        android:background="#7E7A7A" />
-                </RelativeLayout>
-            </RelativeLayout>
+<!--                    <View-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_below="@id/iv_mit_resetpassword"-->
+<!--                        android:background="#7E7A7A" />-->
+<!--                </RelativeLayout>-->
+<!--            </RelativeLayout>-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp">-->
 
-                <Button
-                    android:id="@+id/bt_mit_updateinfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#3291F8"
-                    android:text="修改信息"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
+<!--                <Button-->
+<!--                    android:id="@+id/bt_mit_updateinfo"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="#3291F8"-->
+<!--                    android:text="修改信息"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="30sp" />-->
 
-                <Button
-                    android:id="@+id/bt_mit_logout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="55dp"
-                    android:background="#FF2525"
-                    android:text="退出登录"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
+<!--                <Button-->
+<!--                    android:id="@+id/bt_mit_logout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="55dp"-->
+<!--                    android:background="#FF2525"-->
+<!--                    android:text="退出登录"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="30sp" />-->
+<!--            </RelativeLayout>-->
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
 
-    <include
-        android:id="@+id/l_bar"
-        layout="@layout/bottom_status_bar_student"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <include-->
+<!--        android:id="@+id/l_bar"-->
+<!--        layout="@layout/bottom_status_bar_student"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

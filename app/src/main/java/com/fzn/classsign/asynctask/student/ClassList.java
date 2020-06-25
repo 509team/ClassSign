@@ -3,7 +3,8 @@ package com.fzn.classsign.asynctask.student;
 import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
-
+import com.fzn.classsign.entity.Token;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,13 @@ public class ClassList<T> extends CustomAsyncTask<T> {
             if(datalist.size() != 0){
                 classListAdapter.addData(datalist);
             }
+        }else if (code == 401) {
+            Token.FreshToken();
+            Map<String, String> head = new HashMap<>();
+            head.put("Authorization", "Bearer " + Token.token);
+            new ClassList<List<Map<String, Object>>>(head, null, null,classListAdapter)
+                    .gett()
+                    .execute();
         }
 
         super.onPostExecute(s);

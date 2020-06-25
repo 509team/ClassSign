@@ -38,61 +38,61 @@ public class MyInfoTeacherActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_info_teacher);
 
-        iv_bsbt_class = findViewById(R.id.iv_bsbt_class);
-        iv_bsbt_mine = findViewById(R.id.iv_bsbt_mine);
-        tv_bsbt_class = findViewById(R.id.tv_bsbt_class);
-        tv_bsbt_mine = findViewById(R.id.tv_bsbt_mine);
+//        iv_bsbt_class = findViewById(R.id.iv_bsbt_class);
+//        iv_bsbt_mine = findViewById(R.id.iv_bsbt_mine);
+//        tv_bsbt_class = findViewById(R.id.tv_bsbt_class);
+//        tv_bsbt_mine = findViewById(R.id.tv_bsbt_mine);
+//
+//        tvUpdate=findViewById(R.id.tv_mit_resetpassword);
+//        ivUpdate=findViewById(R.id.iv_mit_resetpassword);
+//        bUpdate=findViewById(R.id.bt_mit_updateinfo);
+//        bEnd=findViewById(R.id.bt_mit_logout);
+//
+//        tvName=findViewById(R.id.tv_mit_name);
+//        tvSex=findViewById(R.id.tv_mit_sex);
+//        tvNumber=findViewById(R.id.tv_mit_teacherid);
+//        tvPhone=findViewById(R.id.tv_mit_phone);
+//
+//        //调用接口获取个人信息，填充显示个人信息
+//        Map<String,String> heads=new HashMap<>();
+//        heads.put("Authorization","Bearer "+ Token.token);
+//        new GetUserBaseInfo<Map<String,String>>(heads,null,null,tvName,tvSex,tvPhone,tvNumber)
+//                .gett()
+//                .execute();
 
-        tvUpdate=findViewById(R.id.tv_mit_resetpassword);
-        ivUpdate=findViewById(R.id.iv_mit_resetpassword);
-        bUpdate=findViewById(R.id.bt_mit_updateinfo);
-        bEnd=findViewById(R.id.bt_mit_logout);
-
-        tvName=findViewById(R.id.tv_mit_name);
-        tvSex=findViewById(R.id.tv_mit_sex);
-        tvNumber=findViewById(R.id.tv_mit_teacherid);
-        tvPhone=findViewById(R.id.tv_mit_phone);
-
-        //调用接口获取个人信息，填充显示个人信息
-        Map<String,String> heads=new HashMap<>();
-        heads.put("Authorization","Bearer "+ Token.token);
-        new GetUserBaseInfo<Map<String,String>>(heads,null,null,tvName,tvSex,tvPhone,tvNumber)
-                .gett()
-                .execute();
-
-        iv_bsbt_class.setOnClickListener(this);
-        iv_bsbt_mine.setOnClickListener(this);
-        tv_bsbt_class.setOnClickListener(this);
-        tv_bsbt_mine.setOnClickListener(this);
-
-        tvUpdate.setOnClickListener(this);
-        ivUpdate.setOnClickListener(this);
-        bUpdate.setOnClickListener(this);
-        bEnd.setOnClickListener(this);
+//        iv_bsbt_class.setOnClickListener(this);
+//        iv_bsbt_mine.setOnClickListener(this);
+//        tv_bsbt_class.setOnClickListener(this);
+//        tv_bsbt_mine.setOnClickListener(this);
+//
+//        tvUpdate.setOnClickListener(this);
+//        ivUpdate.setOnClickListener(this);
+//        bUpdate.setOnClickListener(this);
+//        bEnd.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId() ==  R.id.iv_bsbt_class || v.getId() ==  R.id.tv_bsbt_class){
-            Intent intent = new Intent(MyInfoTeacherActivity.this, ClassHomePageTeacherActivity.class);
-            startActivity(intent);
-        }
-        if(v.getId() == R.id.tv_mit_resetpassword || v.getId() == R.id.iv_mit_resetpassword){
-            Intent intent = new Intent(MyInfoTeacherActivity.this, UpdatePasswordActivity.class);
-            intent.putExtra("TYPE",1);
-            startActivity(intent);
-        }
-        if(v.getId() == R.id.bt_mit_updateinfo){
-            Intent intent = new Intent(MyInfoTeacherActivity.this, UpdateInfoActivity.class);
-            intent.putExtra("NAME",tvName.getHint().toString());
-            intent.putExtra("SEX",tvSex.getHint().toString());
-            intent.putExtra("NUMBER",tvNumber.getHint().toString());
-            intent.putExtra("TYPE",1);
-            startActivity(intent);
-        }
-        if(v.getId() == R.id.bt_mit_logout){
-            Intent intent = new Intent(MyInfoTeacherActivity.this, LoginSelectionActivity.class);
-            startActivity(intent);
-        }
+//        if(v.getId() ==  R.id.iv_bsbt_class || v.getId() ==  R.id.tv_bsbt_class){
+//            Intent intent = new Intent(MyInfoTeacherActivity.this, ClassHomePageTeacherActivity.class);
+//            startActivity(intent);
+//        }
+//        if(v.getId() == R.id.tv_mit_resetpassword || v.getId() == R.id.iv_mit_resetpassword){
+//            Intent intent = new Intent(MyInfoTeacherActivity.this, UpdatePasswordActivity.class);
+//            intent.putExtra("TYPE",1);
+//            startActivity(intent);
+//        }
+//        if(v.getId() == R.id.bt_mit_updateinfo){
+//            Intent intent = new Intent(MyInfoTeacherActivity.this, UpdateInfoActivity.class);
+//            intent.putExtra("NAME",tvName.getHint().toString());
+//            intent.putExtra("SEX",tvSex.getHint().toString());
+//            intent.putExtra("NUMBER",tvNumber.getHint().toString());
+//            intent.putExtra("TYPE",1);
+//            startActivity(intent);
+//        }
+//        if(v.getId() == R.id.bt_mit_logout){
+//            Intent intent = new Intent(MyInfoTeacherActivity.this, LoginSelectionActivity.class);
+//            startActivity(intent);
+//        }
     }
 }
