@@ -11,7 +11,8 @@
         <item>女</item>
     </string-array>
 
-    <string-array name="statu">
+
+    <string-array name="status">
         <item>出勤</item>
         <item>异常</item>
         <item>缺席</item>
