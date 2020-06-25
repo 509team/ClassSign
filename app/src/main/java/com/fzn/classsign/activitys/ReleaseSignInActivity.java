@@ -16,6 +16,7 @@ import com.fzn.classsign.R;
 import com.fzn.classsign.asynctask.teacher.SignGetCurrentSignTotal;
 import com.fzn.classsign.asynctask.teacher.SignStop;
 import com.fzn.classsign.entity.Token;
+import com.fzn.classsign.fragment.teacher.ClassFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,7 +71,7 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onFinish() {
                 Toast.makeText(ReleaseSignInActivity.this, "签到结束", Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(ReleaseSignInActivity.this, ClassHomePageTeacherActivity.class);
+                Intent intent1 = new Intent(ReleaseSignInActivity.this, ClassFragment.class);
                 startActivity(intent1);
             }
         };

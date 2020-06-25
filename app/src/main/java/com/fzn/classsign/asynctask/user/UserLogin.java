@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.fzn.classsign.activitys.ClassHomePageStudentActivity;
-import com.fzn.classsign.activitys.ClassHomePageTeacherActivity;
 import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
 import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
