@@ -60,11 +60,12 @@ public class StudentFragmentActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        Intent intent=getIntent();
-        position=intent.getIntExtra("POSITION",1);
-        Fragment to = mFragments.get(position);
-        showFragment(mCurFragment, to);
-        mCurFragment = to;
+        Intent intent = getIntent();
+        int posi = intent.getIntExtra("POSITION", -1);
+        if (posi != -1) {
+            position = posi;
+            ((RadioButton) mRg.getChildAt(position)).setChecked(true);
+        }
     }
 
     private void initListener() {
@@ -96,14 +97,18 @@ public class StudentFragmentActivity extends AppCompatActivity {
                         break;
 
                 }
-
-                Fragment to = mFragments.get(position);
-                showFragment(mCurFragment, to);
-                mCurFragment = to;
-
+                showFragmentOf(position);
             }
 
         });
+    }
+
+
+    private void showFragmentOf(int position) {
+        Fragment to = mFragments.get(position);
+        showFragment(mCurFragment, to);
+        mCurFragment = to;
+        ((RadioButton) mRg.getChildAt(position)).setChecked(true);
     }
 
     private void showFragment(Fragment from, Fragment to) {
