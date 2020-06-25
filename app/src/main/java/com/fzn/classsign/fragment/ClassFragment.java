@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fzn.classsign.R;
 import com.fzn.classsign.activitys.ClassHomePageStudentActivity;
@@ -87,6 +88,12 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
         LinearLayoutManager llm = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(llm);
         recyclerView.setAdapter(classListAdapter);
+        classListAdapter.setOnItemClickListener(new ClassListAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Map<String, Object> data) {
+                Toast.makeText(getActivity(), data.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initData() {

@@ -62,7 +62,7 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
         return mapList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_lcs_classname;
         TextView tv_lcs_classcode;
         TextView tv_lcs_joinclasscode;
@@ -74,7 +74,35 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
             tv_lcs_classcode = itemView.findViewById(R.id.tv_lcs_classcode);
             tv_lcs_joinclasscode = itemView.findViewById(R.id.tv_lcs_joinclasscode);
             tv_lcs_membernum = itemView.findViewById(R.id.tv_lcs_membernum);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onItemClickListener!=null){
+                        onItemClickListener.OnItemClick(v,mapList.get(getLayoutPosition()));
+                    }
+                }
+            });
         }
     }
 
+    /**
+     * 设置item的监听事件的接口
+     */
+    public interface OnItemClickListener {
+        /**
+         * 接口中的点击每一项的实现方法，参数自己定义
+         *
+         * @param view 点击的item的视图
+         * @param data 点击的item的数据
+         */
+        public void OnItemClick(View view, Map<String, Object> data);
+    }
+
+    //需要外部访问，所以需要设置set方法，方便调用
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 }
