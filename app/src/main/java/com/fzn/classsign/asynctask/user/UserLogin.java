@@ -10,7 +10,6 @@ import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.Token;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class UserLogin<T> extends CustomAsyncTask<T> {

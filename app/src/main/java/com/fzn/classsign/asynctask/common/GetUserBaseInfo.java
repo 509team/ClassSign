@@ -4,7 +4,6 @@ import android.widget.TextView;
 
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
-import com.fzn.classsign.entity.User;
 
 import java.util.Map;
 

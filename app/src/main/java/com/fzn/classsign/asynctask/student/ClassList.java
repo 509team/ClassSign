@@ -1,11 +1,5 @@
 package com.fzn.classsign.asynctask.student;
 
-import android.content.Context;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.fzn.classsign.R;
 import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;

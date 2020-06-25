@@ -5,14 +5,10 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.fzn.classsign.activitys.ClassDetailTeacherActivity;
-import com.fzn.classsign.activitys.CreateClassActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
-import com.fzn.classsign.entity.Class;
 import com.fzn.classsign.entity.Token;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
