@@ -1,27 +1,16 @@
-package com.fzn.classsign.fragment;
+package com.fzn.classsign.fragment.teacher;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
-import com.fzn.classsign.activitys.ClassHomePageStudentActivity;
 import com.fzn.classsign.activitys.JoinClassActivity;
-import com.fzn.classsign.activitys.MyInfoStudentActivity;
-import com.fzn.classsign.activitys.SignInActivity;
 import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.asynctask.student.ClassList;
 import com.fzn.classsign.entity.Token;
@@ -29,6 +18,11 @@ import com.fzn.classsign.entity.Token;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * A fragment representing a list of Items.
@@ -67,7 +61,7 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_class_list, container, false);
+        mView = inflater.inflate(R.layout.fragment_teacher_class_list, container, false);
         mContext = getContext();
         /*加入课堂图片*/
         ivInto = mView.findViewById(R.id.iv_chps_joinclass);
@@ -84,7 +78,7 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView() {
-        classListAdapter = new ClassListAdapter(mContext, R.layout.list_class_student);
+        classListAdapter = new ClassListAdapter(mContext, R.layout.list_class);
         LinearLayoutManager llm = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(llm);
         recyclerView.setAdapter(classListAdapter);

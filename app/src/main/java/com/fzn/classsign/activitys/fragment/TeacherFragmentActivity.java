@@ -1,9 +1,4 @@
-package com.fzn.classsign.activitys.student;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+package com.fzn.classsign.activitys.fragment;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;
@@ -11,25 +6,25 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.fzn.classsign.R;
-import com.fzn.classsign.fragment.ClassFragment;
-import com.fzn.classsign.fragment.MeFragment;
-import com.fzn.classsign.fragment.SignFragment;
+import com.fzn.classsign.fragment.teacher.ClassFragment;
+import com.fzn.classsign.fragment.teacher.MeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentFragmentActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-    private Fragment classFragment;
-    private Fragment signFragment;
-    private Fragment meFragment;
+public class TeacherFragmentActivity extends AppCompatActivity {
 
 
     FrameLayout mFl;
     RadioGroup mRg;
     private FragmentManager mFragmentManager;
 
-    private int position = 1;
+    private int position = 0;
 
     private List<Fragment> mFragments;
     private Fragment mCurFragment;
@@ -37,15 +32,13 @@ public class StudentFragmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_fragment);
+        setContentView(R.layout.activity_teacher_fragment);
 
         mFl = (FrameLayout) findViewById(R.id.fl);
         mRg = (RadioGroup) findViewById(R.id.rg);
         mFragments = new ArrayList<>();
-        SignFragment signFragment = SignFragment.newInstance("", "");
         ClassFragment classFragment = ClassFragment.newInstance();
         MeFragment meFragment = MeFragment.newInstance(1);
-        mFragments.add(signFragment);
         mFragments.add(classFragment);
         mFragments.add(meFragment);
         mCurFragment = mFragments.get(position);
@@ -68,18 +61,14 @@ public class StudentFragmentActivity extends AppCompatActivity {
                     return;
                 }
 
-
                 switch (checkedId) {
-                    case R.id.rb_sign:
+
+                    case R.id.rb_class:
                         position = 0;
                         break;
 
-                    case R.id.rb_class:
-                        position = 1;
-                        break;
-
                     case R.id.rb_me:
-                        position = 2;
+                        position = 1;
                         break;
                     default:
                         position = 0;

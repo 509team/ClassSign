@@ -1,4 +1,4 @@
-package com.fzn.classsign.fragment;
+package com.fzn.classsign.fragment.student;
 
 import android.Manifest;
 import android.content.Context;
@@ -25,7 +25,6 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.fzn.classsign.R;
-import com.fzn.classsign.activitys.SignInActivity;
 import com.yzq.zxinglibrary.android.CaptureActivity;
 import com.yzq.zxinglibrary.common.Constant;
 

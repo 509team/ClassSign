@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fzn.classsign.R;
-import com.fzn.classsign.activitys.ClassHomePageTeacherActivity;
 import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
@@ -40,7 +39,7 @@ public class ClassList<T> extends CustomAsyncTask<T> {
         if(code == 200){
             datalist = temp.getData();
             if(datalist.size() != 0){
-                classListAdapter = new ClassListAdapter(context, R.layout.list_class_student);
+                classListAdapter = new ClassListAdapter(context, R.layout.list_class);
                 LinearLayoutManager llm = new LinearLayoutManager(context);
                 recyclerView.setLayoutManager(llm);
                 recyclerView.setAdapter(classListAdapter);

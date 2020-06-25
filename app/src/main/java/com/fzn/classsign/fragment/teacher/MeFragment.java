@@ -1,4 +1,4 @@
-package com.fzn.classsign.fragment;
+package com.fzn.classsign.fragment.teacher;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,18 +12,17 @@ import android.widget.TextView;
 
 import com.fzn.classsign.R;
 import com.fzn.classsign.activitys.LoginSelectionActivity;
-import com.fzn.classsign.activitys.MyInfoStudentActivity;
 import com.fzn.classsign.activitys.UpdateInfoActivity;
 import com.fzn.classsign.activitys.UpdatePasswordActivity;
 import com.fzn.classsign.asynctask.common.GetUserBaseInfo;
 import com.fzn.classsign.entity.Token;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MeFragment extends Fragment implements View.OnClickListener{
     private View mView;
@@ -67,7 +66,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_me, container, false);
+        mView = inflater.inflate(R.layout.fragment_teacher_me, container, false);
         mContext = getContext();
         tvUpdate=mView.findViewById(R.id.tv_mis_resetpassword);
         ivUpdate=mView.findViewById(R.id.iv_mis_resetpassword);

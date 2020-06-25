@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activitys.student.StudentFragmentActivity">
+        <activity android:name=".activitys.fragment.StudentFragmentActivity">
+        </activity>
+        <activity android:name=".activitys.fragment.TeacherFragmentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

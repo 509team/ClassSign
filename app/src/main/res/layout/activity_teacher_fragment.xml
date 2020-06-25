@@ -21,11 +21,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <RadioButton
-            android:id="@+id/rb_sign"
-            style="@style/bottom_tab"
-            android:drawableTop="@drawable/ic_baseline_create_24"
-            android:text="签到"/>
 
         <RadioButton
             android:id="@+id/rb_class"

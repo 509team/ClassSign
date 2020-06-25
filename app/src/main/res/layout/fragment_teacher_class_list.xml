@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".fragment.ClassFragment"
+    tools:context=".fragment.teacher.ClassFragment"
     tools:listitem="@layout/fragment_class">
 
     <RelativeLayout
@@ -38,7 +38,7 @@
                 android:layout_height="50dp"
                 android:background="@color/green"
                 android:gravity="center"
-                android:text="课堂签（学生端）"
+                android:text="课堂签（教师端）"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintTop_toTopOf="parent" />
