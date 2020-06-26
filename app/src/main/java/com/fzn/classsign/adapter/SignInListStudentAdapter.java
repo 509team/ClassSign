@@ -65,6 +65,7 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
                 break;
         }
         holder.tv_lsil_ratioofpeople.setText(s);
+        holder.tv_lsil_ratioofpeople.setTextSize(30);
     }
 
     /*
