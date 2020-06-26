@@ -36,7 +36,7 @@ public class ListSignIn<T> extends CustomAsyncTask<T> {
             signIn.setUid((int)Double.parseDouble(d.get("uid").toString()));
             signIn.setuNum(d.get("unum").toString());
             signIn.setName(d.get("name").toString());
-            signIn.setStatus(d.get("status").toString());
+            signIn.setStatus(getPositionOfStatus(d.get("status").toString()));
             list.add(signIn);
         }
 
@@ -47,5 +47,17 @@ public class ListSignIn<T> extends CustomAsyncTask<T> {
 
 
         super.onPostExecute(s);
+    }
+    private String getPositionOfStatus(String status) {
+        switch (status) {
+            case "normal":
+                return "出勤";
+            case "abnormal":
+                return "异常";
+            case "absense":
+                return "缺席";
+            default:
+                return "缺席";
+        }
     }
 }

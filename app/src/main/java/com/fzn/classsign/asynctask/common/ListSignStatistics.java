@@ -49,14 +49,12 @@ public class ListSignStatistics<T> extends CustomAsyncTask<T> {
 
     private String getPositionOfStatus(String status) {
         switch (status) {
-            case "normal":
-                return "出勤";
-            case "abnormal":
-                return "异常";
-            case "absense":
-                return "缺席";
+            case "processing":
+                return "进行中";
+            case "over":
+                return "已结束";
             default:
-                return "缺席";
+                return "已结束";
         }
     }
 }

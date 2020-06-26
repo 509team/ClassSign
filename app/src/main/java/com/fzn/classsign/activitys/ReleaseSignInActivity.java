@@ -85,7 +85,7 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
 
         ivCode = findViewById(R.id.iv_rs_code);
         //生成二维码
-        Bitmap map = createQRCode(code, 159, 159, null);
+        Bitmap map = createQRCode("sign-" + code, 159, 159, null);
         ivCode.setImageBitmap(map);
 
         //结束签到按钮
