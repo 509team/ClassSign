@@ -77,6 +77,11 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         ivInto.setOnClickListener(this);
         initView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         initData();
     }
 
@@ -89,11 +94,11 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
             @Override
             public void OnItemClick(View view, Map<String, Object> data) {
                 Intent intent = new Intent(mContext, ClassDetailTeacherActivity.class);
-                intent.putExtra("CID",data.get("cid").toString());
-                intent.putExtra("CNUM",data.get("cNum").toString());
-                intent.putExtra("NAME",data.get("name").toString());
-                intent.putExtra("JOINCODE",data.get("joinCode").toString());
-                intent.putExtra("TOTAL",data.get("total").toString());
+                intent.putExtra("CID", data.get("cid").toString());
+                intent.putExtra("CNUM", data.get("cNum").toString());
+                intent.putExtra("NAME", data.get("name").toString());
+                intent.putExtra("JOINCODE", data.get("joinCode").toString());
+                intent.putExtra("TOTAL", data.get("total").toString());
                 startActivity(intent);
             }
         });

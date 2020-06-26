@@ -61,10 +61,6 @@ public class SignInRecordListActivity extends AppCompatActivity implements View.
 
     public void initView() {
         recyclerView = findViewById(R.id.lv_cdt_class);
-        updateView = getLayoutInflater().inflate(R.layout.modify_sign_status, null);
-        unum = updateView.findViewById(R.id.tv_unum_data);
-        name = updateView.findViewById(R.id.tv_name_data);
-        spinner = updateView.findViewById(R.id.s_status);
         signAdapter = new SignInStatusListAdapter(SignInRecordListActivity.this, R.layout.list_sign_in_status);
         LinearLayoutManager llm = new LinearLayoutManager(SignInRecordListActivity.this);
         recyclerView.setLayoutManager(llm);
@@ -77,6 +73,10 @@ public class SignInRecordListActivity extends AppCompatActivity implements View.
                 name.setText(data.getName());
                 spinner.setSelection(getPositionOfStatus(data.getStatus()));
                 AlertDialog.Builder dialog = new AlertDialog.Builder(SignInRecordListActivity.this);
+                updateView = getLayoutInflater().inflate(R.layout.modify_sign_status, null);
+                unum = updateView.findViewById(R.id.tv_unum_data);
+                name = updateView.findViewById(R.id.tv_name_data);
+                spinner = updateView.findViewById(R.id.s_status);
                 dialog.setView(updateView);
                 dialog.setPositiveButton("修改", updateClick);
                 dialog.setNegativeButton("返回", backClick);

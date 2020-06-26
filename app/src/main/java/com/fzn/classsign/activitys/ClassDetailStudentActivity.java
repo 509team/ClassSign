@@ -1,12 +1,18 @@
 package com.fzn.classsign.activitys;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fzn.classsign.R;
@@ -16,6 +22,8 @@ import com.fzn.classsign.entity.Token;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.yzq.zxinglibrary.encode.CodeCreator.createQRCode;
 
 /**
  * 学生端课程详情
@@ -41,6 +49,9 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
     private String joinCode;
 
     private RecyclerView recyclerView;
+
+    private View classJoinCode;
+    private ImageView iv_class_join_code;
 
 
     @Override
@@ -69,6 +80,7 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         tv_cds_abnormalnum = findViewById(R.id.tv_cds_abnormalnum);
         tv_cds_absencenum = findViewById(R.id.tv_cds_absencenum);
 
+
         recyclerView = findViewById(R.id.lv_cds_class);
 
         Map<String, String> head = new HashMap<>();
@@ -79,6 +91,7 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
 
         bt_cds_allstudent = findViewById(R.id.bt_cds_allstudent);
         bt_cds_allstudent.setOnClickListener(this);
+        tv_cds_joinclasscode.setOnClickListener(this);
     }
 
     @Override
@@ -88,5 +101,18 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
             intent.putExtra("CID", cid);
             startActivity(intent);
         }
+        if(v.getId()==R.id.tv_cds_joinclasscode){
+            //生成二维码
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ClassDetailStudentActivity.this);
+            //加课码浮窗
+            classJoinCode = getLayoutInflater().inflate(R.layout.class_join_code, null);
+            iv_class_join_code=classJoinCode.findViewById(R.id.iv_class_join_code);
+            dialogBuilder.setView(classJoinCode);
+            Bitmap map = createQRCode("class-" + joinCode, 159, 159, null);
+            iv_class_join_code.setImageBitmap(map);
+            AlertDialog dialog=dialogBuilder.create();
+            dialog.show();
+        }
     }
+
 }

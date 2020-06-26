@@ -34,6 +34,7 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
 
     public void addData(List<Map<String, Object>> data) {
         if (data != null) {
+            this.mapList.clear();
             this.mapList.addAll(data);
         }
         this.notifyDataSetChanged();

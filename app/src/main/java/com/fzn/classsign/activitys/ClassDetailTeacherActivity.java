@@ -1,14 +1,19 @@
 package com.fzn.classsign.activitys;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +27,8 @@ import com.fzn.classsign.entity.Token;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.yzq.zxinglibrary.encode.CodeCreator.createQRCode;
 
 /**
  * 教师端端课程详情
@@ -47,6 +54,10 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
     private RecyclerView recyclerView;
 
     private SignInListTeacherAdapter signAdapter;
+
+
+    private View classJoinCode;
+    private ImageView iv_class_join_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +87,8 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
                 startActivity(intent);
             }
         });
+
+
     }
 
     public void initData() {
@@ -99,6 +112,7 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
         bt_cdt_creatsignin = findViewById(R.id.bt_cdt_creatsignin);
         bt_cdt_allstudent.setOnClickListener(this);
         bt_cdt_creatsignin.setOnClickListener(this);
+        tv_cdt_joinclasscode.setOnClickListener(this);
 
         Map<String, String> head = new HashMap<>();
         head.put("Authorization", "Bearer " + Token.token);
@@ -123,6 +137,18 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
                 intent.putExtra("TOTAL", total);
                 startActivity(intent);
             }
+        }
+        if (v.getId() == R.id.tv_cdt_joinclasscode) {
+            //生成二维码
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ClassDetailTeacherActivity.this);
+            //加课码浮窗
+            classJoinCode = getLayoutInflater().inflate(R.layout.class_join_code, null);
+            iv_class_join_code = classJoinCode.findViewById(R.id.iv_class_join_code);
+            dialogBuilder.setView(classJoinCode);
+            Bitmap map = createQRCode("class-" + joinCode, 159, 159, null);
+            iv_class_join_code.setImageBitmap(map);
+            AlertDialog dialog = dialogBuilder.create();
+            dialog.show();
         }
     }
 }

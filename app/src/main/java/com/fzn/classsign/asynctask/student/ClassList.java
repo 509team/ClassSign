@@ -28,6 +28,9 @@ public class ClassList<T> extends CustomAsyncTask<T> {
         ResponseResultJson<List<Map<String, Object>>> temp = (ResponseResultJson<List<Map<String, Object>>>) getResponse(s);
         int code = temp.getCode();
         if(code == 200){
+            if(datalist!=null){
+                datalist.clear();
+            }
             datalist = temp.getData();
 
             if(datalist.size() != 0){
