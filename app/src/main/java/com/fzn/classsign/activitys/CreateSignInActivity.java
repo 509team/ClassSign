@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,8 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
 
     private TextView tv_tsb_title;
 
+    private ImageView tv_tsb_back;
+
     /*经纬度*/
     private Double longitude;
     private Double latitude;
@@ -57,7 +60,7 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
         initMap();
     }
 
-    private void initView(){
+    private void initView() {
         tv_tsb_title = findViewById(R.id.tv_tsb_title);
         tv_tsb_title.setText("创建签到");
 
@@ -71,9 +74,11 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
         et_cs_sign_name = findViewById(R.id.et_cs_sign_name);
         tv_cs_select = findViewById(R.id.tv_cs_select);
         b_cs_release = findViewById(R.id.b_cs_release);
+        tv_tsb_back = findViewById(R.id.tv_tsb_back);
 
         tv_cs_select.getSelectedItem().toString();
         b_cs_release.setOnClickListener(this);
+        tv_tsb_back.setOnClickListener(this);
     }
 
     @Override
@@ -188,6 +193,9 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
                 Toast.makeText(CreateSignInActivity.this, "编辑框不能为空！", Toast.LENGTH_SHORT).show();
             }
 
+        }
+        if (v.getId() == R.id.tv_tsb_back) {
+            this.finish();
         }
     }
 }

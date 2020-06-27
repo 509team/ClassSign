@@ -53,7 +53,7 @@
             android:id="@+id/et_jc_sixcode"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:hint="签到码"
+            android:hint="课程码"
             android:singleLine="true"
             android:textSize="55sp"
             android:gravity="center"

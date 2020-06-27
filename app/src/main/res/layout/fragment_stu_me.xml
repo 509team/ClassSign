@@ -81,7 +81,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/tv_mis_nametext"
-                        android:hint="WOLD"
                         android:textColor="@color/black"
                         android:textSize="30sp" />
 
@@ -111,7 +110,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/tv_mis_sextext"
-                        android:hint="男"
                         android:textColor="@color/black"
                         android:textSize="30sp" />
 
@@ -141,7 +139,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/tv_mis_phonetext"
-                        android:hint="157*******123"
                         android:textColor="@color/black"
                         android:textSize="30sp" />
 
@@ -171,7 +168,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/tv_mis_studentidtext"
-                        android:hint="1700000000"
                         android:textColor="@color/black"
                         android:textSize="30sp" />
 

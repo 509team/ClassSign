@@ -31,9 +31,11 @@ public class UpdatePasswordActivity extends AppCompatActivity implements View.On
     private EditText etAgainPed;
     private ImageView ivSee;
     private Button bUpdate;
+    private ImageView tv_tsb_back;
 
     private boolean isSee = false;
     private int type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,31 +44,36 @@ public class UpdatePasswordActivity extends AppCompatActivity implements View.On
         topTitle = findViewById(R.id.tv_tsb_title);
         topTitle.setText("修改密码");
 
-        Intent intent=getIntent();
-        type=intent.getIntExtra("TYPE",0);
+        Intent intent = getIntent();
+        type = intent.getIntExtra("TYPE", 0);
         etOldPwd = findViewById(R.id.et_up_old_pwd);
         etNewPwd = findViewById(R.id.et_up_new_pwd);
         etAgainPed = findViewById(R.id.et_up_again);
         ivSee = findViewById(R.id.iv_up_see);
         bUpdate = findViewById(R.id.b_up_update);
+        tv_tsb_back = findViewById(R.id.tv_tsb_back);
 
         bUpdate.setOnClickListener(this);
         bUpdate.setTag(1);
         ivSee.setOnClickListener(this);
         ivSee.setTag(2);
-
+        tv_tsb_back.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.tv_tsb_back) {
+            this.finish();
+            return;
+        }
         switch ((int) v.getTag()) {
             case 1:
                 String oldPwd = etOldPwd.getText().toString();
                 String newPwd = etNewPwd.getText().toString();
                 String againPwd = etAgainPed.getText().toString();
-                System.out.println("old:"+oldPwd);
-                System.out.println("new:"+newPwd);
-                System.out.println("again"+againPwd);
+                System.out.println("old:" + oldPwd);
+                System.out.println("new:" + newPwd);
+                System.out.println("again" + againPwd);
                 if (oldPwd.equals("")) {
                     Toast.makeText(UpdatePasswordActivity.this, "请输入原密码", Toast.LENGTH_SHORT).show();
                 } else {
@@ -74,15 +81,15 @@ public class UpdatePasswordActivity extends AppCompatActivity implements View.On
                         Toast.makeText(UpdatePasswordActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
                     } else if (newPwd.equals(againPwd)) {
                         //调用接口修改密码
-                        Map<String,String> heads=new HashMap<>();
-                        heads.put("Authorization","Bearer "+Token.token);
-                        Map<String,String> body=new HashMap<>();
-                        body.put("oldPassword",oldPwd);
-                        body.put("newPassword",newPwd);
-                        new UpdatePassword(heads,body,null,this,type)
-                        .post()
-                        .execute();
-                    }else{
+                        Map<String, String> heads = new HashMap<>();
+                        heads.put("Authorization", "Bearer " + Token.token);
+                        Map<String, String> body = new HashMap<>();
+                        body.put("oldPassword", oldPwd);
+                        body.put("newPassword", newPwd);
+                        new UpdatePassword(heads, body, null, this, type)
+                                .post()
+                                .execute();
+                    } else {
                         Toast.makeText(UpdatePasswordActivity.this, "两次输入密码不一致", Toast.LENGTH_SHORT).show();
                     }
                 }

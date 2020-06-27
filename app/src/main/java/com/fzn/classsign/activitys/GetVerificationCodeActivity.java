@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
     private TextView tvTime;
     private TextView tvResend;
     private Button bCheck;
+    private ImageView tv_gvc_back;
     //计时器
     CountDownTimer timer=new CountDownTimer(60000,1000) {
         @Override
@@ -65,6 +67,7 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
         tvTime=findViewById(R.id.tv_gvc_time);
         tvResend=findViewById(R.id.tv_gvc_resend);
         bCheck=findViewById(R.id.b_gvc_check);
+        tv_gvc_back=findViewById(R.id.tv_gvc_back);
         timer.start();
 
         tvResend.setOnClickListener(GetVerificationCodeActivity.this);
@@ -73,10 +76,17 @@ public class GetVerificationCodeActivity extends AppCompatActivity implements Vi
 
         bCheck.setOnClickListener(this);
         bCheck.setTag(2);
+        tv_gvc_back.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        if(v.getId()==R.id.tv_gvc_back){
+            Intent intent=new Intent(this,QuickLoginActivity.class  );
+            intent.putExtra("TYPE",type);
+            this.startActivity(intent);
+            return;
+        }
         switch((int)v.getTag()){
             case 1:
                 tvTime.setVisibility(View.VISIBLE);
