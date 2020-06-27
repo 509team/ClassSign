@@ -156,6 +156,11 @@ public class SignFragment extends Fragment implements View.OnClickListener {
                                 .execute();
                     } else if (!locationFlag) {
                         initMap();
+                        try {
+                            Thread.sleep(4000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         if (locationFlag) {
                             Map<String, Object> body = new HashMap<>();
                             body.put("signCode", scanResult);
@@ -208,13 +213,13 @@ public class SignFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.iv_si_scan) {
             //动态申请相机权限、读取文件权限；
+            initMap();
             if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             } else {
                 //扫码返回结果
                 Intent intent = new Intent(mContext, CaptureActivity.class);
                 startActivityForResult(intent, REQUEST_CODE_SCAN);
-
             }
         }
         if (v.getId() == R.id.bt_si_sign) {
