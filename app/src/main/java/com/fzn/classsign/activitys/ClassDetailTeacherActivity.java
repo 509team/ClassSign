@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.adapter.SignInListTeacherAdapter;
 import com.fzn.classsign.asynctask.common.ListSignStatistics;
@@ -150,5 +153,13 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
             AlertDialog dialog = dialogBuilder.create();
             dialog.show();
         }
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Intent intent =new Intent(this, TeacherFragmentActivity.class);
+            this.startActivity(intent);
+        }
+        return false;
     }
 }

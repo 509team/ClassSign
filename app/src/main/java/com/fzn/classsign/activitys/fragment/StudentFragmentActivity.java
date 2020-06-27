@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,10 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentFragmentActivity extends AppCompatActivity {
-
-    private Fragment classFragment;
-    private Fragment signFragment;
-    private Fragment meFragment;
 
 
     FrameLayout mFl;
@@ -132,5 +129,22 @@ public class StudentFragmentActivity extends AppCompatActivity {
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fl, fragmeny).commit();
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            if (position != 1) {
+                showFragmentOf(1);
+                return true;
+            } else {
+                Intent home=new Intent(Intent.ACTION_MAIN);
+                home.addCategory(Intent.CATEGORY_HOME);
+                startActivity(home);
+                return true;
+            }
+        }
+        return false;
     }
 }

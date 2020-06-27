@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.teacher.ClassCreate;
 import com.fzn.classsign.constant.RequestConstant;
 import com.fzn.classsign.entity.Class;
@@ -66,5 +69,14 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
                         .execute();
             }
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Intent intent =new Intent(this, TeacherFragmentActivity.class);
+            this.startActivity(intent);
+        }
+        return false;
     }
 }

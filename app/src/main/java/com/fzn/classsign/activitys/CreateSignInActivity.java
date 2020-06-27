@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.teacher.SignCreate;
 import com.fzn.classsign.entity.Token;
 
@@ -187,5 +189,16 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
             }
 
         }
+    }
+
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Intent intent =new Intent(this, ClassDetailTeacherActivity.class);
+            this.startActivity(intent);
+        }
+        return false;
     }
 }

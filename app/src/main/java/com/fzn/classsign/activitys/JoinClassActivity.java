@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.student.ClassAdd;
 import com.fzn.classsign.entity.Token;
 import com.yzq.zxinglibrary.android.CaptureActivity;
@@ -125,5 +128,16 @@ public class JoinClassActivity extends AppCompatActivity implements View.OnClick
             default:
                 break;
         }
+    }
+
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Intent intent =new Intent(this, StudentFragmentActivity.class);
+            this.startActivity(intent);
+        }
+        return false;
     }
 }

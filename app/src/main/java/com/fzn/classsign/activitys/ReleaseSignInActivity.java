@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.teacher.SignGetCurrentSignTotal;
 import com.fzn.classsign.asynctask.teacher.SignStop;
 import com.fzn.classsign.entity.Token;
@@ -125,5 +127,15 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
             new SignStop<Boolean>(head, null, params, cid,ReleaseSignInActivity.this)
                     .post().execute();
         }
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Intent intent =new Intent(this, ClassDetailTeacherActivity.class);
+            this.startActivity(intent);
+        }
+        return false;
     }
 }

@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
+import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.student.ListSignInRecord;
 import com.fzn.classsign.entity.Token;
 
@@ -115,4 +117,12 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Intent intent =new Intent(this, StudentFragmentActivity.class);
+            this.startActivity(intent);
+        }
+        return false;
+    }
 }
