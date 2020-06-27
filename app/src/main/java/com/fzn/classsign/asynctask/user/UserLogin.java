@@ -2,8 +2,10 @@ package com.fzn.classsign.asynctask.user;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.fzn.classsign.R;
 import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
 import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
@@ -33,7 +35,7 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
             Map<String, Object> map = temp.getData();
             Token.token = map.get("access_token").toString();
             Token.refreshToken = map.get("refresh_token").toString();
-
+            storeRefreshToken();
             if(type==1){
                 Intent intent =new Intent(context, TeacherFragmentActivity.class);
                 context.startActivity(intent);
@@ -50,5 +52,16 @@ public class UserLogin<T> extends CustomAsyncTask<T> {
             }
         }
         super.onPostExecute(s);
+    }
+
+    //存储refreshToken
+    private void storeRefreshToken() {
+        String spFileName = context.getResources().getString(R.string.shared_preferences_file_name);
+        String refreshTokenKey = context.getResources().getString(R.string.refresh_token);
+
+        SharedPreferences spFile = context.getSharedPreferences(spFileName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = spFile.edit();
+        editor.putString(refreshTokenKey,Token.refreshToken);
+        editor.apply();
     }
 }
