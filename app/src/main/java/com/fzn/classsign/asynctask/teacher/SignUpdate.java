@@ -33,9 +33,9 @@ public class SignUpdate<T> extends CustomAsyncTask<T> {
     protected void onPostExecute(String s) {
         ResponseResultJson<Boolean> temp = (ResponseResultJson<Boolean>) getResponse(s);
         if (temp.getCode() == 200) {
-            Toast.makeText(context, "修改签到记录成功", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "修改签到记录成功", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "修改签到记录失败", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "修改签到记录失败", Toast.LENGTH_SHORT).show();
         }
         signAdapter.updateData(sid, status);
         super.onPostExecute(s);

@@ -13,6 +13,8 @@ import com.fzn.classsign.adapter.SignInListStudentAdapter;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
 import com.fzn.classsign.constant.RequestConstant;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,6 +37,7 @@ public class ListSignInRecord<T> extends CustomAsyncTask<T> {
     private Context context;
 
     private List<Map<String, Object>> datalist;
+    private List<Map<String, Object>> list = new ArrayList<>();;
     private SignInListStudentAdapter signInListStudentAdapter;
     private RecyclerView recyclerView;
 
@@ -55,6 +58,7 @@ public class ListSignInRecord<T> extends CustomAsyncTask<T> {
             datalist = temp.getData();
             if (datalist.size() != 0) {
                 for (Map<String, Object> data : datalist) {
+                    Map<String, Object> map = new HashMap<>();
                     if (data.get("status").toString().equals("normal")) {
                         normalNum++;
                     } else if (data.get("status").toString().equals("abnormal")) {
@@ -62,12 +66,16 @@ public class ListSignInRecord<T> extends CustomAsyncTask<T> {
                     } else if (data.get("status").toString().equals("absence")) {
                         absenceNum++;
                     }
+                    map.put("name",data.get("name").toString());
+                    map.put("starttime",(long) Double.parseDouble(data.get("starttime").toString()));
+                    map.put("status",data.get("status").toString());
+                    list.add(map);
                 }
                 tv_cds_attendancenum.setText(String.valueOf(normalNum));
                 tv_cds_abnormalnum.setText(String.valueOf(abnormalNum));
                 tv_cds_absencenum.setText(String.valueOf(absenceNum));
 
-                signInListStudentAdapter = new SignInListStudentAdapter(context, R.layout.list_sign_in_list, datalist);
+                signInListStudentAdapter = new SignInListStudentAdapter(context, R.layout.list_sign_in_list, list);
                 LinearLayoutManager llm = new LinearLayoutManager(context);
                 recyclerView.setLayoutManager(llm);
                 recyclerView.setAdapter(signInListStudentAdapter);

@@ -43,7 +43,7 @@ public class ClassGet<T> extends CustomAsyncTask<T> {
             context.startActivity(intent);
         }
         else {
-            Toast.makeText(context,"获取班级信息出错!返回主界面",Toast.LENGTH_SHORT);
+            Toast.makeText(context,"获取班级信息出错!返回主界面",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, TeacherFragmentActivity.class);
             intent.putExtra("POSITION",0);
             context.startActivity(intent);

@@ -48,7 +48,7 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
         holder.tv_lsil_signname.setText(map.get(signNameKey).toString());
 
         try {
-            holder.tv_lsil_time.setText(dateToStamp(map.get(timeKey).toString()));
+            holder.tv_lsil_time.setText(StampToDate(map.get(timeKey).toString()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -71,13 +71,11 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
     /*
      * 将时间转换为时间戳
      */
-    public static String dateToStamp(String s) throws ParseException {
+    public static String StampToDate(String s) throws ParseException {
         String res;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = simpleDateFormat.parse(s);
-        long ts = date.getTime();
-        res = String.valueOf(ts);
-        return res;
+        Date date = new Date(Long.valueOf(s));
+        return simpleDateFormat.format(date).toString();
     }
 
     @Override
