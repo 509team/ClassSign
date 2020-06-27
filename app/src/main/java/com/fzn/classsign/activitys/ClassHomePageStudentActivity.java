@@ -8,10 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.fzn.classsign.R;
-import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.asynctask.student.ClassList;
 import com.fzn.classsign.entity.Token;
 
@@ -45,7 +43,7 @@ public class ClassHomePageStudentActivity extends AppCompatActivity implements V
     private void initData() {
         Map<String, String> head = new HashMap<>();
         head.put("Authorization","Bearer "+ Token.token);
-        new ClassList<List<Map<String, Object>>>(head,null,null,null)
+        new ClassList<List<Map<String, Object>>>(head,null,null,null,ClassHomePageStudentActivity.this)
                 .gett()
                 .execute();
     }

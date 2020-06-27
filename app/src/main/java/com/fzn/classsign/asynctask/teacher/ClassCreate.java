@@ -42,7 +42,7 @@ public class ClassCreate<T> extends CustomAsyncTask<T> {
             intent.putExtra("TOTAL", String.valueOf(0));
             context.startActivity(intent);
         } else if (code == 401) {
-            Token.FreshToken();
+            Token.FreshToken(context,0,0);
             Toast.makeText(context, "请求超时，请重试！", Toast.LENGTH_SHORT);
         } else {
             Toast.makeText(context, temp.getAddtionalInfo(), Toast.LENGTH_SHORT);

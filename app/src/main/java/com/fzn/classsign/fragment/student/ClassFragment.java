@@ -107,7 +107,7 @@ public class ClassFragment extends Fragment implements View.OnClickListener {
     private void initData() {
         Map<String, String> head = new HashMap<>();
         head.put("Authorization", "Bearer " + Token.token);
-        new ClassList<List<Map<String, Object>>>(head, null, null, classListAdapter)
+        new ClassList<List<Map<String, Object>>>(head, null, null, classListAdapter,mContext)
                 .gett()
                 .execute();
     }

@@ -19,9 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fzn.classsign.R;
-import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
 import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
-import com.fzn.classsign.adapter.ClassListAdapter;
 import com.fzn.classsign.adapter.SignInListTeacherAdapter;
 import com.fzn.classsign.asynctask.common.ListSignStatistics;
 import com.fzn.classsign.entity.SignInStatistics;

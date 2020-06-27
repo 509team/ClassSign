@@ -12,10 +12,7 @@ import android.widget.TextView;
 
 import com.fzn.classsign.R;
 import com.fzn.classsign.adapter.ClassListAdapter;
-import com.fzn.classsign.asynctask.teacher.ClassList;
-import com.fzn.classsign.entity.Token;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
