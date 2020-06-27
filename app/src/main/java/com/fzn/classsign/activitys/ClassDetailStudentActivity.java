@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.fzn.classsign.R;
 import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
 import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
+import com.fzn.classsign.asynctask.student.ClassExit;
 import com.fzn.classsign.asynctask.student.ListSignInRecord;
 import com.fzn.classsign.entity.Token;
 
@@ -44,6 +45,8 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
 
     /*所有学生*/
     private Button bt_cds_allstudent;
+    /*退出班级*/
+    private Button bt_cds_exitClass;
 
     private String cid;
     private String className;
@@ -73,7 +76,7 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         }
         className = intent.getStringExtra("NAME");
         classNum = intent.getStringExtra("CNUM");
-        joinCode = intent.getStringExtra("JOINCLDE");
+        joinCode = intent.getStringExtra("JOINCODE");
 
         tv_cds_classcode.setText(classNum);
         tv_cds_classname.setText(className);
@@ -95,6 +98,8 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
 
         bt_cds_allstudent = findViewById(R.id.bt_cds_allstudent);
         bt_cds_allstudent.setOnClickListener(this);
+        bt_cds_exitClass = findViewById(R.id.bt_cds_exitClass);
+        bt_cds_exitClass.setOnClickListener(this);
         tv_cds_joinclasscode.setOnClickListener(this);
         tv_tsb_back2.setOnClickListener(this);
     }
@@ -122,7 +127,33 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
                 Intent intent = new Intent(this, StudentFragmentActivity.class);
                 this.startActivity(intent);
         }
+        if(v.getId() == R.id.bt_cds_exitClass){
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ClassDetailStudentActivity.this);
+            dialogBuilder.setMessage("是否退出该班级");
+            dialogBuilder.setPositiveButton("是",yesClick);
+            dialogBuilder.setNegativeButton("否",noClick);
+            dialogBuilder.create();
+            dialogBuilder.show();
+        }
     }
+
+    private DialogInterface.OnClickListener yesClick = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            Map<String, String> head = new HashMap<>();
+            head.put("Authorization", "Bearer " + Token.token);
+            new ClassExit<Boolean>(head,null,null,ClassDetailStudentActivity.this)
+                    .gett()
+                    .execute(cid);
+        }
+    };
+
+    private DialogInterface.OnClickListener noClick = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

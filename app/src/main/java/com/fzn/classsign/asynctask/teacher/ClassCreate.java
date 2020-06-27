@@ -43,9 +43,9 @@ public class ClassCreate<T> extends CustomAsyncTask<T> {
             context.startActivity(intent);
         } else if (code == 401) {
             Token.FreshToken(context,0,0);
-            Toast.makeText(context, "请求超时，请重试！", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "请求超时，请重试！", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, temp.getAddtionalInfo(), Toast.LENGTH_SHORT);
+            Toast.makeText(context, temp.getAddtionalInfo(), Toast.LENGTH_SHORT).show();
         }
         super.onPostExecute(s);
     }
