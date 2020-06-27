@@ -39,6 +39,8 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
     private int seconds = 16;
     private String code;
 
+    private boolean stopFlag = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,9 +72,17 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onFinish() {
-                Toast.makeText(ReleaseSignInActivity.this, "签到结束", Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(ReleaseSignInActivity.this, ClassFragment.class);
-                startActivity(intent1);
+                //点击结束签到按钮，计时器关闭
+                if(stopFlag == true){
+                    this.cancel();
+                }else{
+                    Map<String, String> head = new HashMap<>();
+                    head.put("Authorization", "Bearer " + Token.token);
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("signCode", code);
+                    new SignStop<Boolean>(head, null, params, cid,ReleaseSignInActivity.this)
+                            .post().execute();
+                }
             }
         };
 
@@ -107,11 +117,12 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.b_rs_end) {
+            stopFlag = true;
             Map<String, String> head = new HashMap<>();
             head.put("Authorization", "Bearer " + Token.token);
             Map<String, Object> params = new HashMap<>();
             params.put("signCode", code);
-            new SignStop<Boolean>(head, null, params, ReleaseSignInActivity.this)
+            new SignStop<Boolean>(head, null, params, cid,ReleaseSignInActivity.this)
                     .post().execute();
         }
     }

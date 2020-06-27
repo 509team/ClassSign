@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fzn.classsign.R;
+import com.fzn.classsign.activitys.fragment.StudentFragmentActivity;
 
 /**
  * 签到成功
@@ -42,7 +43,8 @@ public class SignInResultActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.bt_sir_return) {
-            Intent intent = new Intent(SignInResultActivity.this, SignInActivity.class);
+            Intent intent = new Intent(SignInResultActivity.this, StudentFragmentActivity.class);
+            intent.putExtra("POSITION",1);
             startActivity(intent);
         }
     }

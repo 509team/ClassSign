@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.fzn.classsign.activitys.ClassDetailTeacherActivity;
 import com.fzn.classsign.asynctask.base.CustomAsyncTask;
+import com.fzn.classsign.asynctask.common.ClassGet;
 import com.fzn.classsign.constant.RequestConstant;
+import com.fzn.classsign.entity.Token;
 import com.fzn.classsign.fragment.teacher.ClassFragment;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,10 +21,12 @@ import java.util.Map;
  */
 public class SignStop<T> extends CustomAsyncTask<T> {
     private Context context;
+    private int  cid;
 
-    public SignStop(Map headers, Map body, Map params, Context context) {
+    public SignStop(Map headers, Map body, Map params,String cid, Context context) {
         super(headers, body, params, RequestConstant.URL.TEACHER_SIGN_STOP);
         this.context = context;
+        this.cid = Integer.parseInt(cid);
     }
 
     @Override
@@ -29,8 +35,11 @@ public class SignStop<T> extends CustomAsyncTask<T> {
         int code = temp.getCode();
         if (code == 200) {
             Toast.makeText(context, "签到结束", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(context, ClassFragment.class);
-            context.startActivity(intent);
+            Map<String,String> heads=new HashMap<>();
+            heads.put("Authorization","Bearer "+ Token.token);
+            new ClassGet<Map<String, Object>>(heads,null,null,context)
+                    .gett()
+                    .execute(cid);
         } else {
             Toast.makeText(context, "结束签到失败", Toast.LENGTH_SHORT).show();
         }

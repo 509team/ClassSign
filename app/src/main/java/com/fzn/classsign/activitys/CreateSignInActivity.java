@@ -49,6 +49,13 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_sign_in);
+        initView();
+
+        //定位
+        initMap();
+    }
+
+    private void initView(){
         tv_tsb_title = findViewById(R.id.tv_tsb_title);
         tv_tsb_title.setText("创建签到");
 
@@ -65,9 +72,11 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
 
         tv_cs_select.getSelectedItem().toString();
         b_cs_release.setOnClickListener(this);
+    }
 
-        //定位
-        initMap();
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     /*定位*/
