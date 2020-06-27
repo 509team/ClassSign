@@ -1,7 +1,9 @@
 package com.fzn.classsign.activitys;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -133,9 +135,33 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            Intent intent =new Intent(this, ClassDetailTeacherActivity.class);
-            this.startActivity(intent);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(ReleaseSignInActivity.this);
+            dialog.setMessage("是否结束签到？");
+            dialog.setPositiveButton("是",yesClick);
+            dialog.setNegativeButton("否",noClick);
+            dialog.create();
+            dialog.show();
         }
         return false;
     }
+
+    private DialogInterface.OnClickListener yesClick = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            stopFlag = true;
+            Map<String, String> head = new HashMap<>();
+            head.put("Authorization", "Bearer " + Token.token);
+            Map<String, Object> params = new HashMap<>();
+            params.put("signCode", code);
+            new SignStop<Boolean>(head, null, params, cid,ReleaseSignInActivity.this)
+                    .post().execute();
+        }
+    };
+
+    private DialogInterface.OnClickListener noClick = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
 }

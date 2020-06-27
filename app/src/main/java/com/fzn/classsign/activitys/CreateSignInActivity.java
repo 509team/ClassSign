@@ -190,15 +190,4 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
 
         }
     }
-
-
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            Intent intent =new Intent(this, ClassDetailTeacherActivity.class);
-            this.startActivity(intent);
-        }
-        return false;
-    }
 }
