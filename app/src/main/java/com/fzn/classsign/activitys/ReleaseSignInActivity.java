@@ -45,6 +45,8 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
 
     private boolean stopFlag = false;
 
+    private ImageView tv_tsb_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,14 +79,14 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onFinish() {
                 //点击结束签到按钮，计时器关闭
-                if(stopFlag == true){
+                if (stopFlag == true) {
                     this.cancel();
-                }else{
+                } else {
                     Map<String, String> head = new HashMap<>();
                     head.put("Authorization", "Bearer " + Token.token);
                     Map<String, Object> params = new HashMap<>();
                     params.put("signCode", code);
-                    new SignStop<Boolean>(head, null, params, cid,ReleaseSignInActivity.this)
+                    new SignStop<Boolean>(head, null, params, cid, ReleaseSignInActivity.this)
                             .post().execute();
                 }
             }
@@ -104,7 +106,9 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
 
         //结束签到按钮
         bEnd = findViewById(R.id.b_rs_end);
+        tv_tsb_back = findViewById(R.id.tv_tsb_back);
         bEnd.setOnClickListener(this);
+        tv_tsb_back.setOnClickListener(this);
     }
 
     //获取当前签到人数
@@ -126,8 +130,16 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
             head.put("Authorization", "Bearer " + Token.token);
             Map<String, Object> params = new HashMap<>();
             params.put("signCode", code);
-            new SignStop<Boolean>(head, null, params, cid,ReleaseSignInActivity.this)
+            new SignStop<Boolean>(head, null, params, cid, ReleaseSignInActivity.this)
                     .post().execute();
+        }
+        if (v.getId() == R.id.tv_tsb_back) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(ReleaseSignInActivity.this);
+            dialog.setMessage("是否结束签到？");
+            dialog.setPositiveButton("是", yesClick);
+            dialog.setNegativeButton("否", noClick);
+            dialog.create();
+            dialog.show();
         }
     }
 
@@ -137,10 +149,11 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(ReleaseSignInActivity.this);
             dialog.setMessage("是否结束签到？");
-            dialog.setPositiveButton("是",yesClick);
-            dialog.setNegativeButton("否",noClick);
+            dialog.setPositiveButton("是", yesClick);
+            dialog.setNegativeButton("否", noClick);
             dialog.create();
             dialog.show();
+            return false;
         }
         return false;
     }
@@ -153,7 +166,7 @@ public class ReleaseSignInActivity extends AppCompatActivity implements View.OnC
             head.put("Authorization", "Bearer " + Token.token);
             Map<String, Object> params = new HashMap<>();
             params.put("signCode", code);
-            new SignStop<Boolean>(head, null, params, cid,ReleaseSignInActivity.this)
+            new SignStop<Boolean>(head, null, params, cid, ReleaseSignInActivity.this)
                     .post().execute();
         }
     };

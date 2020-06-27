@@ -45,6 +45,8 @@ public class SignInRecordListActivity extends AppCompatActivity implements View.
 
     private Integer selectedPosition;
 
+    private ImageView tv_tsb_back4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,7 @@ public class SignInRecordListActivity extends AppCompatActivity implements View.
 
     public void initView() {
         recyclerView = findViewById(R.id.lv_cdt_class);
+        tv_tsb_back4 = findViewById(R.id.tv_tsb_back4);
         signAdapter = new SignInStatusListAdapter(SignInRecordListActivity.this, R.layout.list_sign_in_status);
         LinearLayoutManager llm = new LinearLayoutManager(SignInRecordListActivity.this);
         recyclerView.setLayoutManager(llm);
@@ -84,6 +87,7 @@ public class SignInRecordListActivity extends AppCompatActivity implements View.
                 dialog.show();
             }
         });
+        tv_tsb_back4.setOnClickListener(this);
     }
 
     public void initData() {

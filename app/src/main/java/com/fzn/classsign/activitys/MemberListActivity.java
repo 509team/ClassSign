@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.fzn.classsign.R;
 import com.fzn.classsign.adapter.ClassListAdapter;
@@ -21,10 +23,11 @@ import java.util.Map;
 /**
  * 成员列表
  */
-public class MemberListActivity extends AppCompatActivity {
+public class MemberListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String cid;
     private RecyclerView recyclerView;
+    private ImageView tv_tsb_back3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +38,20 @@ public class MemberListActivity extends AppCompatActivity {
         cid = intent.getStringExtra("CID");
 
         recyclerView = findViewById(R.id.lv_ml_allstudent);
+        tv_tsb_back3=findViewById(R.id.tv_tsb_back3);
+        tv_tsb_back3.setOnClickListener(this);
 
         Map<String, String> head = new HashMap<>();
-        head.put("Authorization","Bearer "+ Token.token);
-        new ClassListStudent<List<Map<String, Object>>>(head,null,null, recyclerView,MemberListActivity.this).gett().execute(cid);
+        head.put("Authorization", "Bearer " + Token.token);
+        new ClassListStudent<List<Map<String, Object>>>(head, null, null, recyclerView, MemberListActivity.this).gett().execute(cid);
 
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.tv_tsb_back3) {
+            this.finish();
+        }
     }
 }

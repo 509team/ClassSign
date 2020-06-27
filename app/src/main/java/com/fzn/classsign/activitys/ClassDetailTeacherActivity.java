@@ -59,6 +59,7 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
 
     private View classJoinCode;
     private ImageView iv_class_join_code;
+    private ImageView tv_tsb_back2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
         tv_cdt_classname = findViewById(R.id.tv_cdt_classname);
         tv_cdt_classcode = findViewById(R.id.tv_cdt_classcode);
         tv_cdt_joinclasscode = findViewById(R.id.tv_cdt_joinclasscode);
+        tv_tsb_back2 = findViewById(R.id.tv_tsb_back2);
         recyclerView = findViewById(R.id.lv_cdt_class);
         signAdapter = new SignInListTeacherAdapter(ClassDetailTeacherActivity.this, R.layout.list_sign_in_list);
         LinearLayoutManager llm = new LinearLayoutManager(ClassDetailTeacherActivity.this);
@@ -114,6 +116,7 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
         bt_cdt_allstudent.setOnClickListener(this);
         bt_cdt_creatsignin.setOnClickListener(this);
         tv_cdt_joinclasscode.setOnClickListener(this);
+        tv_tsb_back2.setOnClickListener(this);
 
         Map<String, String> head = new HashMap<>();
         head.put("Authorization", "Bearer " + Token.token);
@@ -123,6 +126,7 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View v) {
+        System.out.println(v.getId() + "---" + R.id.tv_tsb_back2);
         if (v.getId() == R.id.bt_cdt_allstudent) {
             Uri uri;
             Intent intent = new Intent(ClassDetailTeacherActivity.this, MemberListActivity.class);
@@ -151,12 +155,18 @@ public class ClassDetailTeacherActivity extends AppCompatActivity implements Vie
             AlertDialog dialog = dialogBuilder.create();
             dialog.show();
         }
+        if (v.getId() == R.id.tv_tsb_back2) {
+            Intent intent = new Intent(this, TeacherFragmentActivity.class);
+            startActivity(intent);
+        }
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            Intent intent =new Intent(this, TeacherFragmentActivity.class);
+            Intent intent = new Intent(this, TeacherFragmentActivity.class);
             this.startActivity(intent);
+            return false;
         }
         return false;
     }

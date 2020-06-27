@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ public class UpdateInfoActivity extends AppCompatActivity implements View.OnClic
     private EditText etNumber;
     private Button bUpdate;
 
+    private ImageView tv_tsb_back;
+
     private String name;
     private String sex;
     private String number;
@@ -49,18 +52,24 @@ public class UpdateInfoActivity extends AppCompatActivity implements View.OnClic
         type = intent.getIntExtra("TYPE", 0);
 
         etName = findViewById(R.id.et_ui_user_name);
-        sSex=findViewById(R.id.s_ui_sex);
+        sSex = findViewById(R.id.s_ui_sex);
         etNumber = findViewById(R.id.et_ui_number);
         bUpdate = findViewById(R.id.b_ui_update);
+        tv_tsb_back = findViewById(R.id.tv_tsb_back);
 
         etName.setHint(name);
         etNumber.setHint(number);
         //sSex.setTooltipText(sex);
         bUpdate.setOnClickListener(this);
+        tv_tsb_back.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.tv_tsb_back) {
+            this.finish();
+            return;
+        }
         boolean isUpdate = false;
         if (etName.getText().toString().equals("") || etNumber.getText().toString().equals("")) {
             Toast.makeText(UpdateInfoActivity.this, "信息不能为空", Toast.LENGTH_SHORT).show();
@@ -69,8 +78,8 @@ public class UpdateInfoActivity extends AppCompatActivity implements View.OnClic
                 name = etName.getText().toString();
                 isUpdate = true;
             }
-            if (!sex.equals((String)sSex.getSelectedItem())) {
-                sex = (String)sSex.getSelectedItem();
+            if (!sex.equals((String) sSex.getSelectedItem())) {
+                sex = (String) sSex.getSelectedItem();
                 isUpdate = true;
             }
             if (!number.equals(etNumber.getText().toString())) {
@@ -80,18 +89,18 @@ public class UpdateInfoActivity extends AppCompatActivity implements View.OnClic
         }
         if (isUpdate) {
             //调用接口更新信息
-            Map<String,String> heads=new HashMap<>();
-            heads.put("Authorization","Bearer "+ Token.token);
-            Map<String,String> body=new HashMap<>();
-            body.put("uNum",number);
-            body.put("name",name);
-            if(sex.equals("男")){
-                sex="male";
-            }else{
-                sex="female";
+            Map<String, String> heads = new HashMap<>();
+            heads.put("Authorization", "Bearer " + Token.token);
+            Map<String, String> body = new HashMap<>();
+            body.put("uNum", number);
+            body.put("name", name);
+            if (sex.equals("男")) {
+                sex = "male";
+            } else {
+                sex = "female";
             }
-            body.put("sex",sex);
-            new UpdateUserBaseInfo<Boolean>(heads,body,null,this,type)
+            body.put("sex", sex);
+            new UpdateUserBaseInfo<Boolean>(heads, body, null, this, type)
                     .post()
                     .execute();
         }

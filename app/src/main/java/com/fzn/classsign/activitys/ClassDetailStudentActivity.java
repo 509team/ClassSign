@@ -54,6 +54,7 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
 
     private View classJoinCode;
     private ImageView iv_class_join_code;
+    private ImageView tv_tsb_back2;
 
 
     @Override
@@ -81,6 +82,7 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         tv_cds_attendancenum = findViewById(R.id.tv_cds_attendancenum);
         tv_cds_abnormalnum = findViewById(R.id.tv_cds_abnormalnum);
         tv_cds_absencenum = findViewById(R.id.tv_cds_absencenum);
+        tv_tsb_back2=findViewById(R.id.tv_tsb_back2);
 
 
         recyclerView = findViewById(R.id.lv_cds_class);
@@ -94,6 +96,7 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
         bt_cds_allstudent = findViewById(R.id.bt_cds_allstudent);
         bt_cds_allstudent.setOnClickListener(this);
         tv_cds_joinclasscode.setOnClickListener(this);
+        tv_tsb_back2.setOnClickListener(this);
     }
 
     @Override
@@ -103,25 +106,30 @@ public class ClassDetailStudentActivity extends AppCompatActivity implements Vie
             intent.putExtra("CID", cid);
             startActivity(intent);
         }
-        if(v.getId()==R.id.tv_cds_joinclasscode){
+        if (v.getId() == R.id.tv_cds_joinclasscode) {
             //生成二维码
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ClassDetailStudentActivity.this);
             //加课码浮窗
             classJoinCode = getLayoutInflater().inflate(R.layout.class_join_code, null);
-            iv_class_join_code=classJoinCode.findViewById(R.id.iv_class_join_code);
+            iv_class_join_code = classJoinCode.findViewById(R.id.iv_class_join_code);
             dialogBuilder.setView(classJoinCode);
             Bitmap map = createQRCode("class-" + joinCode, 159, 159, null);
             iv_class_join_code.setImageBitmap(map);
-            AlertDialog dialog=dialogBuilder.create();
+            AlertDialog dialog = dialogBuilder.create();
             dialog.show();
+        }
+        if (v.getId() == R.id.tv_tsb_back2) {
+                Intent intent = new Intent(this, StudentFragmentActivity.class);
+                this.startActivity(intent);
         }
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            Intent intent =new Intent(this, StudentFragmentActivity.class);
+            Intent intent = new Intent(this, StudentFragmentActivity.class);
             this.startActivity(intent);
+            return false;
         }
         return false;
     }

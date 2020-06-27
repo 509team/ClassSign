@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
     private EditText etClassNumber;
     private EditText etClassName;
     private Button bCreate;
+    private ImageView tv_tsb_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,10 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
         etClassNumber=findViewById(R.id.et_cc_class_number);
         etClassName=findViewById(R.id.et_cc_class_name);
         bCreate=findViewById(R.id.bt_cc_creatclass);
+        tv_tsb_back=findViewById(R.id.tv_tsb_back);
 
         bCreate.setOnClickListener(this);
+        tv_tsb_back.setOnClickListener(this);
     }
 
     @Override
@@ -69,6 +73,10 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
                         .execute();
             }
         }
+        if(v.getId()==R.id.tv_tsb_back){
+            Intent intent =new Intent(this, TeacherFragmentActivity.class);
+            this.startActivity(intent);
+        }
     }
 
     @Override
@@ -76,6 +84,7 @@ public class CreateClassActivity extends AppCompatActivity implements View.OnCli
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             Intent intent =new Intent(this, TeacherFragmentActivity.class);
             this.startActivity(intent);
+            return false;
         }
         return false;
     }

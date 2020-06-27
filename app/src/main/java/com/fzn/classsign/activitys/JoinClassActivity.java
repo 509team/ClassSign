@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -43,6 +44,8 @@ public class JoinClassActivity extends AppCompatActivity implements View.OnClick
     /*二维码扫描结果*/
     private String scanResult;
 
+    private ImageView tv_tsb_back1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,10 @@ public class JoinClassActivity extends AppCompatActivity implements View.OnClick
         iv_jc_scan.setOnClickListener(this);
         /*加入班级按钮*/
         bt_jc_joinclass = findViewById(R.id.bt_jc_joinclass);
+
+        tv_tsb_back1 = findViewById(R.id.tv_tsb_back1);
         bt_jc_joinclass.setOnClickListener(this);
+        tv_tsb_back1.setOnClickListener(this);
     }
 
     @Override
@@ -85,6 +91,10 @@ public class JoinClassActivity extends AppCompatActivity implements View.OnClick
                         .post()
                         .execute();
             }
+        }
+        if (v.getId() == R.id.tv_tsb_back1) {
+            Intent intent = new Intent(this, StudentFragmentActivity.class);
+            this.startActivity(intent);
         }
     }
 
@@ -131,11 +141,10 @@ public class JoinClassActivity extends AppCompatActivity implements View.OnClick
     }
 
 
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            Intent intent =new Intent(this, StudentFragmentActivity.class);
+            Intent intent = new Intent(this, StudentFragmentActivity.class);
             this.startActivity(intent);
         }
         return false;
