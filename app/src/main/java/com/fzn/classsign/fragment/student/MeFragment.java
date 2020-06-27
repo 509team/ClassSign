@@ -1,7 +1,9 @@
 package com.fzn.classsign.fragment.student;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.fzn.classsign.entity.Token;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import java.util.HashMap;
@@ -116,8 +119,33 @@ public class MeFragment extends Fragment implements View.OnClickListener{
             startActivity(intent);
         }
         if(v.getId() == R.id.bt_mis_logout){
+            AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+            dialog.setMessage("是否退出登录");
+            dialog.setPositiveButton("是",yesClick);
+            dialog.setNegativeButton("否",noClick);
+            dialog.create();
+            dialog.show();
+        }
+    }
+
+    private DialogInterface.OnClickListener yesClick = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            String spFileName = mContext.getResources().getString(R.string.shared_preferences_file_name);
+            String refreshTokenKey = mContext.getResources().getString(R.string.refresh_token);
+            SharedPreferences spFile = mContext.getSharedPreferences(spFileName,Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = spFile.edit();
+            editor.remove(refreshTokenKey);
+            editor.apply();
             Intent intent = new Intent(mContext, LoginSelectionActivity.class);
             startActivity(intent);
         }
-    }
+    };
+
+    private DialogInterface.OnClickListener noClick = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
 }
