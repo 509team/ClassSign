@@ -44,9 +44,9 @@ public class SignIn<T> extends CustomAsyncTask<T> {
             String text = temp.getAddtionalInfo();
             Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
         } else if(code == 601){
-            Toast.makeText(context, "签到失败" + temp.getAddtionalInfo(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "签到失败，" + temp.getAddtionalInfo(), Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context, "签到失败" + temp.getCode(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "签到失败，" + temp.getCode(), Toast.LENGTH_SHORT).show();
         }
 
         super.onPostExecute(s);
