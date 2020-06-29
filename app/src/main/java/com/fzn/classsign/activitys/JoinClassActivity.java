@@ -81,7 +81,7 @@ public class JoinClassActivity extends AppCompatActivity implements View.OnClick
         if (v.getId() == R.id.bt_jc_joinclass) {
             String sixcode = et_jc_sixcode.getText().toString();
             if (sixcode.length() != 6) {
-                Toast.makeText(JoinClassActivity.this, "签到码不符合要求", Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinClassActivity.this, "加入码不符合要求", Toast.LENGTH_SHORT).show();
             } else {
                 Map<String, String> head = new HashMap<>();
                 head.put("Authorization", "Bearer " + Token.token);
