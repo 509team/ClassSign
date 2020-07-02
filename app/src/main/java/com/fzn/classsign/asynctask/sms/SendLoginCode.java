@@ -52,7 +52,7 @@ public class SendLoginCode<T> extends CustomAsyncTask<T> {
                 context.startActivity(intent);
             } else {
                 if (statusCode == 1) {
-                    Toast.makeText(context, "没有改用户", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "没有该用户", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "未知错误，请重新发送", Toast.LENGTH_SHORT).show();
                 }
