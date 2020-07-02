@@ -71,15 +71,15 @@ public class SignInRecordListActivity extends AppCompatActivity implements View.
         signAdapter.setOnItemClickListener(new SignInStatusListAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, SignIn data) {
-                selectedSid = data.getSid();
-                unum.setText(data.getuNum());
-                name.setText(data.getName());
-                spinner.setSelection(getPositionOfStatus(data.getStatus()));
                 AlertDialog.Builder dialog = new AlertDialog.Builder(SignInRecordListActivity.this);
                 updateView = getLayoutInflater().inflate(R.layout.modify_sign_status, null);
                 unum = updateView.findViewById(R.id.tv_unum_data);
                 name = updateView.findViewById(R.id.tv_name_data);
                 spinner = updateView.findViewById(R.id.s_status);
+                selectedSid = data.getSid();
+                unum.setText(data.getuNum());
+                name.setText(data.getName());
+                spinner.setSelection(getPositionOfStatus(data.getStatus()));
                 dialog.setView(updateView);
                 dialog.setPositiveButton("修改", updateClick);
                 dialog.setNegativeButton("返回", backClick);

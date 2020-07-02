@@ -1,6 +1,7 @@
 package com.fzn.classsign.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,20 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
         holder.tv_lsis_studentid.setText(signIn.getuNum());
         holder.tv_lsis_name.setText(signIn.getName());
         holder.tv_lsis_status.setText(signIn.getStatus());
+        switch (signIn.getStatus()){
+            case "出勤":
+                holder.tv_lsis_status.setTextColor(Color.parseColor("#27B148"));
+                break;
+            case "异常":
+                holder.tv_lsis_status.setTextColor(Color.parseColor("#FCCA00"));
+                break;
+            case "缺席":
+                holder.tv_lsis_status.setTextColor(Color.parseColor("#FF2525"));
+                break;
+            default:
+                holder.tv_lsis_status.setTextColor(Color.parseColor("#FF2525"));
+                break;
+        }
     }
 
     @Override
@@ -57,7 +72,22 @@ public class SignInStatusListAdapter extends RecyclerView.Adapter<SignInStatusLi
     public void updateData(int sid, String status) {
         for (int i = 0; i < dataList.size(); i++) {
             if (dataList.get(i).getSid() == sid) {
-                dataList.get(i).setStatus(status);
+                String str;
+                switch (status) {
+                    case "normal":
+                        str="出勤";
+                        break;
+                    case "abnormal":
+                        str="异常";
+                        break;
+                    case "absense":
+                        str="缺席";
+                        break;
+                    default:
+                        str="缺席";
+                        break;
+                }
+                dataList.get(i).setStatus(str);
                 break;
             }
         }
