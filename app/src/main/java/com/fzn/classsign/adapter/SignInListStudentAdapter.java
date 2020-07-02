@@ -1,6 +1,7 @@
 package com.fzn.classsign.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
 
     private static String status1 = "出勤";
     private static String status2 = "异常";
-    private static String status3 = "缺勤";
+    private static String status3 = "缺席";
 
     public SignInListStudentAdapter(Context context, int resourceId, List<Map<String, Object>> data){
         this.mContext = context;
@@ -56,12 +57,15 @@ public class SignInListStudentAdapter extends RecyclerView.Adapter<SignInListStu
         switch (map.get(statusKey).toString().trim()){
             case "normal":
                 s=status1;
+                holder.tv_lsil_ratioofpeople.setTextColor(Color.parseColor("#27B148"));
                 break;
             case "abnormal":
                 s=status2;
+                holder.tv_lsil_ratioofpeople.setTextColor(Color.parseColor("#FCCA00"));
                 break;
             case "absence":
                 s=status3;
+                holder.tv_lsil_ratioofpeople.setTextColor(Color.parseColor("#FF2525"));
                 break;
         }
         holder.tv_lsil_ratioofpeople.setText(s);

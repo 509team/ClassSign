@@ -26,7 +26,7 @@
                 android:layout_marginLeft="20dp"
                 android:text="WOLD"
                 android:textColor="@color/black"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <TextView
@@ -39,7 +39,7 @@
             android:gravity="center"
             android:text="170000000"
             android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_lsis_hiddenuid"
@@ -56,7 +56,7 @@
             android:layout_marginRight="35dp"
             android:text="出勤"
             android:textColor="#27B148"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
         <!--        <Button-->
         <!--            android:id="@+id/bt_lsis_update"-->
         <!--            android:text="修改"-->

@@ -8,7 +8,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +24,7 @@ import com.fzn.classsign.R;
 import com.fzn.classsign.activitys.fragment.TeacherFragmentActivity;
 import com.fzn.classsign.asynctask.teacher.SignCreate;
 import com.fzn.classsign.entity.Token;
+import com.yzq.zxinglibrary.android.CaptureActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,9 +55,13 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_sign_in);
         initView();
-
-        //定位
-        initMap();
+        //动态获取定位权限
+        int checkPermission = ContextCompat.checkSelfPermission(CreateSignInActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(CreateSignInActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+        }else {
+            initMap();
+        }
     }
 
     private void initView() {
@@ -110,6 +114,22 @@ public class CreateSignInActivity extends AppCompatActivity implements View.OnCl
         }
     };
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 2:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    initMap();
+                } else {
+                    Toast.makeText(CreateSignInActivity.this, "您禁止了定位权限，导致定位功能不可用，您可以选择使用时手动开启", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+
+        }
+    }
 
     private void initMap() {
         //动态申请定位权限

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -25,7 +26,6 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.fzn.classsign.R;
-import com.fzn.classsign.activitys.SignInActivity;
 import com.fzn.classsign.asynctask.student.SignIn;
 import com.fzn.classsign.entity.Token;
 import com.yzq.zxinglibrary.android.CaptureActivity;
@@ -81,6 +81,7 @@ public class SignFragment extends Fragment implements View.OnClickListener {
                     //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息。
                     String text = "定位错误，请检查相关权限和GPS是否开启！\nlocation Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo();
                     Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
+                    locationFlag = false;
                 }
             }
         }
@@ -107,7 +108,6 @@ public class SignFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initMap();
     }
 
     @Override
@@ -121,6 +121,16 @@ public class SignFragment extends Fragment implements View.OnClickListener {
         et_si_sixcode = mView.findViewById(R.id.et_si_sixcode);
         /*签到按钮*/
         bt_si_sign = mView.findViewById(R.id.bt_si_sign);
+        if(Build.VERSION.SDK_INT >= 23){
+            int checkPermission = ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION);
+            if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+            }else {
+                initMap();
+            }
+        }else {
+            initMap();
+        }
         return mView;
     }
 
@@ -129,7 +139,6 @@ public class SignFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         iv_si_scan.setOnClickListener(this);
         bt_si_sign.setOnClickListener(this);
-
     }
 
     @Override
@@ -150,7 +159,6 @@ public class SignFragment extends Fragment implements View.OnClickListener {
                         body.put("signCode", scanResult);
                         body.put("longitude", longitude);
                         body.put("latitude", latitude);
-
                         new SignIn<Boolean>(head, body, null, mContext)
                                 .post()
                                 .execute();
@@ -198,9 +206,11 @@ public class SignFragment extends Fragment implements View.OnClickListener {
                     startActivityForResult(intent, REQUEST_CODE_SCAN);
                 }
                 break;
-            case 200:
+            case 2:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     initMap();
+                } else {
+                    Toast.makeText(mContext, "您禁止了定位权限，导致定位功能不可用，您可以选择使用时手动开启", Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:
@@ -213,7 +223,6 @@ public class SignFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.iv_si_scan) {
             //动态申请相机权限、读取文件权限；
-            initMap();
             if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             } else {
@@ -240,6 +249,7 @@ public class SignFragment extends Fragment implements View.OnClickListener {
                             .execute();
                 } else {
                     initMap();
+
                     if (locationFlag) {
                         Map<String, String> head = new HashMap<>();
                         head.put("Authorization", "Bearer " + Token.token);
